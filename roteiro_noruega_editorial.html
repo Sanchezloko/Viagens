@@ -1,0 +1,2304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Roteiro editorial de 8 dias pela Noruega — Fiordes, montanhas, glaciares e estradas cênicas.">
+<title>The Norway Issue · Fjords &amp; Highlands</title>
+
+<!-- Favicon: bandeira da Noruega em SVG inline (funciona offline e em qualquer navegador) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 16'%3E%3Crect width='22' height='16' fill='%23BA0C2F'/%3E%3Crect x='6' width='2' height='16' fill='white'/%3E%3Crect width='22' y='7' height='2' fill='white'/%3E%3Crect x='6.5' width='1' height='16' fill='%2300205B'/%3E%3Crect width='22' y='7.5' height='1' fill='%2300205B'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 16'%3E%3Crect width='22' height='16' fill='%23BA0C2F'/%3E%3Crect x='6' width='2' height='16' fill='white'/%3E%3Crect width='22' y='7' height='2' fill='white'/%3E%3Crect x='6.5' width='1' height='16' fill='%2300205B'/%3E%3Crect width='22' y='7.5' height='1' fill='%2300205B'/%3E%3C/svg%3E">
+
+<!-- Open Graph & Twitter Card — para quando o link for compartilhado -->
+<meta property="og:title" content="The Norway Issue · Fjords & Highlands">
+<meta property="og:description" content="Roteiro editorial de 8 dias pela Noruega — Fiordes UNESCO, montanhas, glaciares e estradas cênicas.">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Norway Issue · Fjords & Highlands">
+<meta name="twitter:description" content="Roteiro editorial de 8 dias pela Noruega — Fiordes UNESCO, montanhas, glaciares e estradas cênicas.">
+<meta name="theme-color" content="#161513">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   THE NORWAY ISSUE
+   Editorial design system — refined, spacious, intentional
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root{
+  /* Paper system — carefully temperature-balanced neutrals */
+  --paper-100:#FAF7F2;
+  --paper-200:#F2EDE4;
+  --paper-300:#E8E0D2;
+  --paper-400:#D8CDB8;
+
+  /* Ink system — warm blacks, never pure */
+  --ink-900:#161513;
+  --ink-700:#2D2A26;
+  --ink-500:#5C5750;
+  --ink-400:#7D7770;
+  --ink-300:#A39E96;
+  --ink-200:#C7C2B8;
+
+  /* Accents — single dominant + restrained signal colors */
+  --accent:#B8632E;        /* terracotta — sun on cliffs */
+  --accent-dark:#8C4A22;
+  --signal-info:#2D4A52;   /* deep fjord green */
+  --signal-warn:#9C7028;   /* aged brass */
+  --signal-alert:#7A2E20;  /* iron oxide */
+  --signal-ok:#3D5240;     /* moss */
+
+  /* Typography */
+  --serif:'Fraunces','Times New Roman',serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+
+  /* Spacing — based on golden ratio relationships */
+  --space-xs:0.25rem;
+  --space-sm:0.5rem;
+  --space-md:1rem;
+  --space-lg:1.618rem;
+  --space-xl:2.618rem;
+  --space-2xl:4.236rem;
+  --space-3xl:6.854rem;
+
+  /* Type scale — modular, perfect fourth */
+  --text-xs:0.7rem;
+  --text-sm:0.82rem;
+  --text-base:0.95rem;
+  --text-md:1.1rem;
+  --text-lg:1.35rem;
+  --text-xl:1.75rem;
+  --text-2xl:2.4rem;
+  --text-3xl:3.4rem;
+  --text-4xl:5rem;
+  --text-display:clamp(4rem,12vw,11rem);
+
+  /* Grid */
+  --max-w:1280px;
+  --content-w:740px;
+  --gutter:clamp(1.2rem,4vw,2.5rem);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+::selection{background:var(--ink-900);color:var(--paper-100)}
+
+body{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:var(--text-base);
+  line-height:1.65;
+  color:var(--ink-900);
+  background:var(--paper-100);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01","ss02","kern";
+  overflow-x:hidden;
+  font-variation-settings:"opsz" 14;
+}
+
+/* Subtle paper grain — barely there but present */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0 0.07 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  opacity:.5;
+  mix-blend-mode:multiply;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MASTHEAD — top bar (always visible)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.masthead{
+  position:relative;
+  z-index:10;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  padding:1.4rem var(--gutter);
+  border-bottom:1px solid var(--ink-900);
+  background:var(--paper-100);
+  font-family:var(--mono);
+  font-size:0.66rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+  font-weight:500;
+}
+.masthead .left{justify-self:start}
+.masthead .center{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:1rem;
+  letter-spacing:-0.005em;
+  text-transform:none;
+  color:var(--ink-900);
+  font-feature-settings:"ss01";
+}
+.masthead .right{justify-self:end;display:flex;gap:1.5rem;align-items:center}
+.masthead .flag{display:inline-flex;gap:1px;height:11px}
+.masthead .flag i{display:block;border-radius:0.5px}
+.masthead .flag i:nth-child(1){background:#BA0C2F;width:14px}
+.masthead .flag i:nth-child(2){background:var(--paper-100);width:4px}
+.masthead .flag i:nth-child(3){background:#00205B;width:7px}
+.masthead .flag i:nth-child(4){background:var(--paper-100);width:4px}
+.masthead .flag i:nth-child(5){background:#BA0C2F;width:14px}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COVER — full-bleed editorial cover
+   ═══════════════════════════════════════════════════════════════════ */
+
+.cover{
+  position:relative;
+  z-index:2;
+  min-height:calc(100vh - 60px);
+  padding:var(--space-3xl) var(--gutter) var(--space-2xl);
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1.5rem;
+  align-content:center;
+  background:var(--paper-100);
+  border-bottom:1px solid var(--ink-900);
+}
+
+/* Decorative cover frame */
+.cover::after{
+  content:'';
+  position:absolute;
+  top:var(--space-xl);left:var(--gutter);right:var(--gutter);bottom:var(--space-xl);
+  border:1px solid var(--ink-200);
+  pointer-events:none;
+  z-index:0;
+}
+
+.cover-meta{
+  grid-column:1 / 13;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:var(--space-2xl);
+  position:relative;
+  z-index:2;
+  padding:0 var(--space-md);
+}
+.cover-meta .issue{
+  font-family:var(--mono);
+  font-size:0.68rem;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+  font-weight:500;
+}
+.cover-meta .issue strong{color:var(--ink-900);font-weight:600}
+.cover-meta .price{
+  font-family:var(--mono);
+  font-size:0.68rem;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+}
+
+.cover-title{
+  grid-column:1 / 13;
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:0 var(--space-md);
+}
+.cover-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:1.2rem;
+  font-family:var(--mono);
+  font-size:0.7rem;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:var(--space-xl);
+  opacity:0;
+  animation:fade-up 1s 0.2s cubic-bezier(.2,.7,.2,1) forwards;
+}
+.cover-eyebrow::before,
+.cover-eyebrow::after{
+  content:'';
+  width:48px;height:1px;
+  background:var(--accent);
+}
+
+.cover-title h1{
+  font-family:var(--serif);
+  font-size:var(--text-display);
+  font-weight:200;
+  font-variation-settings:"opsz" 144,"wght" 200;
+  line-height:0.88;
+  letter-spacing:-0.045em;
+  color:var(--ink-900);
+  margin-bottom:var(--space-lg);
+}
+.cover-title h1 .word{
+  display:inline-block;
+  overflow:hidden;
+  vertical-align:bottom;
+}
+.cover-title h1 .word > span{
+  display:inline-block;
+  transform:translateY(105%);
+  animation:rise 1.1s cubic-bezier(.18,.82,.18,1) forwards;
+}
+.cover-title h1 .word:nth-child(1) > span{animation-delay:0.45s}
+.cover-title h1 .word:nth-child(2) > span{animation-delay:0.55s}
+.cover-title h1 .word:nth-child(3) > span{animation-delay:0.65s}
+.cover-title h1 em{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-variation-settings:"opsz" 144,"wght" 300;
+  color:var(--accent);
+}
+
+.cover-deck{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:clamp(1rem,1.4vw,1.25rem);
+  line-height:1.55;
+  color:var(--ink-700);
+  max-width:580px;
+  margin:0 auto;
+  letter-spacing:-0.005em;
+  opacity:0;
+  animation:fade-up 1s 1s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+/* The data row */
+.cover-data{
+  grid-column:1 / 13;
+  margin-top:var(--space-3xl);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--ink-200);
+  border-bottom:1px solid var(--ink-200);
+  position:relative;
+  z-index:2;
+  opacity:0;
+  animation:fade-up 1s 1.2s cubic-bezier(.2,.7,.2,1) forwards;
+}
+.cover-data-item{
+  padding:var(--space-lg) var(--space-md);
+  border-right:1px solid var(--ink-200);
+  text-align:center;
+}
+.cover-data-item:last-child{border-right:none}
+.cover-data-item .num{
+  display:block;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-variation-settings:"opsz" 144,"wght" 300;
+  font-size:clamp(2rem,4vw,3.2rem);
+  line-height:1;
+  color:var(--ink-900);
+  letter-spacing:-0.04em;
+  margin-bottom:0.4rem;
+}
+.cover-data-item .num sup{font-size:0.5em;font-style:normal;color:var(--accent);margin-left:0.1em}
+.cover-data-item .lbl{
+  font-family:var(--mono);
+  font-size:0.6rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+  font-weight:500;
+}
+
+/* Cover footer */
+.cover-foot{
+  grid-column:1 / 13;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-top:var(--space-xl);
+  position:relative;
+  z-index:2;
+  padding:0 var(--space-md);
+  font-family:var(--mono);
+  font-size:0.66rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+}
+.scroll-hint{display:inline-flex;align-items:center;gap:0.7rem}
+.scroll-hint::after{
+  content:'';
+  width:1px;height:36px;
+  background:var(--ink-400);
+  display:inline-block;
+  animation:line-pulse 2.4s ease-in-out infinite;
+  transform-origin:top;
+}
+
+@keyframes fade-up{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes rise{to{transform:translateY(0)}}
+@keyframes line-pulse{
+  0%,100%{transform:scaleY(0.3);opacity:0.3}
+  50%{transform:scaleY(1);opacity:1}
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   STICKY NAV — minimalist editorial
+   ═══════════════════════════════════════════════════════════════════ */
+
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(250,247,242,.85);
+  backdrop-filter:blur(20px) saturate(1.2);
+  -webkit-backdrop-filter:blur(20px) saturate(1.2);
+  border-bottom:1px solid var(--ink-900);
+  padding:0.85rem var(--gutter);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+.nav-brand{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:0.95rem;
+  letter-spacing:-0.005em;
+  color:var(--ink-900);
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:0.1rem;
+  flex-wrap:wrap;
+}
+.nav a{
+  position:relative;
+  font-family:var(--mono);
+  font-size:0.66rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+  text-decoration:none;
+  padding:0.45rem 0.7rem;
+  font-weight:500;
+  transition:color 0.25s ease;
+}
+.nav a::before{
+  content:'';
+  position:absolute;
+  left:0.7rem;right:0.7rem;
+  bottom:0.25rem;
+  height:1px;
+  background:var(--ink-900);
+  transform:scaleX(0);
+  transform-origin:right;
+  transition:transform 0.35s cubic-bezier(.2,.8,.2,1);
+}
+.nav a:hover,.nav a.active{color:var(--ink-900)}
+.nav a:hover::before,.nav a.active::before{
+  transform:scaleX(1);
+  transform-origin:left;
+}
+.nav a.special{color:var(--accent)}
+.nav a.special::before{background:var(--accent)}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION HEADERS — consistent editorial vocabulary
+   ═══════════════════════════════════════════════════════════════════ */
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:0.68rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  gap:0.9rem;
+  margin-bottom:1.2rem;
+}
+.eyebrow::before{
+  content:'';
+  width:36px;height:1px;
+  background:currentColor;
+}
+
+h2.section-title{
+  font-family:var(--serif);
+  font-weight:300;
+  font-variation-settings:"opsz" 144,"wght" 300;
+  font-size:clamp(2.2rem,4.8vw,3.6rem);
+  line-height:1.02;
+  letter-spacing:-0.035em;
+  color:var(--ink-900);
+  margin-bottom:1rem;
+}
+h2.section-title em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--accent);
+}
+
+.section-deck{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:1.08rem;
+  line-height:1.55;
+  color:var(--ink-500);
+  max-width:560px;
+  letter-spacing:-0.005em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MAP SECTION — cartographic editorial
+   ═══════════════════════════════════════════════════════════════════ */
+
+.map-section{
+  position:relative;
+  z-index:2;
+  padding:var(--space-3xl) var(--gutter) var(--space-2xl);
+  max-width:var(--max-w);
+  margin:0 auto;
+}
+
+.map-header{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:var(--space-xl);
+  align-items:end;
+  margin-bottom:var(--space-xl);
+}
+.map-header-meta{
+  font-family:var(--mono);
+  font-size:0.66rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+  text-align:right;
+  line-height:1.7;
+}
+.map-header-meta strong{color:var(--ink-900);font-weight:600}
+
+.map-frame{
+  position:relative;
+  border:1px solid var(--ink-900);
+  background:#0E1A1C;
+  overflow:hidden;
+  box-shadow:0 1px 0 rgba(22,21,19,.04),0 24px 48px -28px rgba(22,21,19,.18);
+}
+.map-frame::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border:1px solid rgba(232,224,210,.06);
+  pointer-events:none;
+  z-index:5;
+  margin:8px;
+}
+.map-corners{
+  position:absolute;
+  inset:14px;
+  pointer-events:none;
+  z-index:6;
+}
+.map-corners::before,.map-corners::after,
+.map-corner{
+  position:absolute;
+  width:14px;height:14px;
+  border-color:rgba(232,224,210,.45);
+  border-style:solid;
+  border-width:0;
+}
+.map-corners::before{top:0;left:0;border-top-width:1px;border-left-width:1px}
+.map-corners::after{top:0;right:0;border-top-width:1px;border-right-width:1px}
+.map-corner.bl{bottom:0;left:0;border-bottom-width:1px;border-left-width:1px}
+.map-corner.br{bottom:0;right:0;border-bottom-width:1px;border-right-width:1px}
+
+.map-label{
+  position:absolute;
+  top:1.2rem;left:1.4rem;
+  z-index:10;
+  font-family:var(--mono);
+  font-size:0.6rem;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--paper-200);
+  background:rgba(14,26,28,.7);
+  backdrop-filter:blur(8px);
+  padding:0.4rem 0.75rem;
+  border:1px solid rgba(232,224,210,.2);
+  pointer-events:none;
+  font-weight:500;
+}
+.map-label::before{
+  content:'';
+  display:inline-block;
+  width:5px;height:5px;
+  border-radius:50%;
+  background:var(--accent);
+  margin-right:0.55rem;
+  vertical-align:middle;
+  animation:dot-pulse 2.5s ease-in-out infinite;
+}
+@keyframes dot-pulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.5;transform:scale(.85)}
+}
+
+#map{height:560px;filter:contrast(1.05) brightness(0.92)}
+
+.map-toolbar{
+  margin-top:var(--space-md);
+  border:1px solid var(--ink-900);
+  border-top:none;
+  background:var(--paper-200);
+  padding:1.1rem 1.4rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.2rem;
+  align-items:center;
+  justify-content:space-between;
+}
+.map-toolbar-l{
+  font-family:var(--mono);
+  font-size:0.66rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+  font-weight:600;
+  flex-shrink:0;
+}
+.map-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.4rem;
+  flex:1;
+  justify-content:flex-end;
+}
+.map-filter{
+  font-family:var(--mono);
+  font-size:0.62rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:0.5rem 0.85rem;
+  background:var(--paper-100);
+  border:1px solid var(--ink-900);
+  cursor:pointer;
+  transition:all 0.2s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  color:var(--ink-700);
+  user-select:none;
+  font-family:var(--mono);
+}
+.map-filter:hover{background:var(--ink-900);color:var(--paper-100)}
+.map-filter:hover .dot{border-color:var(--paper-100)}
+.map-filter.off{opacity:0.4;background:transparent}
+.map-filter.off .dot{opacity:0.4}
+.map-filter .dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  border:1.5px solid currentColor;
+  flex-shrink:0;
+}
+.map-filter.f-trail .dot{background:var(--signal-ok);border-color:var(--signal-ok)}
+.map-filter.f-tour  .dot{background:var(--signal-info);border-color:var(--signal-info)}
+.map-filter.f-view  .dot{background:var(--accent);border-color:var(--accent)}
+.map-filter.f-food  .dot{background:var(--signal-alert);border-color:var(--signal-alert)}
+
+.map-reset{
+  font-family:var(--mono);
+  font-size:0.6rem;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  padding:0.5rem 0.4rem;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  font-weight:500;
+}
+.map-reset:hover{color:var(--ink-900)}
+
+/* Custom Leaflet popup */
+.leaflet-popup-content{margin:0!important;min-width:240px}
+.leaflet-popup-content-wrapper{
+  padding:0;
+  border-radius:0;
+  border:1px solid var(--ink-900);
+  box-shadow:0 16px 40px -12px rgba(22,21,19,.35);
+}
+.leaflet-popup-tip{background:var(--ink-900);border:none}
+.leaflet-container{background:#0E1A1C;font-family:var(--sans)}
+
+.pop{padding:0;font-family:var(--sans)}
+.pop-cat{
+  font-family:var(--mono);
+  font-size:0.56rem;
+  letter-spacing:0.24em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:0.55rem 0.95rem;
+  color:var(--paper-100);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.pop-cat.c-stop  {background:var(--ink-900)}
+.pop-cat.c-trail {background:var(--signal-ok)}
+.pop-cat.c-tour  {background:var(--signal-info)}
+.pop-cat.c-view  {background:var(--accent);color:var(--ink-900)}
+.pop-cat.c-food  {background:var(--signal-alert)}
+.pop-cat .day{font-family:var(--mono);opacity:0.75;font-weight:500}
+
+.pop-body{padding:1rem 0.95rem 0.6rem;background:var(--paper-100)}
+.pop-title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:1.05rem;
+  line-height:1.2;
+  color:var(--ink-900);
+  margin-bottom:0.35rem;
+  letter-spacing:-0.012em;
+}
+.pop-desc{
+  font-family:var(--serif);
+  font-size:0.84rem;
+  color:var(--ink-700);
+  line-height:1.5;
+  margin-bottom:0.55rem;
+}
+.pop-meta{
+  font-family:var(--mono);
+  font-size:0.6rem;
+  letter-spacing:0.04em;
+  color:var(--ink-500);
+  margin-bottom:0.6rem;
+}
+.pop-gmaps{
+  display:block;
+  margin:0;
+  padding:0.7rem 0.95rem;
+  background:var(--ink-900);
+  color:var(--paper-100)!important;
+  text-align:center;
+  text-decoration:none!important;
+  font-family:var(--mono);
+  font-size:0.62rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  font-weight:600;
+  transition:all 0.2s;
+  border-top:1px solid var(--ink-900);
+}
+.pop-gmaps:hover{background:var(--accent);color:var(--ink-900)!important}
+.pop-gmaps::after{content:' →';margin-left:0.3rem;opacity:0.7}
+
+/* Route overview cards */
+.route-overview{
+  margin-top:var(--space-xl);
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  border:1px solid var(--ink-900);
+  background:var(--paper-200);
+}
+.route-stop{
+  padding:1.4rem 1.1rem;
+  border-right:1px solid var(--ink-900);
+  cursor:pointer;
+  transition:background 0.3s ease;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:0.4rem;
+  text-decoration:none;
+  color:inherit;
+}
+.route-stop:last-child{border-right:none}
+.route-stop:hover{background:var(--paper-100)}
+.route-stop:hover .route-stop-num{color:var(--accent)}
+.route-stop-num{
+  font-family:var(--mono);
+  font-size:0.6rem;
+  letter-spacing:0.22em;
+  color:var(--ink-400);
+  text-transform:uppercase;
+  font-weight:500;
+  transition:color 0.2s;
+}
+.route-stop-emoji{
+  font-size:1.4rem;
+  line-height:1;
+  margin:0.2rem 0;
+}
+.route-stop-name{
+  font-family:var(--serif);
+  font-weight:500;
+  font-variation-settings:"opsz" 14,"wght" 500;
+  font-size:1.15rem;
+  line-height:1;
+  letter-spacing:-0.012em;
+  color:var(--ink-900);
+}
+.route-stop-day{
+  font-family:var(--mono);
+  font-size:0.6rem;
+  letter-spacing:0.1em;
+  color:var(--ink-500);
+  text-transform:uppercase;
+}
+.route-stop-km{
+  font-family:var(--mono);
+  font-size:0.6rem;
+  color:var(--accent);
+  letter-spacing:0.06em;
+  font-weight:500;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CONTAINER & DAY SECTIONS — editorial spreads
+   ═══════════════════════════════════════════════════════════════════ */
+
+.container{
+  position:relative;
+  z-index:2;
+  max-width:var(--max-w);
+  margin:0 auto;
+  padding:0 var(--gutter);
+}
+
+.day-section{
+  padding:var(--space-3xl) 0 var(--space-2xl);
+  border-top:1px solid var(--ink-900);
+  position:relative;
+}
+.day-section:first-of-type{border-top:none}
+
+/* The signature: huge italic numeral floating in the background */
+.day-bignum{
+  position:absolute;
+  top:var(--space-2xl);
+  right:-1rem;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:200;
+  font-variation-settings:"opsz" 144,"wght" 200;
+  font-size:clamp(14rem,30vw,32rem);
+  line-height:0.78;
+  color:var(--ink-900);
+  opacity:0.038;
+  letter-spacing:-0.07em;
+  pointer-events:none;
+  z-index:0;
+  user-select:none;
+}
+
+/* Day header — spread layout */
+.day-header{
+  display:grid;
+  grid-template-columns:minmax(160px,1fr) 4fr;
+  gap:var(--space-xl);
+  margin-bottom:var(--space-2xl);
+  position:relative;
+  z-index:1;
+  padding-bottom:var(--space-xl);
+  border-bottom:1px solid var(--ink-200);
+}
+
+.day-num-block{
+  border-top:2px solid var(--ink-900);
+  padding-top:0.8rem;
+  position:relative;
+}
+.day-num-block .l{
+  font-family:var(--mono);
+  font-size:0.62rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+  font-weight:600;
+  margin-bottom:0.4rem;
+}
+.day-num-block .n{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:200;
+  font-variation-settings:"opsz" 144,"wght" 200;
+  font-size:5.5rem;
+  line-height:0.85;
+  letter-spacing:-0.045em;
+  color:var(--ink-900);
+}
+
+.day-info{padding-top:0.8rem}
+.route-tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:0.66rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+  padding-bottom:0.7rem;
+  margin-bottom:1rem;
+  border-bottom:1px solid var(--ink-200);
+  font-weight:500;
+}
+.day-info h2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-variation-settings:"opsz" 144,"wght" 400;
+  font-size:clamp(2.1rem,4vw,3.1rem);
+  line-height:1.04;
+  letter-spacing:-0.028em;
+  color:var(--ink-900);
+  margin-bottom:1rem;
+  max-width:780px;
+}
+.day-info h2 em{
+  font-style:italic;
+  font-weight:300;
+  color:var(--signal-info);
+}
+
+.day-summary{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:1.18rem;
+  line-height:1.55;
+  color:var(--ink-700);
+  max-width:680px;
+  letter-spacing:-0.005em;
+}
+.day-summary::first-letter{
+  font-size:3em;
+  font-weight:300;
+  font-style:normal;
+  float:left;
+  line-height:0.82;
+  margin:0.05em 0.14em -0.05em 0;
+  color:var(--accent);
+  font-feature-settings:"ss01";
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TIMELINE — refined editorial schedule
+   ═══════════════════════════════════════════════════════════════════ */
+
+.timeline{
+  position:relative;
+  padding-left:7.5rem;
+  margin-top:var(--space-lg);
+  max-width:880px;
+}
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:5.5rem;top:0.55rem;bottom:0.55rem;
+  width:1px;
+  background:var(--ink-200);
+}
+.tl-item{
+  position:relative;
+  padding-bottom:2.2rem;
+}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:'';
+  position:absolute;
+  left:-2.05rem;top:0.5rem;
+  width:9px;height:9px;
+  border-radius:50%;
+  background:var(--paper-100);
+  border:1px solid var(--ink-900);
+  z-index:2;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.tl-item:hover::before{transform:scale(1.4)}
+.tl-item.hi::before{
+  background:var(--accent);
+  border-color:var(--accent);
+  box-shadow:0 0 0 5px rgba(184,99,46,0.12);
+}
+.tl-item.out::before{
+  background:var(--signal-info);
+  border-color:var(--signal-info);
+  box-shadow:0 0 0 5px rgba(45,74,82,0.12);
+}
+
+.t-time{
+  position:absolute;
+  left:-7.5rem;top:0.35rem;
+  width:5rem;
+  font-family:var(--mono);
+  font-size:0.72rem;
+  letter-spacing:0.04em;
+  color:var(--ink-900);
+  font-weight:500;
+  line-height:1.35;
+}
+.t-title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-variation-settings:"opsz" 14,"wght" 500;
+  font-size:1.2rem;
+  line-height:1.25;
+  letter-spacing:-0.012em;
+  margin-bottom:0.35rem;
+  color:var(--ink-900);
+}
+.t-desc{
+  font-size:0.94rem;
+  color:var(--ink-500);
+  line-height:1.6;
+  max-width:620px;
+  font-variation-settings:"opsz" 14,"wght" 400;
+}
+
+/* Price chips — subtle, mono */
+.price-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.4rem;
+  margin-top:0.75rem;
+}
+.price-chip{
+  font-family:var(--mono);
+  font-size:0.64rem;
+  letter-spacing:0.04em;
+  padding:0.28rem 0.6rem;
+  background:var(--paper-200);
+  border:1px solid var(--ink-200);
+  color:var(--ink-700);
+  font-weight:500;
+}
+
+/* Booking tags — semantic, edged */
+.booking-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  font-family:var(--mono);
+  font-size:0.6rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:0.28rem 0.6rem;
+  margin-top:0.7rem;
+  margin-right:0.4rem;
+  border:1px solid currentColor;
+}
+.booking-tag.must{color:var(--signal-alert)}
+.booking-tag.rec {color:var(--signal-warn)}
+.booking-tag.ok  {color:var(--signal-ok)}
+.booking-tag::before{
+  content:'';
+  width:5px;height:5px;
+  border-radius:50%;
+  background:currentColor;
+  flex-shrink:0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION LABELS — within day sections
+   ═══════════════════════════════════════════════════════════════════ */
+
+.sec-label{
+  font-family:var(--mono);
+  font-size:0.7rem;
+  letter-spacing:0.26em;
+  text-transform:uppercase;
+  font-weight:600;
+  margin-top:var(--space-2xl);
+  margin-bottom:1.4rem;
+  display:flex;
+  align-items:baseline;
+  gap:1rem;
+  padding-bottom:0.65rem;
+  border-bottom:1px solid var(--ink-900);
+  position:relative;
+  z-index:1;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:transparent}
+.sec-label .count{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-variation-settings:"opsz" 14,"wght" 300;
+  font-size:0.95rem;
+  text-transform:none;
+  letter-spacing:-0.005em;
+  color:var(--ink-400);
+  margin-left:auto;
+}
+.sec-label.food     {color:var(--signal-alert);border-color:var(--signal-alert)}
+.sec-label.nature   {color:var(--signal-info);border-color:var(--signal-info)}
+.sec-label.alt-label{color:var(--accent);border-color:var(--accent)}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CARDS — unified grid with shared edges
+   ═══════════════════════════════════════════════════════════════════ */
+
+.card-grid{
+  display:grid;
+  gap:0;
+  margin-top:0.5rem;
+  border:1px solid var(--ink-900);
+  position:relative;
+  z-index:1;
+}
+.card-grid.c2{grid-template-columns:repeat(2,1fr)}
+.card-grid.c3{grid-template-columns:repeat(3,1fr)}
+.card-grid:not(.c2):not(.c3){grid-template-columns:1fr}
+
+.card{
+  padding:1.5rem 1.55rem 1.7rem;
+  border-right:1px solid var(--ink-900);
+  border-bottom:1px solid var(--ink-900);
+  background:var(--paper-100);
+  transition:background 0.4s ease;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
+.card:hover{background:var(--paper-200)}
+
+/* Last column / row borders */
+.card-grid.c2 > .card:nth-child(2n){border-right:none}
+.card-grid.c3 > .card:nth-child(3n){border-right:none}
+.card-grid:not(.c2):not(.c3) > .card{border-right:none}
+.card-grid.c2 > .card:nth-last-child(-n+2):nth-child(2n+1),
+.card-grid.c2 > .card:nth-last-child(-n+2):nth-child(2n),
+.card-grid.c3 > .card:last-child,
+.card-grid.c3 > .card:nth-last-child(2):nth-child(3n+1),
+.card-grid.c3 > .card:nth-last-child(3):nth-child(3n+1)
+{border-bottom:none}
+.card-grid:not(.c2):not(.c3) > .card:last-child{border-bottom:none}
+
+.card-label{
+  font-family:var(--mono);
+  font-size:0.58rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:0.85rem;
+  display:inline-block;
+  align-self:flex-start;
+  padding-bottom:0.3rem;
+  border-bottom:1px solid currentColor;
+}
+.card-label.out   {color:var(--signal-info)}
+.card-label.food-b{color:var(--signal-ok)}
+.card-label.food-m{color:var(--signal-warn)}
+.card-label.food-p{color:var(--signal-alert)}
+.card-label.alt   {color:var(--accent)}
+
+.card h4{
+  font-family:var(--serif);
+  font-weight:500;
+  font-variation-settings:"opsz" 14,"wght" 500;
+  font-size:1.18rem;
+  line-height:1.2;
+  letter-spacing:-0.012em;
+  margin-bottom:0.45rem;
+  color:var(--ink-900);
+}
+.card-meta{
+  font-family:var(--mono);
+  font-size:0.62rem;
+  letter-spacing:0.04em;
+  color:var(--ink-400);
+  margin-bottom:0.65rem;
+  line-height:1.55;
+}
+.card p{
+  font-size:0.9rem;
+  color:var(--ink-700);
+  line-height:1.6;
+  font-variation-settings:"opsz" 14,"wght" 400;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PRO TIP — pull quote
+   ═══════════════════════════════════════════════════════════════════ */
+
+.pro-tip{
+  margin:var(--space-xl) 0 0;
+  padding:1.7rem 2rem 1.8rem;
+  background:var(--ink-900);
+  color:var(--paper-100);
+  position:relative;
+  border-left:3px solid var(--accent);
+}
+.pro-tip::before{
+  content:'\201C';
+  position:absolute;
+  top:-1.8rem;
+  left:1.2rem;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:6rem;
+  color:var(--accent);
+  line-height:1;
+}
+.pro-tip-l{
+  font-family:var(--mono);
+  font-size:0.62rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--accent);
+  margin-bottom:0.55rem;
+}
+.pro-tip p{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-variation-settings:"opsz" 14,"wght" 300;
+  font-size:1.08rem;
+  line-height:1.55;
+  color:var(--paper-100);
+  letter-spacing:-0.005em;
+}
+.pro-tip p strong{
+  font-style:normal;
+  font-weight:500;
+  color:var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BOOKING SUMMARY — table editorial
+   ═══════════════════════════════════════════════════════════════════ */
+
+.booking-section{position:relative}
+.booking-section h2{
+  font-family:var(--serif);
+  font-weight:300;
+  font-variation-settings:"opsz" 144,"wght" 300;
+  font-size:clamp(2.1rem,4vw,3.1rem);
+  line-height:1.04;
+  letter-spacing:-0.028em;
+  color:var(--ink-900);
+  margin-bottom:1rem;
+}
+.booking-section h2 em{font-style:italic;font-weight:400;color:var(--accent)}
+
+.booking-intro{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:1.1rem;
+  color:var(--ink-500);
+  margin-bottom:0.85rem;
+  max-width:680px;
+}
+
+.legend{
+  display:flex;
+  gap:1.8rem;
+  flex-wrap:wrap;
+  font-family:var(--mono);
+  font-size:0.66rem;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--ink-500);
+  margin-bottom:var(--space-lg);
+  font-weight:500;
+}
+.legend span{display:inline-flex;align-items:center;gap:0.55rem}
+.urgency{
+  display:inline-block;
+  width:8px;height:8px;
+  border-radius:50%;
+  flex-shrink:0;
+}
+.urgency.high{background:var(--signal-alert)}
+.urgency.med {background:var(--signal-warn)}
+.urgency.low {background:var(--signal-ok)}
+
+.booking-summary{
+  overflow-x:auto;
+  border:1px solid var(--ink-900);
+}
+.booking-summary table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:0.92rem;
+  background:var(--paper-100);
+  font-family:var(--serif);
+}
+.booking-summary th{
+  text-align:left;
+  padding:1.1rem 1.2rem;
+  background:var(--ink-900);
+  color:var(--paper-100);
+  font-family:var(--mono);
+  font-weight:500;
+  font-size:0.62rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+}
+.booking-summary td{
+  padding:0.95rem 1.2rem;
+  border-bottom:1px solid var(--ink-200);
+  color:var(--ink-900);
+  vertical-align:top;
+  line-height:1.45;
+}
+.booking-summary tr:last-child td{border-bottom:none}
+.booking-summary tr:hover td{background:var(--paper-200)}
+.booking-summary td:nth-child(2),
+.booking-summary td:nth-child(3),
+.booking-summary td:nth-child(4){
+  font-family:var(--mono);
+  font-size:0.78rem;
+  color:var(--ink-700);
+}
+.booking-summary td:nth-child(4){color:var(--signal-info)}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COLOPHON — final editorial signature
+   ═══════════════════════════════════════════════════════════════════ */
+
+footer.colophon{
+  position:relative;
+  z-index:2;
+  margin-top:var(--space-3xl);
+  background:var(--ink-900);
+  color:var(--paper-100);
+  padding:var(--space-2xl) var(--gutter);
+  text-align:center;
+  border-top:1px solid var(--ink-900);
+}
+footer.colophon::before{
+  content:'';
+  display:block;
+  width:48px;height:1px;
+  background:var(--accent);
+  margin:0 auto var(--space-lg);
+}
+.colophon-eyebrow{
+  font-family:var(--mono);
+  font-size:0.66rem;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:1.2rem;
+  font-weight:600;
+}
+footer.colophon h3{
+  font-family:var(--serif);
+  font-weight:300;
+  font-variation-settings:"opsz" 144,"wght" 300;
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  line-height:1.05;
+  letter-spacing:-0.025em;
+  margin-bottom:0.6rem;
+}
+footer.colophon h3 em{font-style:italic;font-weight:400;color:var(--accent)}
+footer.colophon .signoff{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  color:var(--ink-300);
+  max-width:580px;
+  margin:0 auto;
+  font-size:1.05rem;
+  line-height:1.55;
+}
+footer.colophon .fine{
+  font-family:var(--mono);
+  font-size:0.62rem;
+  letter-spacing:0.12em;
+  color:var(--ink-400);
+  margin-top:var(--space-xl);
+  line-height:1.8;
+  max-width:620px;
+  margin-left:auto;
+  margin-right:auto;
+}
+footer.colophon .fine strong{color:var(--accent);font-weight:500}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BACK TO TOP — refined floating button
+   ═══════════════════════════════════════════════════════════════════ */
+
+.to-top{
+  position:fixed;
+  bottom:1.8rem;right:1.8rem;
+  z-index:200;
+  background:var(--ink-900);
+  color:var(--paper-100);
+  border:none;
+  padding:0.85rem 1.15rem;
+  font-family:var(--mono);
+  font-size:0.62rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:0.65rem;
+  box-shadow:0 12px 32px -8px rgba(22,21,19,0.4),0 2px 8px rgba(22,21,19,0.18);
+  opacity:0;
+  transform:translateY(14px) scale(0.96);
+  pointer-events:none;
+  transition:opacity 0.4s ease,transform 0.4s cubic-bezier(.2,.8,.2,1),background 0.2s,color 0.2s;
+}
+.to-top.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.to-top:hover{background:var(--accent);color:var(--ink-900)}
+.to-top .arrow{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:1.35rem;
+  line-height:0.6;
+  transform:translateY(-1px);
+  transition:transform 0.3s;
+}
+.to-top:hover .arrow{transform:translateY(-4px)}
+
+/* ═══════════════════════════════════════════════════════════════════
+   REVEAL ON SCROLL
+   ═══════════════════════════════════════════════════════════════════ */
+
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity 0.9s cubic-bezier(.2,.7,.2,1),transform 0.9s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE — careful breakpoints
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width:1024px){
+  .route-overview{grid-template-columns:repeat(5,1fr)}
+  .day-bignum{right:-2rem}
+}
+
+@media (max-width:768px){
+  .masthead{
+    grid-template-columns:1fr 1fr;
+    font-size:0.6rem;
+    padding:1rem var(--gutter);
+  }
+  .masthead .left{font-size:0.6rem}
+  .masthead .center{display:none}
+  .masthead .right{gap:1rem;justify-content:flex-end}
+
+  .cover{padding:var(--space-2xl) var(--gutter) var(--space-xl);min-height:auto}
+  .cover::after{top:1rem;left:0.6rem;right:0.6rem;bottom:1rem}
+  .cover-meta{margin-bottom:var(--space-xl)}
+  .cover-meta .price{display:none}
+  .cover-eyebrow{font-size:0.62rem;gap:0.7rem}
+  .cover-eyebrow::before,.cover-eyebrow::after{width:24px}
+  .cover-data{grid-template-columns:repeat(2,1fr)}
+  .cover-data-item{padding:1rem 0.8rem}
+  .cover-data-item:nth-child(2){border-right:none}
+  .cover-data-item:nth-child(-n+2){border-bottom:1px solid var(--ink-200)}
+
+  .nav{padding:0.7rem var(--gutter);flex-direction:column;align-items:flex-start;gap:0.4rem}
+  .nav-links{gap:0;width:100%;justify-content:flex-start}
+  .nav a{padding:0.35rem 0.5rem;font-size:0.6rem}
+
+  .map-section{padding:var(--space-xl) var(--gutter)}
+  .map-header{grid-template-columns:1fr;gap:1rem}
+  .map-header-meta{text-align:left;font-size:0.6rem}
+  #map{height:380px}
+  .map-toolbar{flex-direction:column;align-items:flex-start;gap:0.7rem;padding:0.85rem}
+  .map-filters{justify-content:flex-start;gap:0.35rem;width:100%}
+  .map-filter{font-size:0.58rem;padding:0.4rem 0.6rem}
+
+  .route-overview{grid-template-columns:repeat(2,1fr)}
+  .route-stop{border-right:1px solid var(--ink-900);border-bottom:1px solid var(--ink-900)}
+  .route-stop:nth-child(2n){border-right:none}
+  .route-stop:nth-last-child(-n+1){border-bottom:none}
+  .route-stop:last-child{grid-column:1 / 3;border-right:none}
+
+  .container{padding:0 var(--gutter)}
+  .day-section{padding:var(--space-2xl) 0 var(--space-xl)}
+  .day-bignum{display:none}
+  .day-header{grid-template-columns:1fr;gap:1rem}
+  .day-num-block{display:flex;align-items:baseline;gap:1.2rem;border-top-width:1px;padding-top:0.5rem}
+  .day-num-block .n{font-size:3rem}
+
+  .timeline{padding-left:0}
+  .timeline::before{display:none}
+  .tl-item::before{display:none}
+  .tl-item{
+    padding-left:0;
+    padding-bottom:1.8rem;
+    margin-bottom:1.2rem;
+    border-bottom:1px solid var(--ink-200);
+  }
+  .tl-item:last-child{border-bottom:none}
+  .t-time{
+    position:static;
+    width:auto;
+    margin-bottom:0.55rem;
+    display:inline-block;
+    padding:0.25rem 0.55rem;
+    background:var(--ink-900);
+    color:var(--paper-100);
+    font-size:0.62rem;
+    letter-spacing:0.1em;
+  }
+  .tl-item.hi .t-time{background:var(--accent);color:var(--ink-900)}
+  .tl-item.out .t-time{background:var(--signal-info)}
+
+  .card-grid.c2,.card-grid.c3{grid-template-columns:1fr}
+  .card-grid > .card{
+    border-right:none!important;
+    border-bottom:1px solid var(--ink-900)!important;
+  }
+  .card-grid > .card:last-child{border-bottom:none!important}
+
+  .pro-tip{padding:1.3rem 1.4rem 1.4rem}
+  .booking-summary{font-size:0.82rem}
+  .booking-summary th,.booking-summary td{padding:0.7rem 0.85rem}
+
+  .to-top{
+    bottom:1rem;right:1rem;
+    padding:0.7rem 0.8rem;
+  }
+  .to-top span:not(.arrow){display:none}
+  .to-top .arrow{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MASTHEAD
+     ═══════════════════════════════════════════════════════════════ -->
+<header class="masthead">
+  <div class="left">Vol. 01 · Verão 2026</div>
+  <div class="center">The Norway Issue</div>
+  <div class="right">
+    <span class="flag"><i></i><i></i><i></i><i></i><i></i></span>
+    <span>8 Dias · 1.495 km</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     COVER
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="cover">
+  <div class="cover-meta">
+    <div class="issue"><strong>Issue №01</strong> · Fjords &amp; Highlands</div>
+    <div class="price">An Editorial Travel Journal</div>
+  </div>
+
+  <div class="cover-title">
+    <div class="cover-eyebrow">A Roadtrip Through The North</div>
+    <h1>
+      <span class="word"><span>Noruega,</span></span>&nbsp;
+      <span class="word"><span>entre&nbsp;o&nbsp;gelo</span></span><br>
+      <span class="word"><span>e&nbsp;<em>a&nbsp;aurora.</em></span></span>
+    </h1>
+    <p class="cover-deck">Oito dias atravessando o coração da Escandinávia — de Oslo a Bergen pelas estradas que ninguém esquece. Trilhas, fiordes UNESCO, kayak entre paredões de mil metros, glaciares azuis e noites sob o sol da meia-noite.</p>
+  </div>
+
+  <div class="cover-data">
+    <div class="cover-data-item"><span class="num">08</span><span class="lbl">Dias</span></div>
+    <div class="cover-data-item"><span class="num">1.495</span><span class="lbl">Quilômetros</span></div>
+    <div class="cover-data-item"><span class="num">02</span><span class="lbl">Fiordes UNESCO</span></div>
+    <div class="cover-data-item"><span class="num">14<sup>+</sup></span><span class="lbl">Atividades</span></div>
+  </div>
+
+  <div class="cover-foot">
+    <span class="scroll-hint">Continuar leitura</span>
+    <span>Capítulo 01 ↓</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     STICKY NAV
+     ═══════════════════════════════════════════════════════════════ -->
+<nav class="nav" id="topnav">
+  <div class="nav-brand">The Norway Issue</div>
+  <div class="nav-links">
+    <a href="#map-sec">Mapa</a>
+    <a href="#d14">Dia 14</a>
+    <a href="#d15">15</a>
+    <a href="#d16">16</a>
+    <a href="#d17">17</a>
+    <a href="#d18">18</a>
+    <a href="#d19">19</a>
+    <a href="#d20">20</a>
+    <a href="#d21">21</a>
+    <a href="#booking-sec" class="special">Reservas</a>
+  </div>
+</nav>
+<!-- ═══════════════════════════════════════════════════════════════
+     MAP — Cartographic chapter
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="map-section" id="map-sec">
+  <div class="map-header">
+    <div>
+      <div class="eyebrow">Capítulo zero · O traçado</div>
+      <h2 class="section-title">A rota, <em>de costa a costa.</em></h2>
+      <p class="section-deck">De Oslo a Bergen, atravessando o planalto e descendo pelos fiordes — clique nos marcadores para inspecionar cada parada.</p>
+    </div>
+    <div class="map-header-meta">
+      <strong>58 pontos · 5 paradas</strong><br>
+      Lillehammer → Bergen<br>
+      Carta interativa
+    </div>
+  </div>
+
+  <div class="map-frame">
+    <div class="map-corners"><span class="map-corner bl"></span><span class="map-corner br"></span></div>
+    <div class="map-label">Carta · Noruega Ocidental</div>
+    <div id="map"></div>
+  </div>
+
+  <div class="map-toolbar">
+    <span class="map-toolbar-l">Filtrar mapa</span>
+    <div class="map-filters" id="mapFilters">
+      <button class="map-filter f-trail" data-cat="trail"><span class="dot"></span>Trilhas</button>
+      <button class="map-filter f-tour"  data-cat="tour"><span class="dot"></span>Passeios</button>
+      <button class="map-filter f-view"  data-cat="view"><span class="dot"></span>Mirantes</button>
+      <button class="map-filter f-food"  data-cat="food"><span class="dot"></span>Comida</button>
+      <button class="map-reset" id="mapReset">Mostrar tudo</button>
+    </div>
+  </div>
+
+  <div class="route-overview">
+    <a class="route-stop" href="#d14" onclick="flyTo(61.12,10.47,12);return true">
+      <span class="route-stop-num">§ 01</span>
+      <span class="route-stop-emoji">🏔️</span>
+      <span class="route-stop-name">Lillehammer</span>
+      <span class="route-stop-day">Dia 14</span>
+      <span class="route-stop-km">180 km</span>
+    </a>
+    <a class="route-stop" href="#d15" onclick="flyTo(62.10,7.21,12);return true">
+      <span class="route-stop-num">§ 02</span>
+      <span class="route-stop-emoji">🌊</span>
+      <span class="route-stop-name">Geiranger</span>
+      <span class="route-stop-day">Dia 15–16</span>
+      <span class="route-stop-km">+340 km</span>
+    </a>
+    <a class="route-stop" href="#d17" onclick="flyTo(61.23,7.10,11);return true">
+      <span class="route-stop-num">§ 03</span>
+      <span class="route-stop-emoji">🧊</span>
+      <span class="route-stop-name">Sogndal</span>
+      <span class="route-stop-day">Dia 17</span>
+      <span class="route-stop-km">+230 km</span>
+    </a>
+    <a class="route-stop" href="#d18" onclick="flyTo(60.86,7.11,12);return true">
+      <span class="route-stop-num">§ 04</span>
+      <span class="route-stop-emoji">🚂</span>
+      <span class="route-stop-name">Flåm</span>
+      <span class="route-stop-day">Dia 18</span>
+      <span class="route-stop-km">+120 km</span>
+    </a>
+    <a class="route-stop" href="#d19" onclick="flyTo(60.39,5.32,12);return true">
+      <span class="route-stop-num">§ 05</span>
+      <span class="route-stop-emoji">🏘️</span>
+      <span class="route-stop-name">Bergen</span>
+      <span class="route-stop-day">Dia 19–20</span>
+      <span class="route-stop-km">+165 km</span>
+    </a>
+  </div>
+</section>
+
+<main class="container">
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DIA 14 — Lillehammer
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="day-section" id="d14">
+  <div class="day-bignum">14</div>
+  <div class="day-header">
+    <div class="day-num-block">
+      <div class="l">Dia · §01</div>
+      <div class="n">14</div>
+    </div>
+    <div class="day-info">
+      <div class="route-tag">Oslo → Lillehammer · 180 km · ~2h30</div>
+      <h2>Capital olímpica &amp; <em>lago Mjøsa</em></h2>
+      <p class="day-summary">Camping à beira do maior lago da Noruega, museu ao ar livre e trilhas na floresta boreal.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item"><div class="t-time">08:00</div><div class="t-title">Saída de Oslo pela E6</div><div class="t-desc">Abasteça em Oslo. Estrada boa, ~2h30.</div></div>
+    <div class="tl-item hi"><div class="t-time">10:30</div><div class="t-title">Chegada em Lillehammer</div><div class="t-desc">Margem do Lago Mjøsa. Comece pelo centro histórico — Storgata é a rua principal.</div></div>
+    <div class="tl-item"><div class="t-time">11:30<br>15:30</div><div class="t-title">Museu ao Ar Livre Maihaugen</div><div class="t-desc">200+ casas históricas (séc. XIII–XXI), Igreja Stave de Garmo, Museu Olímpico. Atores em trajes de época no verão.</div><div class="price-row"><span class="price-chip">🎟️ ~210 NOK adulto</span><span class="price-chip">👨‍👩‍👧‍👦 Crianças extras grátis</span></div><span class="booking-tag ok">Sem reserva</span></div>
+    <div class="tl-item"><div class="t-time">16:00<br>17:00</div><div class="t-title">Lysgårdsbakken — trampolim olímpico</div><div class="t-desc">Teleférico ao topo. Vista 360° de Lillehammer e do Mjøsa.</div><div class="price-row"><span class="price-chip">🎟️ ~90 NOK</span><span class="price-chip">⏰ 10:00–17:00</span></div><span class="booking-tag ok">Sem reserva</span></div>
+    <div class="tl-item out"><div class="t-time">17:30<br>19:30</div><div class="t-title">🥾 Trilha Fåberg Cultural Trail</div><div class="t-desc">~5 km fácil-moderada pelo lago. Petróglifos antigos e mirantes sobre o Mjøsa. Golden hour incrível.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⏱️ ~2h</span></div></div>
+    <div class="tl-item"><div class="t-time">20:00</div><div class="t-title">Jantar em Lillehammer</div><div class="t-desc">Nikkers Sportsbar para hambúrguer de alce, ou Hvelvet (cofre histórico do Norges Bank) para jantar especial.</div></div>
+  </div>
+
+  <div class="sec-label alt-label">Alternativas de passeio <span class="count">quatro opções</span></div>
+  <div class="card-grid c2">
+    <div class="card"><div class="card-label out">⛴️ Histórico</div><h4>★ Skibladner — barco a vapor de 1856</h4><div class="card-meta">⏱️ ~4h · 3 saídas/semana no verão · Hamar–Lillehammer</div><p>O barco a pá mais antigo do mundo ainda em operação. Uma travessia lenta e elegante pelo Mjøsa, com charme do golden age da navegação. Recomendação Lonely Planet.</p><div class="price-row"><span class="price-chip">~410 NOK · skibladner.no</span></div></div>
+    <div class="card"><div class="card-label out">🏰 Família</div><h4>Hunderfossen Adventure Park</h4><div class="card-meta">📍 15 km ao norte · ⏰ jun–ago</div><p>Parque de diversões com castelo de troll de 14m e 50+ atrações. Mesmo complexo do Wheelbob, mas mais completo se viajar com crianças.</p><div class="price-row"><span class="price-chip">~525 NOK</span></div></div>
+    <div class="card"><div class="card-label out">🚴 Bike</div><h4>Ciclovia ao redor do Mjøsa</h4><div class="card-meta">⏱️ 2–4h · Fácil · Bicicleta alugável</div><p>Rota plana pela margem do lago com vistas pastorais. Diversos pontos de parada com praias.</p><div class="price-row"><span class="price-chip">~200 NOK</span></div></div>
+    <div class="card"><div class="card-label out">🎿 Adrenalina</div><h4>Wheelbob — pista de bobsled</h4><div class="card-meta">📍 Hunderfossen, 15 km · ⏰ 10:00–17:00</div><p>A única pista de bobsled da Escandinávia. Desça sobre rodas na pista olímpica de 1994.</p><div class="price-row"><span class="price-chip">~250 NOK/descida</span></div><span class="booking-tag ok">Sem reserva</span></div>
+  </div>
+
+  <div class="sec-label food">À mesa <span class="count">três escolhas</span></div>
+  <div class="card-grid c3">
+    <div class="card"><div class="card-label food-m">$$ Jantar</div><h4>Nikkers Sportsbar</h4><div class="card-meta">📍 Storgata · ⏰ 11:00–01:00</div><p>Hambúrguer de alce (moído no local) e filé de rena. Chocolate fondant de sobremesa.</p><div class="price-row"><span class="price-chip">~250–400 NOK</span></div></div>
+    <div class="card"><div class="card-label food-b">$ Almoço</div><h4>Café Maihaugen</h4><div class="card-meta">📍 No museu · ⏰ 10:00–16:00</div><p>Sopas tradicionais e bolos caseiros noruegueses.</p><div class="price-row"><span class="price-chip">~150–220 NOK</span></div></div>
+    <div class="card"><div class="card-label food-p">$$$ Especial</div><h4>Hvelvet Restaurant</h4><div class="card-meta">📍 Antigo cofre do Norges Bank · ⏰ 17:00–22:00</div><p>Culinária moderna no histórico cofre que guardou o ouro da Noruega na WWII. Halibut, rena.</p><div class="price-row"><span class="price-chip">~700–1000 NOK</span></div><span class="booking-tag must">Reserva obrigatória</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DIA 15 — Lillehammer → Geiranger
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="day-section" id="d15">
+  <div class="day-bignum">15</div>
+  <div class="day-header">
+    <div class="day-num-block">
+      <div class="l">Dia · §02</div>
+      <div class="n">15</div>
+    </div>
+    <div class="day-info">
+      <div class="route-tag">Lillehammer → Geiranger · 340 km · ~6–7h</div>
+      <h2>A estrada dos sonhos — <em>fiorde UNESCO</em></h2>
+      <p class="day-summary">Road trip panorâmica pelo Gudbrandsdalen. Mirante Flydalsjuvet, trilha da cachoeira e a primeira noite na beira do fiorde.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item"><div class="t-time">07:30</div><div class="t-title">Saída de Lillehammer</div><div class="t-desc">Dia longo de estrada — saia cedo. Compre waffles com brunost em cafés do vale.</div></div>
+    <div class="tl-item hi"><div class="t-time">14:00</div><div class="t-title">📸 Mirante Flydalsjuvet</div><div class="t-desc">4 km antes de Geiranger. A vista icônica do fiorde de cima. "Cadeira" na borda para fotos. Estacionamento e banheiros gratuitos.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
+    <div class="tl-item hi"><div class="t-time">15:00</div><div class="t-title">Chegada em Geiranger</div><div class="t-desc">Centro histórico do fiorde. Caiaques e pedalinhos para alugar no porto.</div></div>
+    <div class="tl-item out"><div class="t-time">17:00<br>18:30</div><div class="t-title">🥾 Fossevandring — trilha da cachoeira</div><div class="t-desc">327 degraus, cachoeira Storfossen de perto, ~30 min subida. Saída do centro. Gratuito.</div></div>
+    <div class="tl-item"><div class="t-time">19:30</div><div class="t-title">Jantar</div><div class="t-desc">Brasserie Posten (sopa de peixe, cerveja local, ~350–600 NOK) com vista do fiorde dourado.</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DIA 16 — Conquistando o fiorde
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="day-section" id="d16">
+  <div class="day-bignum">16</div>
+  <div class="day-header">
+    <div class="day-num-block">
+      <div class="l">Dia · §03</div>
+      <div class="n">16</div>
+    </div>
+    <div class="day-info">
+      <div class="route-tag">Dia inteiro em Geiranger</div>
+      <h2>Conquistando o <em>fiorde UNESCO</em></h2>
+      <p class="day-summary">Ferry pelas Sete Irmãs, trilha atrás da cachoeira, kayak no fiorde e mirante a 1.500m. O dia mais épico do roteiro.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item out"><div class="t-time">08:00<br>10:15</div><div class="t-title">🚢 Ferry Geiranger ↔ Hellesylt</div><div class="t-desc">65 min pelo fiorde inteiro. Cachoeiras Sete Irmãs, O Pretendente e Véu da Noiva. Áudio-guia. Carro embarca junto. Breve parada em Hellesylt e volta no próximo ferry.</div><div class="price-row"><span class="price-chip">🚗 ~290 NOK carro+motorista</span><span class="price-chip">👤 ~200 NOK passageiro</span></div><span class="booking-tag rec">Recomendado no verão</span></div>
+    <div class="tl-item out"><div class="t-time">11:00<br>14:30</div><div class="t-title">🥾 Trilha Storseterfossen — atrás da cachoeira</div><div class="t-desc">Saindo da Westerås Farm, suba pela montanha e caminhe POR TRÁS da cachoeira. Moderada, ~2–3h ida/volta. Combine com a trilha Løsta (+1h) para mirante secreto do fiorde.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⏱️ 2–3h</span></div></div>
+    <div class="tl-item out"><div class="t-time">15:00<br>17:30</div><div class="t-title">🛶 Kayak no Geirangerfjord</div><div class="t-desc">Tour guiado ~2.5h remando até as Sete Irmãs e fazendas abandonadas. Equipamento completo fornecido.</div><div class="price-row"><span class="price-chip">~800–1000 NOK/pessoa</span></div><span class="booking-tag must">Reserva obrigatória — uteguiden.com</span></div>
+    <div class="tl-item hi"><div class="t-time">18:30<br>20:00</div><div class="t-title">📸 Dalsnibba Skywalk — 1.500m</div><div class="t-desc">21 km de subida pela Nibbevegen. Plataforma de vidro com vista para o fiorde inteiro. Pôr do sol épico (sol até ~22:30 no verão!).</div><div class="price-row"><span class="price-chip">💰 ~150 NOK pedágio</span></div></div>
+    <div class="tl-item"><div class="t-time">21:00</div><div class="t-title">Jantar tardio</div><div class="t-desc">Pizza no centro ou cozinhe sob o sol da meia-noite.</div></div>
+  </div>
+
+  <div class="sec-label alt-label">A aventura épica do dia <span class="count">opção alternativa</span></div>
+  <div class="card-grid">
+    <div class="card"><div class="card-label out">★ Trilha lendária</div><h4>Skageflå — fazenda abandonada UNESCO</h4><div class="card-meta">⛵ Barco até Skagehola + 🥾 trilha · ⏱️ 2–5h · Difícil</div><p>A vista mais icônica da Noruega: fazenda viking abandonada em 1916, perchada a 250m sobre o Geirangerfjord, de frente para as Sete Irmãs. <strong>Favorita da Rainha</strong> da Noruega. Acesso só por barco. Trilha íngreme com cordas de apoio nas seções expostas. Possível voltar caminhando até Geiranger (12 km, 5h total) ou retornar pela mesma trilha. Substitui o ferry passivo da manhã.</p><div class="price-row"><span class="price-chip">~200 NOK barco</span><span class="price-chip">🥾 Trilha gratuita</span><span class="price-chip">⏱️ 2h volta · 5h Geiranger</span></div><span class="booking-tag must">Reservar barco com antecedência</span></div>
+  </div>
+
+  <div class="pro-tip">
+    <div class="pro-tip-l">Nota do editor</div>
+    <p>Reserve o kayak <strong>com semanas de antecedência no verão</strong>. Operadores como uteguiden.com e geirangerfjord-kayak.com esgotam rapidamente entre junho e agosto. Para Skageflå, reserve o barco em geirangerfjord.no — só 8 vagas por travessia.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DIA 17 — Glaciar Nigardsbreen
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="day-section" id="d17">
+  <div class="day-bignum">17</div>
+  <div class="day-header">
+    <div class="day-num-block">
+      <div class="l">Dia · §04</div>
+      <div class="n">17</div>
+    </div>
+    <div class="day-info">
+      <div class="route-tag">Geiranger → Sogndal · 230 km · ~5h</div>
+      <h2>Glaciares azuis &amp; <em>Sognefjord</em></h2>
+      <p class="day-summary">A travessia pela Trollstigen ou Eagle Road. Glaciar Nigardsbreen com tour de gelo, barco no lago glacial e o maior fiorde do mundo.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item hi"><div class="t-time">08:00</div><div class="t-title">🛣️ Eagle Road (Ørnesvingen)</div><div class="t-desc">11 curvas em zigue-zague subindo do fiorde. Mirante a 620m com vista das Sete Irmãs. 5 km saindo de Geiranger.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
+    <div class="tl-item out"><div class="t-time">12:00<br>15:00</div><div class="t-title">🧊 Tour no Glaciar Nigardsbreen</div><div class="t-desc">Caminhe sobre gelo azul de 5.000 anos. Tour família (3h, 5+ anos) ou Blue Ice (~5h, 12+). Barco até a base do glaciar incluso. Crampons e capacetes fornecidos.</div><div class="price-row"><span class="price-chip">Família: ~689 NOK</span><span class="price-chip">Blue Ice: ~1500 NOK</span></div><span class="booking-tag must">Reserva obrigatória — icetroll.com</span></div>
+    <div class="tl-item out"><div class="t-time">15:30<br>16:30</div><div class="t-title">🚣 Barco no Lago Nigardsbrevatnet</div><div class="t-desc">Travessia rápida (10 min) até a língua do glaciar. Trilha curta (~20 min) para chegar mais perto. Águas leitosas turquesa de derretimento glacial.</div><div class="price-row"><span class="price-chip">~50 NOK</span></div></div>
+    <div class="tl-item"><div class="t-time">18:00</div><div class="t-title">Chegada em Sogndal</div><div class="t-desc">Beira do Sognefjord — o maior fiorde do mundo. Jantar local e descanso para o dia mais denso da viagem.</div></div>
+  </div>
+
+  <div class="sec-label alt-label">Detour épico (+1 dia) <span class="count">para apaixonados por estrada</span></div>
+  <div class="card-grid">
+    <div class="card"><div class="card-label out">★ Estrada lendária</div><h4>Trollstigen — 11 curvas em zigue-zague</h4><div class="card-meta">📍 Detour via Åndalsnes · ~3h fora da rota direta · 2026: aberta a partir de 27 abr</div><p>A estrada mais icônica da Noruega — 11 curvas em zigue-zague subindo a montanha, com plataformas de aço e vidro suspensas sobre o vazio (Reiulf Ramstad Architects). Premiada como Norway's Tourist Road Icon. Faz sentido só se você adicionar 1 dia ou pular Sogndal/glaciar. Verifique <strong>vegvesen.no</strong> antes — fechou todo o verão de 2024 por queda de pedras.</p><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⚠️ Confirmar abertura</span></div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DIA 18 — Stave church + Snow Road + Nærøyfjord
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="day-section" id="d18">
+  <div class="day-bignum">18</div>
+  <div class="day-header">
+    <div class="day-num-block">
+      <div class="l">Dia · §05</div>
+      <div class="n">18</div>
+    </div>
+    <div class="day-info">
+      <div class="route-tag">Sogndal → Flåm via Lærdal &amp; Borgund · 175 km · ~3h30</div>
+      <h2>Stave church milenar, <em>Snow Road &amp; Nærøyfjord UNESCO</em></h2>
+      <p class="day-summary">Igreja stave do séc. XII, túnel mais longo do mundo, estrada da neve, mirante Stegastein, Flåmsbana e o segundo fiorde UNESCO da viagem. O dia mais denso e cinematográfico do roteiro.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item"><div class="t-time">07:30</div><div class="t-title">Saída de Sogndal pela E5/E16</div><div class="t-desc">Compre café e pão na padaria do centro. Estrada bonita pela margem do Sognefjord até Lærdal.</div></div>
+    <div class="tl-item hi"><div class="t-time">09:30<br>11:00</div><div class="t-title">★ Borgund Stave Church (1180)</div><div class="t-desc">Igreja stave mais bem preservada da Noruega. Modelo para restauração de outras stave churches do país. Cabeças de dragão, sem um único prego de metal. Visitor center com exposições e café. <strong>Inspiração para Frozen.</strong></div><div class="price-row"><span class="price-chip">🎟️ ~120 NOK</span><span class="price-chip">⏰ 10:00–17:00 (mai–set)</span></div></div>
+    <div class="tl-item out"><div class="t-time">11:00<br>11:30</div><div class="t-title">🥾 Vindhellavegen — King's Road</div><div class="t-desc">Caminhada curta pelo trecho restaurado da estrada do Rei (séc. XVIII), com curvas dramáticas em pedra. Premiada pela Norwegian Public Roads. Sai do mesmo estacionamento da Borgund.</div><div class="price-row"><span class="price-chip">💰 Gratuito · 1.7 km</span></div></div>
+    <div class="tl-item"><div class="t-time">12:00<br>13:00</div><div class="t-title">🍽️ Almoço em Gamle Lærdalsøyri</div><div class="t-desc">Centro histórico de Lærdal com 161 casas de madeira preservadas. Lindstrøm Hotel ou padarias locais. Cherries e produtos do vale (Lærdal tem microclima ideal pra frutas).</div><div class="price-row"><span class="price-chip">~250–600 NOK</span></div></div>
+    <div class="tl-item hi"><div class="t-time">13:30<br>15:00</div><div class="t-title">★ Aurlandsfjellet — Snow Road (verão)</div><div class="t-desc">Estrada nacional cênica de 47 km com paredes de neve mesmo em julho. <strong>Stegastein é o ponto alto</strong>: plataforma de 30m sobre o vazio a 650m do Aurlandsfjord. Se a Snow Road estiver fechada, vá pelo Lærdalstunnel (24,5 km, túnel mais longo do mundo, com câmaras de luz azul/amarela imitando o nascer do sol).</div><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⏰ Snow Road: jun–out</span></div></div>
+    <div class="tl-item"><div class="t-time">15:30</div><div class="t-title">Chegada em Flåm</div><div class="t-desc">Centro pequeno mas vibrante. Estação da Flåmsbana, porto e brewpub a poucos passos.</div></div>
+    <div class="tl-item out"><div class="t-time">16:10<br>17:10</div><div class="t-title">🚂 Flåmsbana (só descida — opcional)</div><div class="t-desc">Pegue o trem subindo até Myrdal e desça (ou faça só uma direção). 20 km, 20 túneis escavados à mão. Parada na cascata Kjosfossen (93m). Lado DIREITO subindo, ESQUERDO descendo. <em>Se não der tempo hoje, faça no Dia 19 cedo antes de seguir para Bergen.</em></div><div class="price-row"><span class="price-chip">~660 NOK ida/volta</span><span class="price-chip">~430 NOK só ida</span></div><span class="booking-tag must">Reserva obrigatória — flamsbana.no</span></div>
+    <div class="tl-item"><div class="t-time">19:30</div><div class="t-title">🍺 Jantar viking — Ægir BrewPub</div><div class="t-desc">"Salão viking" com lareira de 9m. Viking Plank: 5 pratos + 5 cervejas (~950 NOK). Chegue ~17h para garantir mesa no verão.</div></div>
+  </div>
+
+  <div class="sec-label alt-label">A grande escolha do dia <span class="count">Cruzeiro UNESCO ou Kayak?</span></div>
+  <div class="card-grid c2">
+    <div class="card"><div class="card-label out">★ UNESCO #2</div><h4>Cruzeiro Nærøyfjord (Flåm → Gudvangen)</h4><div class="card-meta">⏱️ ~2h ida · ⛴️ Barco elétrico silencioso · 4–6 saídas/dia</div><p>O <strong>segundo fiorde UNESCO da viagem</strong> (com Geiranger). Eleito pela National Geographic "Best Unspoilt Destination". Fiorde mais estreito da Europa: 250m de largura entre paredes de 1.700m. Barco 100% elétrico, silencioso. Volte de ônibus ou faça round-trip.</p><div class="price-row"><span class="price-chip">~520–650 NOK ida</span><span class="price-chip">~830 NOK round-trip</span></div><span class="booking-tag rec">Reservar — norwaysbest.com</span></div>
+    <div class="card"><div class="card-label out">🛶 Imersão</div><h4>Kayak no Aurlandsfjord (Njord)</h4><div class="card-meta">⏱️ 2.5–3h · Tour guiado · Equipamento incluso</div><p>Aurlandsfjord, paredes de 1.000m, cachoeiras, fazendas. Mais íntimo que o cruzeiro mas <strong>não entra no Nærøyfjord UNESCO</strong>. Para quem já fez kayak em Geiranger, o cruzeiro UNESCO é a escolha mais marcante.</p><div class="price-row"><span class="price-chip">~750–950 NOK</span><span class="price-chip">🛶 Solo: ~400 NOK/3h</span></div><span class="booking-tag must">seakayaknorway.com</span></div>
+  </div>
+
+  <div class="sec-label alt-label">Combinação perfeita do cruzeiro <span class="count">se for até Gudvangen</span></div>
+  <div class="card-grid">
+    <div class="card"><div class="card-label out">★ Imersão histórica</div><h4>Njardarheimr — Vila Viking de Gudvangen</h4><div class="card-meta">📍 Walking distance da chegada do cruzeiro · ⏰ aberto o ano todo</div><p>Vila viking reconstruída autêntica no fim do Nærøyfjord. <strong>Vikings de verdade</strong> contam histórias, lançamento de machado, arco e flecha, artesanato tradicional. Café estilo viking. Combine com o cruzeiro UNESCO de manhã + ônibus shuttle de volta a Flåm à tarde.</p><div class="price-row"><span class="price-chip">~250 NOK</span><span class="price-chip">vikingvalley.no</span></div></div>
+  </div>
+
+  <div class="sec-label alt-label">Alternativas de aventura em Flåm</div>
+  <div class="card-grid c3">
+    <div class="card"><div class="card-label out">⚡ Adrenalina</div><h4>FjordSafari — RIB Boat</h4><div class="card-meta">⏱️ ~1.5h · Saídas diárias</div><p>Lancha rápida pelo Aurlandsfjord e Nærøyfjord UNESCO a 60 km/h. Roupas de proteção fornecidas.</p><div class="price-row"><span class="price-chip">~750–950 NOK</span></div><span class="booking-tag rec">Reserva recomendada</span></div>
+    <div class="card"><div class="card-label out">🚴 Bike</div><h4>Rallarvegen (descida)</h4><div class="card-meta">📍 Myrdal → Flåm · 80 km · ⏱️ 4–5h</div><p>Antiga estrada de construção da ferrovia. Desça de bike de Myrdal (maioria descida). Cenários de tundra a floresta.</p><div class="price-row"><span class="price-chip">~450 NOK bike</span></div><span class="booking-tag rec">Reserva recomendada</span></div>
+    <div class="card"><div class="card-label out">🥾 Trilha</div><h4>Brekkefossen / Trilha do Vale</h4><div class="card-meta">📍 Perto do centro · ⏱️ 2h ida/volta</div><p>Cachoeira escondida perto do centro de Flåm. Trilha fácil pelo vale verde.</p><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DIA 19 — Bergen
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="day-section" id="d19">
+  <div class="day-bignum">19</div>
+  <div class="day-header">
+    <div class="day-num-block">
+      <div class="l">Dia · §06</div>
+      <div class="n">19</div>
+    </div>
+    <div class="day-info">
+      <div class="route-tag">Flåm → Bergen · 165 km · ~3h</div>
+      <h2>A porta dos <em>fiordes</em></h2>
+      <p class="day-summary">Bryggen UNESCO, mercado do peixe, fortaleza medieval e subida do Monte Fløyen.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item"><div class="t-time">09:00<br>12:00</div><div class="t-title">Estrada Flåm → Bergen</div><div class="t-desc">~3h pela E16. Chegada e check-in no centro.</div></div>
+    <div class="tl-item hi"><div class="t-time">13:00</div><div class="t-title">🐟 Almoço no Fish Market</div><div class="t-desc">Salmão, camarão, caranguejo rei nas bancas ou Fish Me (fish &amp; chips, ~200–350 NOK).</div></div>
+    <div class="tl-item hi"><div class="t-time">14:30<br>16:00</div><div class="t-title">🏘️ Bryggen — patrimônio UNESCO</div><div class="t-desc">Armazéns hanseáticos séc. XIV. Becos, ateliês. Hanseatiske Museum ~120 NOK. Visite o <strong>Theta Museum</strong> (sáb 11:00–14:00 — menor museu da Noruega, QG da resistência da WWII descoberto pelos nazistas em 1942).</div><span class="booking-tag ok">Sem reserva</span></div>
+    <div class="tl-item"><div class="t-time">16:00<br>16:30</div><div class="t-title">🏰 Bergenhus Fortress</div><div class="t-desc">Fortaleza medieval (~1700) ao lado de Bryggen — uma das mais bem preservadas do país. Torre Rosenkrantz com vista do porto, Håkon's Hall (séc. XIII).</div><div class="price-row"><span class="price-chip">~150 NOK</span></div></div>
+    <div class="tl-item out"><div class="t-time">16:30<br>18:30</div><div class="t-title">🚠 Monte Fløyen + trilha Skomakerdiket</div><div class="t-desc">Funicular até 320m + trilha circular ~30 min pelo lago no topo. Vista panorâmica de Bergen inteira.</div><div class="price-row"><span class="price-chip">🎟️ ~75 NOK ida/volta</span><span class="price-chip">⏰ 07:30–23:00</span></div></div>
+    <div class="tl-item"><div class="t-time">19:30</div><div class="t-title">Jantar em Bryggen</div><div class="t-desc">Bryggeloftet (sopa de peixe, ~450–750 NOK) ou hot dog de rena no Trekroneren (~80–130 NOK).</div></div>
+  </div>
+
+  <div class="sec-label food">À mesa em Bergen <span class="count">três escolhas</span></div>
+  <div class="card-grid c3">
+    <div class="card"><div class="card-label food-p">$$$ Especial</div><h4>Enhjørningen</h4><div class="card-meta">📍 Bryggen · ⏰ 17:00–22:00</div><p>Melhor frutos do mar. Halibut, lutefisk. Ambiente séc. XIV. ~800–1200 NOK.</p><span class="booking-tag must">Reserva obrigatória</span></div>
+    <div class="card"><div class="card-label food-m">$$ Tradição</div><h4>Bryggeloftet &amp; Stuene</h4><div class="card-meta">📍 Bryggen · ⏰ 12:00–23:00</div><p>Desde 1910. Melhor sopa de peixe de Bergen. ~450–750 NOK.</p><span class="booking-tag rec">Reserva recomendada</span></div>
+    <div class="card"><div class="card-label food-b">$ Icônico</div><h4>Trekroneren Hot Dog</h4><div class="card-meta">📍 Kong Oscars Gate · ⏰ 11:00–03:00</div><p>Hot dog de rena + lingonberry. Favorito dos locais. ~80–130 NOK.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DIA 20 — Bergen day 2
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="day-section" id="d20">
+  <div class="day-bignum">20</div>
+  <div class="day-header">
+    <div class="day-num-block">
+      <div class="l">Dia · §07</div>
+      <div class="n">20</div>
+    </div>
+    <div class="day-info">
+      <div class="route-tag">Dia inteiro em Bergen</div>
+      <h2>Trilhas, montanhas &amp; <em>fiordes urbanos</em></h2>
+      <p class="day-summary">Stoltzekleiven (900 degraus!), Monte Ulriken, passeio de barco e despedida.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item out"><div class="t-time">09:30<br>13:00</div><div class="t-title">🥾 Stoltzekleiven → Vidden → Ulriken</div><div class="t-desc">900 degraus até o Fløyen (~45 min). Depois, trilha Vidden até o Ulriken (643m, ~2–3h). Vista 360° épica. Desça de teleférico.</div><div class="price-row"><span class="price-chip">🥾 Trilha: gratuito</span><span class="price-chip">🚡 Ulriken descida: ~120 NOK</span></div></div>
+    <div class="tl-item out"><div class="t-time">15:00<br>17:30</div><div class="t-title">🚢 Passeio de barco pelos fiordes</div><div class="t-desc">Mini-cruzeiro 2–3h saindo do porto. Ou kayak nas baías de Bergen.</div><div class="price-row"><span class="price-chip">~450–700 NOK cruzeiro</span></div><span class="booking-tag rec">Reserva recomendada</span></div>
+    <div class="tl-item"><div class="t-time">20:00</div><div class="t-title">Jantar de despedida</div><div class="t-desc">Bryggen Tracteursted (tapas norueguesas, ~400–700 NOK) ou Cornelius na ilha (barco + 5 pratos de frutos do mar, ~1145 NOK total).</div></div>
+  </div>
+
+  <div class="sec-label alt-label">Alternativas em Bergen <span class="count">seis opções</span></div>
+  <div class="card-grid c3">
+    <div class="card"><div class="card-label out">★ Fiorde</div><h4>Cruzeiro Mostraumen</h4><div class="card-meta">📍 Saída do porto de Bergen · ⏱️ 3h</div><p>Mini-cruzeiro pelo fiorde mais acessível de Bergen. Estreito Mostraumen, paredes vertiginosas, cachoeiras, vilarejos coloridos. Saída direto do centro — sem deslocamento.</p><div class="price-row"><span class="price-chip">~600–700 NOK</span></div><span class="booking-tag rec">Recomendado reservar</span></div>
+    <div class="card"><div class="card-label alt">⛪ Stave</div><h4>Fantoft Stave Church</h4><div class="card-meta">📍 Bybanen até Fantoft · 18 min do centro</div><p>Única stave church em Bergen. Construída em 1170 em Sogn, transferida em 1883. Queimada em 1992 e reconstruída — primeira nova stave church em 400 anos.</p><div class="price-row"><span class="price-chip">~70 NOK · mai–set</span></div></div>
+    <div class="card"><div class="card-label alt">🧖 Local</div><h4>City Sauna flutuante</h4><div class="card-meta">📍 Porto de Bergen · ⏰ Reservar</div><p>Sauna flutuante com mergulho gelado no fiorde. Experiência local autêntica — totalmente diferente do roteiro turístico.</p><div class="price-row"><span class="price-chip">~350 NOK/sessão</span></div></div>
+    <div class="card"><div class="card-label alt">🎨 Cultura</div><h4>KODE Museus de Arte</h4><div class="card-meta">⏰ 10:00–17:00</div><p>Edvard Munch, Grieg. 4 edifícios. Perfeito para dia de chuva.</p><div class="price-row"><span class="price-chip">~150 NOK</span></div></div>
+    <div class="card"><div class="card-label alt">🎵 Música</div><h4>Troldhaugen — Casa de Grieg</h4><div class="card-meta">📍 8 km do centro · ⏰ 09:00–18:00</div><p>Residência do compositor de Peer Gynt. Concertos ao vivo no verão.</p><div class="price-row"><span class="price-chip">~130 NOK</span></div></div>
+    <div class="card"><div class="card-label alt">🍽️ Única</div><h4>Cornelius Seafood Restaurant</h4><div class="card-meta">📍 Ilha (barco 18:00, volta 22:30)</div><p>5 pratos de frutos do mar numa ilha. Menu muda diariamente conforme pescado.</p><div class="price-row"><span class="price-chip">~1145 NOK tudo</span></div><span class="booking-tag must">Reserva obrigatória</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DIA 21 — Retorno
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="day-section" id="d21">
+  <div class="day-bignum">21</div>
+  <div class="day-header">
+    <div class="day-num-block">
+      <div class="l">Dia · §08</div>
+      <div class="n">21</div>
+    </div>
+    <div class="day-info">
+      <div class="route-tag">Bergen → Oslo · 460 km · ~7–8h</div>
+      <h2>O <em>grande retorno</em></h2>
+      <p class="day-summary">Voo, trem panorâmico ou road trip pela Hardangervidda.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item"><div class="t-time">Opção A</div><div class="t-title">✈️ Voo (~1h)</div><div class="t-desc">Norwegian/SAS. ~500–1000 NOK. Aeroporto: 20 min Light Rail.</div><span class="booking-tag rec">Reservar com antecedência</span></div>
+    <div class="tl-item hi"><div class="t-time">Opção B</div><div class="t-title">🚂 Bergensbanen (~7h)</div><div class="t-desc">Uma das rotas mais bonitas da Europa. Hardangervidda a 1.222m. Lado ESQUERDO para vistas.</div><div class="price-row"><span class="price-chip">~299–599 NOK (minipris)</span></div><span class="booking-tag must">Reservar cedo em vy.no</span></div>
+    <div class="tl-item out"><div class="t-time">Opção C</div><div class="t-title">🚗 Hardangervidda + Vøringsfossen</div><div class="t-desc">Planalto + cascata Vøringsfossen (182m, ~3h de Bergen). Trilha curta até plataforma sobre a queda.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     BOOKING SUMMARY
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="day-section booking-section" id="booking-sec">
+  <div class="day-bignum" style="font-style:normal;font-family:var(--mono);font-weight:600;font-size:clamp(10rem,20vw,18rem);letter-spacing:-0.05em">RSV</div>
+  <div class="eyebrow">Apêndice · Logística</div>
+  <h2 class="section-title">Reservas <em>&amp; preços</em></h2>
+  <p class="booking-intro">Tudo que precisa ser reservado com antecedência, organizado por urgência.</p>
+  <div class="legend">
+    <span><span class="urgency high"></span>Obrigatório</span>
+    <span><span class="urgency med"></span>Recomendado</span>
+    <span><span class="urgency low"></span>No dia</span>
+  </div>
+
+  <div class="booking-summary">
+    <table>
+      <thead><tr><th>Atividade</th><th>Preço (NOK)</th><th>Reserva</th><th>Onde reservar</th></tr></thead>
+      <tbody>
+        <tr><td><span class="urgency high"></span> Flåmsbana (trem)</td><td>~660 ida/volta</td><td>Semanas antes</td><td>flamsbana.no</td></tr>
+        <tr><td><span class="urgency high"></span> Kayak Geiranger</td><td>~800–1000/pessoa</td><td>Semanas antes</td><td>uteguiden.com</td></tr>
+        <tr><td><span class="urgency high"></span> Tour glaciar Nigardsbreen</td><td>~689–1500/pessoa</td><td>Semanas antes</td><td>icetroll.com</td></tr>
+        <tr><td><span class="urgency high"></span> Kayak Flåm/Aurland</td><td>~750–950/pessoa</td><td>Semanas antes</td><td>seakayaknorway.com</td></tr>
+        <tr><td><span class="urgency high"></span> Enhjørningen (Bergen)</td><td>~800–1200/pessoa</td><td>Dias antes</td><td>enhjorningen.no</td></tr>
+        <tr><td><span class="urgency high"></span> Cornelius (Bergen)</td><td>~1145/pessoa</td><td>Dias antes</td><td>corneliusrestaurant.no</td></tr>
+        <tr><td><span class="urgency high"></span> ★ Cruzeiro UNESCO Nærøyfjord</td><td>~520–830</td><td>Verão: sim</td><td>norwaysbest.com</td></tr>
+        <tr><td><span class="urgency high"></span> ★ Skageflå (barco)</td><td>~200/pessoa</td><td>Dias antes (8 vagas)</td><td>geirangerfjord.no</td></tr>
+        <tr><td><span class="urgency med"></span> Ferry Geiranger–Hellesylt</td><td>~290 carro + 200/pax</td><td>Verão: sim</td><td>fjord1.no</td></tr>
+        <tr><td><span class="urgency med"></span> FjordSafari RIB (Flåm)</td><td>~750–950/pessoa</td><td>Recomendado</td><td>fjordsafari.com</td></tr>
+        <tr><td><span class="urgency med"></span> ★ Vila Viking Njardarheimr</td><td>~250/pessoa</td><td>Verão: sim</td><td>vikingvalley.no</td></tr>
+        <tr><td><span class="urgency med"></span> ★ Cruzeiro Mostraumen (Bergen)</td><td>~600–700</td><td>Recomendado</td><td>whitelady.no</td></tr>
+        <tr><td><span class="urgency med"></span> Skibladner (Mjøsa)</td><td>~410/pessoa</td><td>3 saídas/semana</td><td>skibladner.no</td></tr>
+        <tr><td><span class="urgency med"></span> Bergensbanen (trem)</td><td>~299–599</td><td>Minipris: sim</td><td>vy.no</td></tr>
+        <tr><td><span class="urgency low"></span> ★ Borgund Stave Church</td><td>~120 adulto</td><td>No dia</td><td>stavechurch.com</td></tr>
+        <tr><td><span class="urgency low"></span> Maihaugen</td><td>~210 adulto</td><td>No dia</td><td>maihaugen.no</td></tr>
+        <tr><td><span class="urgency low"></span> Bergenhus Fortress</td><td>~150</td><td>No dia</td><td>bymuseet.no</td></tr>
+        <tr><td><span class="urgency low"></span> Fantoft Stave Church</td><td>~70</td><td>No dia · mai–set</td><td>fantoftstavechurch.com</td></tr>
+        <tr><td><span class="urgency low"></span> Theta Museum (sáb)</td><td>~50</td><td>No dia · só sábados</td><td>thetamuseum.no</td></tr>
+        <tr><td><span class="urgency low"></span> Lysgårdsbakken</td><td>~90 teleférico</td><td>No dia</td><td>olympiaparken.no</td></tr>
+        <tr><td><span class="urgency low"></span> Dalsnibba Skywalk</td><td>~150 pedágio</td><td>No dia</td><td>—</td></tr>
+        <tr><td><span class="urgency low"></span> Fløibanen (Bergen)</td><td>~75 ida/volta</td><td>No dia</td><td>floyen.no</td></tr>
+        <tr><td><span class="urgency low"></span> Ulriken teleférico</td><td>~120–210</td><td>No dia</td><td>ulriken643.no</td></tr>
+        <tr><td><span class="urgency low"></span> Trilhas todas</td><td>Gratuito</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     COLOPHON
+     ═══════════════════════════════════════════════════════════════ -->
+<footer class="colophon">
+  <div class="colophon-eyebrow">Colofão · Fim do diário</div>
+  <h3>The Norway Issue — <em>Fjords &amp; Highlands</em></h3>
+  <p class="signoff">Modo aventura. Boa viagem.</p>
+  <p class="fine">
+    Preços referência 2025/2026 — confirme antes de viajar.<br>
+    Noruega pratica o <strong>Allemannsretten</strong>: acampe livremente na natureza por até 2 noites, a 150m+ de casas habitadas.
+  </p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     BACK TO TOP
+     ═══════════════════════════════════════════════════════════════ -->
+<button class="to-top" id="toTop" aria-label="Voltar ao topo">
+  <span class="arrow">↑</span>
+  <span>Voltar ao topo</span>
+</button>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   ROBUST INITIALIZATION
+   Wraps everything in DOMContentLoaded and isolates map errors
+   so navigation/buttons keep working even if tiles fail to load.
+   ═══════════════════════════════════════════════════════════════════ */
+
+document.addEventListener('DOMContentLoaded', function(){
+
+  /* ───── CATEGORIES & DATA ───── */
+  var CAT={
+    stop : {color:'#161513', label:'Parada'},
+    trail: {color:'#3D5240', label:'Trilha'},
+    tour : {color:'#2D4A52', label:'Passeio'},
+    view : {color:'#B8632E', label:'Mirante'},
+    food : {color:'#7A2E20', label:'Comida'}
+  };
+
+  function gmapsLink(name,lat,lng){
+    var q = encodeURIComponent(name+' @'+lat+','+lng);
+    return 'https://www.google.com/maps/search/?api=1&query='+q;
+  }
+
+  var points=[
+    /* PARADAS */
+    {cat:'stop', lat:61.1153, lng:10.4662, name:'Lillehammer', day:'Dia 14', desc:'Capital olímpica · Lago Mjøsa', emoji:'🏔️'},
+    {cat:'stop', lat:62.1024, lng:7.2056,  name:'Geiranger',   day:'Dia 15–16', desc:'Fiorde UNESCO · Sete Irmãs', emoji:'🌊'},
+    {cat:'stop', lat:61.2297, lng:7.1037,  name:'Sogndal',     day:'Dia 17', desc:'Sognefjord · Maior fiorde do mundo', emoji:'⛺'},
+    {cat:'stop', lat:60.8631, lng:7.1138,  name:'Flåm',        day:'Dia 18', desc:'Aurlandsfjord · Flåmsbana', emoji:'🚂'},
+    {cat:'stop', lat:60.3913, lng:5.3221,  name:'Bergen',      day:'Dia 19–20', desc:'Bryggen UNESCO · Porta dos fiordes', emoji:'🏘️'},
+
+    /* MIRANTES */
+    {cat:'view', lat:61.1370, lng:10.4475, name:'Lysgårdsbakken Trampolim Olímpico', day:'Dia 14', desc:'Vista 360° de Lillehammer e do Mjøsa, do alto do trampolim olímpico de 1994.', meta:'~90 NOK teleférico · 10:00–17:00'},
+    {cat:'view', lat:62.0910, lng:7.2230,  name:'Mirante Flydalsjuvet', day:'Dia 15', desc:'A vista icônica de Geiranger, 4 km antes do centro. "Cadeira" na borda para fotos.', meta:'Gratuito · estacionamento e WC'},
+    {cat:'view', lat:62.0413, lng:7.2589,  name:'Dalsnibba Skywalk', day:'Dia 16', desc:'Plataforma de vidro a 1.500m com vista panorâmica do fiorde inteiro. 21 km pela Nibbevegen.', meta:'~150 NOK pedágio'},
+    {cat:'view', lat:62.1230, lng:7.1956,  name:'Eagle Road / Ørnesvingen', day:'Dia 17', desc:'11 curvas em zigue-zague subindo do fiorde. Mirante a 620m com vista das Sete Irmãs.', meta:'Gratuito'},
+    {cat:'view', lat:60.9264, lng:7.2528,  name:'Stegastein Viewpoint', day:'Dia 18', desc:'Plataforma de 30m sobre o vazio a 650m do Aurlandsfjord. Arquitetura premiada (Saunders & Wilhelmsen, 2006).', meta:'Gratuito · 18 km de Flåm'},
+    {cat:'view', lat:60.3577, lng:5.3325,  name:'Monte Fløyen', day:'Dia 19', desc:'Funicular até 320m. Vista panorâmica de Bergen inteira.', meta:'~75 NOK ida/volta · 07:30–23:00'},
+    {cat:'view', lat:60.3760, lng:5.3850,  name:'Monte Ulriken (643m)', day:'Dia 20', desc:'Pico mais alto de Bergen. Vista 360° épica do alto.', meta:'~120–210 NOK teleférico'},
+    {cat:'view', lat:60.4249, lng:7.2725,  name:'Vøringsfossen', day:'Dia 21', desc:'Cascata de 182m no Hardangervidda. Plataforma sobre a queda. ~3h de Bergen.', meta:'Gratuito'},
+    {cat:'view', lat:62.4530, lng:7.6630,  name:'Trollstigen Plateau (detour)', day:'Dia 17 (alt)', desc:'11 curvas em zigue-zague — a estrada mais icônica da Noruega. Plataforma com ramps de aço. 2026: aberta a partir de 27 de abril. Fica fora da rota direta — desvio de ~3h via Åndalsnes.', meta:'Gratuito · só verão · vegvesen.no'},
+
+    /* TRILHAS */
+    {cat:'trail', lat:61.1280, lng:10.4060, name:'Trilha Fåberg Cultural Trail', day:'Dia 14', desc:'~5 km fácil-moderada pelo lago. Petróglifos antigos e mirantes sobre o Mjøsa. Golden hour incrível.', meta:'Gratuito · ~2h'},
+    {cat:'trail', lat:62.1020, lng:7.2080, name:'Fossevandring — Trilha da Cachoeira', day:'Dia 15', desc:'327 degraus, cachoeira Storfossen de perto. ~30 min subida. Sai do centro.', meta:'Gratuito · ~1h'},
+    {cat:'trail', lat:62.0750, lng:7.1380, name:'Trilha Storseterfossen — atrás da cachoeira', day:'Dia 16', desc:'Caminhe POR TRÁS da cachoeira. Saindo da Westerås Farm. Combine com a trilha Løsta para mirante secreto.', meta:'Gratuito · 2–3h moderada'},
+    {cat:'trail', lat:62.1140, lng:7.0680, name:'★ Skageflå — fazenda abandonada UNESCO', day:'Dia 16', desc:'A vista mais icônica da Noruega. Fazenda viking abandonada em 1916, 250m acima do fiorde, de frente para as Sete Irmãs. Favorita da Rainha. Acesso por barco até Skagehola + 45 min de subida íngreme.', meta:'~200 NOK barco + trilha gratuita · 2–5h · difícil'},
+    {cat:'trail', lat:60.8580, lng:7.1100, name:'Trilha Brekkefossen', day:'Dia 18', desc:'Cachoeira escondida perto do centro de Flåm. Trilha fácil pelo vale verde.', meta:'Gratuito · 2h ida/volta'},
+    {cat:'trail', lat:60.4040, lng:5.3380, name:'Stoltzekleiven (900 degraus)', day:'Dia 20', desc:'900 degraus de pedra subindo até o Fløyen. ~45 min de subida intensa. Conecta com Vidden até Ulriken.', meta:'Gratuito · 45 min subida'},
+    {cat:'trail', lat:60.3850, lng:5.3680, name:'Trilha Vidden — Fløyen → Ulriken', day:'Dia 20', desc:'Travessia de planalto entre os dois montes de Bergen. ~2–3h. Vista 360°. Desça de teleférico no Ulriken.', meta:'Gratuito · 2–3h'},
+    {cat:'trail', lat:60.3590, lng:5.3360, name:'Trilha Skomakerdiket (Fløyen)', day:'Dia 19', desc:'Trilha circular ~30 min pelo lago no topo do Fløyen. Plana e fácil.', meta:'Gratuito · 30 min'},
+    {cat:'trail', lat:60.4180, lng:7.2680, name:'Vøringsfossen Stairs', day:'Dia 21', desc:'1.500 degraus pela cascata de 182m. Plataforma sobre a queda. Só faça se escolher a Opção C (road trip Hardangervidda).', meta:'Gratuito · 1–2h'},
+
+    /* PASSEIOS */
+    {cat:'tour', lat:61.0907, lng:10.4264, name:'Museu ao Ar Livre Maihaugen', day:'Dia 14', desc:'200+ casas históricas (séc. XIII–XXI), Igreja Stave de Garmo, Museu Olímpico. Atores em trajes de época no verão.', meta:'~210 NOK adulto'},
+    {cat:'tour', lat:61.2440, lng:10.3880, name:'Wheelbob — Pista de Bobsled (Hunderfossen)', day:'Dia 14', desc:'A única pista de bobsled da Escandinávia! Desça sobre rodas na pista olímpica de 1994.', meta:'~250 NOK/descida · 10:00–17:00'},
+    {cat:'tour', lat:60.6500, lng:11.0833, name:'Skibladner — barco a vapor mais antigo', day:'Dia 14 (alt)', desc:'Barco a pá de 1856 — o mais antigo ainda em operação no mundo. 4h cruzando o Lago Mjøsa.', meta:'~410 NOK · skibladner.no'},
+    {cat:'tour', lat:61.2390, lng:10.3970, name:'Hunderfossen Adventure Park', day:'Dia 14 (alt)', desc:'Parque de diversões com castelo de troll de 14m, 50+ atrações. Ideal para famílias. 15 km ao norte de Lillehammer.', meta:'~525 NOK · jun-ago'},
+    {cat:'tour', lat:62.1010, lng:7.0560, name:'Ferry Geiranger ↔ Hellesylt', day:'Dia 16', desc:'65 min pelo fiorde inteiro. Cachoeiras Sete Irmãs, O Pretendente e Véu da Noiva. Carro embarca junto.', meta:'~290 NOK carro+motorista'},
+    {cat:'tour', lat:62.1025, lng:7.2080, name:'Kayak no Geirangerfjord', day:'Dia 16', desc:'Tour guiado ~2.5h remando até as Sete Irmãs e fazendas abandonadas. Equipamento completo.', meta:'~800–1000 NOK · uteguiden.com'},
+    {cat:'tour', lat:61.6790, lng:7.1390, name:'Tour Glaciar Nigardsbreen', day:'Dia 17', desc:'Caminhe sobre gelo azul de 5.000 anos. Tour família (3h, 5+) ou Blue Ice (~5h, 12+). Barco até a base incluso.', meta:'~689–1500 NOK · icetroll.com'},
+    {cat:'tour', lat:61.6790, lng:7.1400, name:'Barco Lago Nigardsbrevatnet', day:'Dia 17', desc:'Travessia rápida (10 min) até a língua do glaciar. Águas leitosas turquesa de derretimento glacial.', meta:'~50 NOK'},
+    {cat:'tour', lat:61.0470, lng:7.8125, name:'★ Borgund Stave Church', day:'Dia 18', desc:'Igreja stave mais bem preservada da Noruega (1180–1200). Modelo para restauração de outras stave churches do país. Cabeças de dragão, sem um único prego de metal. Inspiração para Frozen.', meta:'~120 NOK · 28 km de Lærdal · mai-set'},
+    {cat:'tour', lat:60.7850, lng:7.0850, name:"Vindhellavegen — King's Road", day:'Dia 18', desc:'Trecho restaurado da estrada do Rei (séc. XVIII), com curvas de pedra dramáticas. Caminhada curta saindo da Borgund. Premiada pela Norwegian Public Roads.', meta:'Gratuito · 1.7 km'},
+    {cat:'tour', lat:60.7720, lng:7.2050, name:'★ Lærdalstunnel — túnel mais longo do mundo', day:'Dia 18', desc:'24,5 km, o túnel rodoviário mais longo do mundo. Três câmaras com iluminação azul/amarela imitando o nascer do sol para combater o tédio. ~20 min de travessia.', meta:'Gratuito · alternativa ao Snow Road'},
+    {cat:'tour', lat:60.7740, lng:7.7250, name:'★ Aurlandsfjellet "Snow Road"', day:'Dia 18', desc:'Estrada nacional cênica de 47 km entre Aurland e Lærdal. Aberta jun-out. Paisagem alpina com neve mesmo no verão. Stegastein é o ponto mais famoso.', meta:'Gratuito · só verão'},
+    {cat:'tour', lat:60.8616, lng:7.1130, name:'Flåmsbana (Estação Flåm)', day:'Dia 18', desc:'Uma das ferrovias mais íngremes do mundo. 20 km, 20 túneis. Cascata Kjosfossen. Lado DIREITO subindo, ESQUERDO descendo.', meta:'~660 NOK ida/volta · flamsbana.no'},
+    {cat:'tour', lat:60.8631, lng:7.1138, name:'Kayak Aurlandsfjord (Njord)', day:'Dia 18', desc:'Tour guiado 2.5–3h. Paredes de 1.000m, cachoeiras, fazendas. Equipamento + jaqueta impermeável.', meta:'~750–950 NOK · seakayaknorway.com'},
+    {cat:'tour', lat:60.8631, lng:7.1138, name:'FjordSafari RIB Boat', day:'Dia 18', desc:'Lancha rápida pelo Aurlandsfjord e Nærøyfjord UNESCO a 60 km/h! Roupas de proteção fornecidas.', meta:'~750–950 NOK · ~1.5h'},
+    {cat:'tour', lat:60.7256, lng:7.5350, name:'Rallarvegen — bike de Myrdal', day:'Dia 18', desc:'80 km de descida pela antiga estrada de construção da ferrovia. Cenários de tundra a floresta.', meta:'~450 NOK bike · 4–5h'},
+    {cat:'tour', lat:60.8631, lng:7.1138, name:'★ Cruzeiro UNESCO Nærøyfjord (Flåm → Gudvangen)', day:'Dia 18', desc:'Segundo fiorde UNESCO da viagem (com Geiranger). National Geographic: "Best Unspoilt Destination". Fiorde mais estreito da Europa (250m), paredes de 1.700m. ~2h em barco elétrico silencioso.', meta:'~520–650 NOK ida · norwaysbest.com'},
+    {cat:'tour', lat:60.8731, lng:6.8345, name:'★ Njardarheimr — Vila Viking de Gudvangen', day:'Dia 18', desc:'Vila viking reconstruída autêntica no fim do Nærøyfjord. Vikings de verdade contam histórias, lançamento de machado, arco e flecha, artesanato tradicional, café estilo viking.', meta:'~250 NOK · vikingvalley.no'},
+    {cat:'tour', lat:60.3970, lng:5.3140, name:'Bryggen — Patrimônio UNESCO', day:'Dia 19', desc:'Armazéns hanseáticos do séc. XIV. Becos, ateliês. Hanseatiske Museum ~120 NOK.', meta:'Gratuito (museu pago)'},
+    {cat:'tour', lat:60.3940, lng:5.3240, name:'Fish Market de Bergen', day:'Dia 19', desc:'Salmão, camarão, caranguejo rei nas bancas. Fish Me (fish & chips) é uma boa.', meta:'~200–350 NOK'},
+    {cat:'tour', lat:60.4060, lng:5.3260, name:'Bergenhus Fortress', day:'Dia 19', desc:"Fortaleza medieval de ~1700, uma das mais bem preservadas do país. Torre Rosenkrantz com vista do porto, Håkon's Hall (séc. XIII).", meta:'~150 NOK · 10:00–16:00'},
+    {cat:'tour', lat:60.3970, lng:5.3220, name:'Theta Museum — Resistência WWII', day:'Dia 19', desc:'Menor museu da Noruega: única sala em Bryggen reconstruída como o QG do grupo de resistência Theta, descoberto pelos nazistas em 1942.', meta:'~50 NOK · sáb 11:00–14:00'},
+    {cat:'tour', lat:60.3680, lng:5.3470, name:'Troldhaugen — Casa de Grieg', day:'Dia 20', desc:'Residência do compositor de Peer Gynt. Concertos ao vivo no verão. 8 km do centro.', meta:'~130 NOK · 09:00–18:00'},
+    {cat:'tour', lat:60.3920, lng:5.3290, name:'KODE Museus de Arte', day:'Dia 20', desc:'Edvard Munch, Grieg. 4 edifícios. Perfeito para dia de chuva.', meta:'~150 NOK · 10:00–17:00'},
+    {cat:'tour', lat:60.3490, lng:5.3360, name:'Fantoft Stave Church', day:'Dia 20', desc:'Única stave church em Bergen. Construída em 1170 em Sogn, transferida em 1883. Queimada em 1992 e reconstruída.', meta:'~70 NOK · mai-set'},
+    {cat:'tour', lat:60.7975, lng:5.7400, name:'★ Cruzeiro Mostraumen (Bergen)', day:'Dia 20', desc:'Mini-cruzeiro 3h saindo do porto de Bergen. Estreito Mostraumen, paredes vertiginosas, cachoeiras, vilarejos coloridos.', meta:'~600–700 NOK · whitelady.no'},
+
+    /* COMIDA */
+    {cat:'food', lat:61.1140, lng:10.4670, name:'Nikkers Sportsbar', day:'Dia 14', desc:'Hambúrguer de alce (moído no local!) e filé de rena. Chocolate fondant de sobremesa.', meta:'~250–400 NOK · 11:00–01:00'},
+    {cat:'food', lat:61.1155, lng:10.4655, name:'Hvelvet Restaurant', day:'Dia 14', desc:'Antigo cofre do Norges Bank que guardou o ouro da Noruega na WWII. Halibut, rena.', meta:'~700–1000 NOK · reserva obrigatória'},
+    {cat:'food', lat:62.1018, lng:7.2050, name:'Brasserie Posten', day:'Dia 15', desc:'Sopa de peixe, cerveja local, vista do fiorde no centro de Geiranger.', meta:'~350–600 NOK'},
+    {cat:'food', lat:60.7700, lng:7.1850, name:'Lindstrøm Hotel Restaurant (Lærdal)', day:'Dia 18', desc:'Hotel histórico no centro antigo de Lærdal. Cozinha local com produtos do vale. Bom para almoço entre Borgund e Flåm.', meta:'~350–600 NOK'},
+    {cat:'food', lat:60.8628, lng:7.1132, name:'Ægir BrewPub — jantar viking', day:'Dia 18', desc:'"Salão viking" com lareira de 9m. Viking Plank: 5 pratos + 5 cervejas. Chegue ~15h para garantir mesa!', meta:'~300–950 NOK'},
+    {cat:'food', lat:60.3970, lng:5.3215, name:'Enhjørningen', day:'Dia 19', desc:'Melhor frutos do mar de Bergen. Halibut, lutefisk. Ambiente do séc. XIV.', meta:'~800–1200 NOK · reserva obrigatória'},
+    {cat:'food', lat:60.3970, lng:5.3215, name:'Bryggeloftet & Stuene', day:'Dia 19', desc:'Desde 1910. Melhor sopa de peixe de Bergen. Tradição viva em Bryggen.', meta:'~450–750 NOK · 12:00–23:00'},
+    {cat:'food', lat:60.3935, lng:5.3260, name:'Trekroneren Hot Dog', day:'Dia 19', desc:'Hot dog de rena + lingonberry. Favorito dos locais. Aberto até de madrugada.', meta:'~80–130 NOK · 11:00–03:00'},
+    {cat:'food', lat:60.3590, lng:5.2680, name:'Cornelius Seafood Restaurant', day:'Dia 20', desc:'5 pratos de frutos do mar numa ilha! Menu muda diariamente conforme o pescado. Barco 18:00, volta 22:30.', meta:'~1145 NOK total · reserva obrigatória'}
+  ];
+
+  /* ═══════════════════════════════════════════════════════════════════
+     1. NAV ACTIVE STATE & BACK TO TOP — runs FIRST, independent of map
+     ═══════════════════════════════════════════════════════════════════ */
+  try{
+    var sections=document.querySelectorAll('.day-section[id]');
+    var navLinks=document.querySelectorAll('.nav a');
+    var toTopBtn=document.getElementById('toTop');
+
+    var ticking=false;
+    window.addEventListener('scroll',function(){
+      if(!ticking){
+        requestAnimationFrame(function(){
+          var cur='';
+          sections.forEach(function(s){if(window.scrollY>=s.offsetTop-120)cur=s.id});
+          navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur)});
+          if(toTopBtn) toTopBtn.classList.toggle('show',window.scrollY>600);
+          ticking=false;
+        });
+        ticking=true;
+      }
+    },{passive:true});
+
+    if(toTopBtn){
+      toTopBtn.addEventListener('click',function(){
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+    }
+  }catch(err){
+    console.warn('Nav/scroll init failed:',err);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     2. SCROLL REVEAL
+     ═══════════════════════════════════════════════════════════════════ */
+  try{
+    if('IntersectionObserver' in window){
+      var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(el){
+          if(el.isIntersecting){el.target.classList.add('in');obs.unobserve(el.target)}
+        });
+      },{threshold:.08,rootMargin:'0px 0px -50px 0px'});
+      document.querySelectorAll('.tl-item, .card, .pro-tip, .booking-summary, .day-header, .sec-label, .route-stop, .map-frame, .map-toolbar')
+        .forEach(function(el){el.classList.add('reveal');obs.observe(el)});
+    }else{
+      document.querySelectorAll('.tl-item, .card, .pro-tip, .booking-summary, .day-header, .sec-label, .route-stop, .map-frame, .map-toolbar')
+        .forEach(function(el){el.classList.add('reveal','in')});
+    }
+  }catch(err){
+    console.warn('Scroll reveal init failed:',err);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     3. LEAFLET MAP — wrapped in try/catch with friendly fallback
+     ═══════════════════════════════════════════════════════════════════ */
+  var mapEl = document.getElementById('map');
+  if(!mapEl){return}
+
+  function showMapFallback(message){
+    mapEl.innerHTML =
+      '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;'+
+      'flex-direction:column;gap:1rem;text-align:center;padding:2rem;color:#FAF7F2;'+
+      'font-family:JetBrains Mono,monospace;font-size:.78rem;letter-spacing:.06em">'+
+      '<div style="font-family:Fraunces,serif;font-style:italic;font-weight:300;font-size:1.4rem;letter-spacing:-.02em;color:#B8632E">Mapa indisponível</div>'+
+      '<div style="max-width:380px;line-height:1.7;color:#C7C2B8">'+message+'</div>'+
+      '<div style="margin-top:.8rem"><a href="https://www.google.com/maps/dir/Lillehammer/Geiranger/Sogndal/Fl%C3%A5m/Bergen" target="_blank" rel="noopener" '+
+      'style="font-family:JetBrains Mono,monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;'+
+      'color:#161513;background:#B8632E;padding:.7rem 1rem;text-decoration:none;font-weight:600;display:inline-block">'+
+      'Ver rota no Google Maps →</a></div></div>';
+    var tb=document.querySelector('.map-toolbar');
+    if(tb)tb.style.display='none';
+  }
+
+  function initMap(){
+    if(typeof L === 'undefined'){
+      showMapFallback('A biblioteca de mapas não carregou. Verifique sua conexão de internet.');
+      window.flyTo = function(){};
+      return;
+    }
+
+    var map;
+    try{
+      map = L.map('map',{scrollWheelZoom:false,zoomControl:true}).setView([61.2,8.5],6);
+
+      var primaryTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+        attribution:'©OpenStreetMap ©CARTO',
+        maxZoom:18,
+        subdomains:'abcd'
+      });
+      var tileFailCount = 0;
+      var fallbackTriggered = false;
+      primaryTiles.on('tileerror', function(){
+        tileFailCount++;
+        if(tileFailCount > 5 && !fallbackTriggered){
+          fallbackTriggered = true;
+          console.warn('CartoDB tiles failing, switching to OpenStreetMap');
+          map.removeLayer(primaryTiles);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+            attribution:'©OpenStreetMap',maxZoom:19
+          }).addTo(map);
+          var lc=document.querySelector('.leaflet-container');
+          if(lc) lc.style.background='#aadaff';
+        }
+      });
+      primaryTiles.addTo(map);
+
+      var layers={stop:[],trail:[],tour:[],view:[],food:[]};
+
+      function makeIcon(cat,isMain){
+        var c=CAT[cat].color;
+        var size=isMain?28:20;
+        var ring=isMain?'2px solid #FAF7F2':'1.5px solid #FAF7F2';
+        var shadow=isMain?'0 4px 10px rgba(0,0,0,.55)':'0 2px 6px rgba(0,0,0,.45)';
+        return L.divIcon({
+          className:'',
+          html:'<div style="background:'+c+';width:'+size+'px;height:'+size+'px;border-radius:50%;border:'+ring+';box-shadow:'+shadow+'"></div>',
+          iconSize:[size,size],iconAnchor:[size/2,size/2]
+        });
+      }
+
+      function makePopup(p){
+        var link=gmapsLink(p.name,p.lat,p.lng);
+        var cat=CAT[p.cat];
+        var dayBadge=p.day?'<span class="day">'+p.day+'</span>':'';
+        var meta=p.meta?'<div class="pop-meta">'+p.meta+'</div>':'';
+        var desc=p.desc?'<div class="pop-desc">'+p.desc+'</div>':'';
+        return '<div class="pop">'+
+          '<div class="pop-cat c-'+p.cat+'"><span>'+cat.label+'</span>'+dayBadge+'</div>'+
+          '<div class="pop-body">'+
+            '<div class="pop-title">'+(p.emoji||'')+' '+p.name+'</div>'+
+            desc+meta+
+          '</div>'+
+          '<a class="pop-gmaps" href="'+link+'" target="_blank" rel="noopener">Abrir no Google Maps</a>'+
+        '</div>';
+      }
+
+      points.forEach(function(p){
+        var isMain=p.cat==='stop';
+        var m=L.marker([p.lat,p.lng],{icon:makeIcon(p.cat,isMain)})
+          .bindPopup(makePopup(p),{maxWidth:280,minWidth:240,closeButton:true,autoPan:true});
+        m.__cat=p.cat;
+        layers[p.cat].push(m);
+        m.addTo(map);
+      });
+
+      var stopsOnly=points.filter(function(p){return p.cat==='stop'});
+      var routeOrder=['Lillehammer','Geiranger','Sogndal','Flåm','Bergen'];
+      var routeCoords=routeOrder
+        .map(function(n){return stopsOnly.find(function(p){return p.name===n})})
+        .filter(Boolean)
+        .map(function(p){return [p.lat,p.lng]});
+      L.polyline(routeCoords,{color:'#B8632E',weight:2,opacity:.85,dashArray:'5,7'}).addTo(map);
+
+      var activeFilters={};
+      Object.keys(CAT).forEach(function(c){activeFilters[c]=true});
+
+      function applyFilters(){
+        Object.keys(layers).forEach(function(cat){
+          var visible=activeFilters[cat];
+          layers[cat].forEach(function(m){
+            if(visible){if(!map.hasLayer(m))m.addTo(map)}
+            else{if(map.hasLayer(m))map.removeLayer(m)}
+          });
+        });
+      }
+      document.querySelectorAll('.map-filter[data-cat]').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          var cat=btn.dataset.cat;
+          if(activeFilters[cat]){activeFilters[cat]=false;btn.classList.add('off')}
+          else{activeFilters[cat]=true;btn.classList.remove('off')}
+          applyFilters();
+        });
+      });
+      var resetBtn=document.getElementById('mapReset');
+      if(resetBtn){
+        resetBtn.addEventListener('click',function(){
+          Object.keys(CAT).forEach(function(c){activeFilters[c]=true});
+          document.querySelectorAll('.map-filter[data-cat]').forEach(function(b){b.classList.remove('off')});
+          applyFilters();
+          map.flyTo([61.2,8.5],6,{duration:1.2});
+        });
+      }
+
+      window.flyTo = function(lat,lng,z){
+        try{
+          map.flyTo([lat,lng],z,{duration:1.5});
+          var target=points.find(function(p){return p.cat==='stop'&&Math.abs(p.lat-lat)<.1&&Math.abs(p.lng-lng)<.1});
+          if(target){
+            var marker=layers.stop.find(function(m){
+              var ll=m.getLatLng();
+              return Math.abs(ll.lat-target.lat)<.001&&Math.abs(ll.lng-target.lng)<.001;
+            });
+            if(marker)setTimeout(function(){marker.openPopup()},1500);
+          }
+        }catch(err){console.warn('flyTo failed:',err)}
+      };
+
+      setTimeout(function(){if(map)map.invalidateSize()},300);
+
+    }catch(err){
+      console.error('Map initialization failed:',err);
+      showMapFallback('Não foi possível inicializar o mapa interativo.');
+      window.flyTo = function(){};
+    }
+  }
+
+  /* Wait for Leaflet to load (it has defer, may not be ready when DOMContentLoaded fires) */
+  if(typeof L !== 'undefined'){
+    initMap();
+  }else{
+    var tries = 0;
+    var checkLeaflet = setInterval(function(){
+      tries++;
+      if(typeof L !== 'undefined'){
+        clearInterval(checkLeaflet);
+        initMap();
+      }else if(tries > 30){
+        clearInterval(checkLeaflet);
+        initMap();
+      }
+    },100);
+  }
+
+  if(typeof window.flyTo !== 'function'){
+    window.flyTo = function(){};
+  }
+
+});
+</script>
+</body>
+</html>
