@@ -1037,6 +1037,14 @@ h2.section-title em{
   color:#0f5264;
   border:1px solid rgba(20,80,100,0.2);
 }
+.tag-roadstop{
+  background:rgba(160,110,10,0.09);
+  color:#7a5510;
+  border:1px solid rgba(160,110,10,0.28);
+}
+/* Road-stop items: same muted treatment as drive but kept distinct */
+.tl-item.roadstop .t-title{ color:var(--ink-600,#4a4540); font-size:1.05rem; }
+.tl-item.roadstop::before{ background:rgba(160,110,10,0.25); border-color:rgba(160,110,10,0.55); }
 /* Drive items: slightly muted to recede visually */
 .tl-item.drive .t-title{ color:var(--ink-500); font-size:1.05rem; }
 .tl-item.drive .t-time { color:var(--ink-400); }
@@ -2414,6 +2422,18 @@ document.addEventListener('DOMContentLoaded', function(){
 /* ─── Auto-classify timeline items ─── */
 (function(){
   const rules = [
+    // road stops — quick stops that occur between driving segments
+    { tag:'roadstop',   label:'📌 Parada na Estrada', keywords:[
+        'strynefjellsvegen','gamle strynefjellsvegen',
+        'vindhellavegen',
+        'eagle road','ørnesvingen',
+        'undredal',
+        'stalheimskleiva',
+        'kjeåsen',
+        'ulvik',
+        'geilo',
+        'steinsdalsfossen'
+    ]},
     // driving / transfers
     { tag:'drive',      label:'🚗 Deslocamento', keywords:[
         'saída','partida','drive','chegada','oslo','bergen','lillehammer','geiranger','flåm','voss',
@@ -2429,14 +2449,14 @@ document.addEventListener('DOMContentLoaded', function(){
     // hiking / outdoor activities
     { tag:'trail',      label:'🥾 Trilha / Atividade', keywords:[
         'trilha','hike','hiking','caminhada','fossevandring','preikestolen','kjeragbolten',
-        'vøringsfossen','steinsdalsfossen','låtefoss','tvindefossen','briksdal','nigardsbreen',
+        'vøringsfossen','låtefoss','tvindefossen','briksdal','nigardsbreen',
         'safari','kayak','canoagem','ski','rafting','via ferrata','cascata','cachoeira','geleira',
         'glacier','natteisfossen'
     ]},
     // viewpoints / photography stops
     { tag:'viewpoint',  label:'📸 Mirante', keywords:[
-        'flydalsjuvet','ørnesvingen','dalsnibba','stegastein','utsiktspunkt','viewpoint',
-        'mirante','panorama','vista','bjørndalsstølen','trollstigen','eidsdal'
+        'flydalsjuvet','dalsnibba','stegastein','utsiktspunkt','viewpoint',
+        'mirante','panorama','bjørndalsstølen','trollstigen'
     ]},
     // churches / historical
     { tag:'church',     label:'⛪ Igreja Histórica', keywords:[
@@ -2470,7 +2490,8 @@ document.addEventListener('DOMContentLoaded', function(){
     if(!titleEl) return;
     const match = classify(titleEl.textContent);
     if(!match) return;
-    item.classList.add(match.tag === 'drive' ? 'drive' : '');
+    if(match.tag === 'drive')    item.classList.add('drive');
+    if(match.tag === 'roadstop') item.classList.add('roadstop');
     const chip = document.createElement('div');
     chip.className = 'type-tag tag-' + match.tag;
     chip.textContent = match.label;
