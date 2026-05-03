@@ -982,6 +982,66 @@ h2.section-title em{
   font-variation-settings:"opsz" 14,"wght" 400;
 }
 
+/* ─── Type tags — classify timeline items at a glance ─── */
+.type-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:0.3em;
+  font-family:var(--mono);
+  font-size:0.58rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  font-weight:700;
+  padding:0.18rem 0.55rem;
+  margin-bottom:0.4rem;
+  border-radius:2px;
+  line-height:1.4;
+}
+.tag-drive{
+  background:var(--paper-200);
+  color:var(--ink-400);
+  border:1px solid var(--ink-200);
+}
+.tag-visit{
+  background:rgba(184,99,46,0.08);
+  color:var(--accent);
+  border:1px solid rgba(184,99,46,0.25);
+}
+.tag-trail{
+  background:rgba(34,85,65,0.08);
+  color:#22553a;
+  border:1px solid rgba(34,85,65,0.25);
+}
+.tag-food{
+  background:rgba(160,40,30,0.07);
+  color:#a0281e;
+  border:1px solid rgba(160,40,30,0.2);
+}
+.tag-boat{
+  background:rgba(30,90,160,0.07);
+  color:#1a5898;
+  border:1px solid rgba(30,90,160,0.2);
+}
+.tag-viewpoint{
+  background:rgba(80,50,130,0.07);
+  color:#543285;
+  border:1px solid rgba(80,50,130,0.2);
+}
+.tag-church{
+  background:rgba(100,70,20,0.07);
+  color:#6b4710;
+  border:1px solid rgba(100,70,20,0.2);
+}
+.tag-museum{
+  background:rgba(20,80,100,0.07);
+  color:#0f5264;
+  border:1px solid rgba(20,80,100,0.2);
+}
+/* Drive items: slightly muted to recede visually */
+.tl-item.drive .t-title{ color:var(--ink-500); font-size:1.05rem; }
+.tl-item.drive .t-time { color:var(--ink-400); }
+.tl-item.drive::before{ background:var(--ink-200); border-color:var(--ink-300); }
+
 /* Price chips — subtle, mono */
 .price-row{
   display:flex;
@@ -2351,6 +2411,84 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
 });
+
+/* ─── Auto-classify timeline items ─── */
+(function(){
+  const rules = [
+    // driving / transfers
+    { tag:'drive',      label:'🚗 Deslocamento', keywords:[
+        'saída','partida','drive','chegada','oslo','bergen','lillehammer','geiranger','flåm','voss',
+        'sogndal','balestrand','aurland','gudvangen','otta','lom','hjerkinn','hjelle','grotli',
+        'stryn','sandane','lavik','lærdal','fagernes','km','ferry chegada','saída de','partida de',
+        'check-in','check-out','aeroporto','airport','buss','trem de bagagem'
+    ]},
+    // boats / trains / public transport
+    { tag:'boat',       label:'⛴️ Barco / Trem', keywords:[
+        'ferry','ferje','flåmsbana','nærøyfjord','sognefjord','osterfjord','hardangerfjord',
+        'cruzeiro','cruise','catamarã','catamaran','barca','express boat','ruten'
+    ]},
+    // hiking / outdoor activities
+    { tag:'trail',      label:'🥾 Trilha / Atividade', keywords:[
+        'trilha','hike','hiking','caminhada','fossevandring','preikestolen','kjeragbolten',
+        'vøringsfossen','steinsdalsfossen','låtefoss','tvindefossen','briksdal','nigardsbreen',
+        'safari','kayak','canoagem','ski','rafting','via ferrata','cascata','cachoeira','geleira',
+        'glacier','natteisfossen'
+    ]},
+    // viewpoints / photography stops
+    { tag:'viewpoint',  label:'📸 Mirante', keywords:[
+        'flydalsjuvet','ørnesvingen','dalsnibba','stegastein','utsiktspunkt','viewpoint',
+        'mirante','panorama','vista','bjørndalsstølen','trollstigen','eidsdal'
+    ]},
+    // churches / historical
+    { tag:'church',     label:'⛪ Igreja Histórica', keywords:[
+        'stavkirke','stave church','lom','borgund','urnes','kaupanger','heddal','fantoft'
+    ]},
+    // museums
+    { tag:'museum',     label:'🏛️ Museu', keywords:[
+        'museum','museu','maihaugen','norsk','folkemuseum','viking','bryggen','bergen museum',
+        'aquarium','akvariet'
+    ]},
+    // food / meals
+    { tag:'food',       label:'🍴 Refeição', keywords:[
+        'jantar','almoço','café','lunch','dinner','breakfast','restaurant','restaurante',
+        'ægir','brewpub','middag','mat'
+    ]},
+    // generic visit (fallback for hi/out items)
+    { tag:'visit',      label:'📍 Visita', keywords:[] }
+  ];
+
+  function classify(title){
+    const t = title.toLowerCase();
+    for(const rule of rules){
+      if(rule.tag === 'visit') continue;
+      if(rule.keywords.some(k => t.includes(k))) return rule;
+    }
+    return null;
+  }
+
+  document.querySelectorAll('.tl-item').forEach(item => {
+    const titleEl = item.querySelector('.t-title');
+    if(!titleEl) return;
+    const match = classify(titleEl.textContent);
+    if(!match) return;
+    item.classList.add(match.tag === 'drive' ? 'drive' : '');
+    const chip = document.createElement('div');
+    chip.className = 'type-tag tag-' + match.tag;
+    chip.textContent = match.label;
+    titleEl.insertAdjacentElement('beforebegin', chip);
+  });
+
+  // fallback: .tl-item.hi and .tl-item.out with no chip yet → generic visit
+  document.querySelectorAll('.tl-item.hi, .tl-item.out').forEach(item => {
+    if(item.querySelector('.type-tag')) return;
+    const titleEl = item.querySelector('.t-title');
+    if(!titleEl) return;
+    const chip = document.createElement('div');
+    chip.className = 'type-tag tag-visit';
+    chip.textContent = '📍 Visita';
+    titleEl.insertAdjacentElement('beforebegin', chip);
+  });
+})();
 </script>
 </body>
 </html>
