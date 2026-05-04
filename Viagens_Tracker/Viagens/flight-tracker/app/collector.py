@@ -37,6 +37,7 @@ def _search_one(search, ida, volta):
         "outbound_date": ida,
         "currency": search.get("moeda", "BRL"),
         "hl": "pt",
+        "gl": "br",
         "adults": search.get("pax", 1),
         "api_key": config.SERPAPI_KEY,
     }
