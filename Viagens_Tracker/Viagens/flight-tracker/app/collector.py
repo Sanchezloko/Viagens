@@ -38,6 +38,7 @@ def _search_one(search, ida, volta):
         "currency": search.get("moeda", "BRL"),
         "hl": "pt",
         "gl": "br",
+        "no_cache": "true",
         "adults": search.get("pax", 1),
         "api_key": config.SERPAPI_KEY,
     }

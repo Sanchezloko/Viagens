@@ -14,9 +14,22 @@
 #   max_consultas_por_run  (opcional) limite de chamadas Amadeus por execução (default 8)
 #   ativo           true/false
 
-- id: londres-natal-2026
+- id: londres-natal-2026-lhr
   origem: GRU
   destino: LHR
+  ida_min: 2026-12-25
+  ida_max: 2026-12-25
+  volta_min: 2027-01-02
+  volta_max: 2027-01-02
+  pax: 1
+  classe: ECONOMY
+  step_dias: 1
+  max_consultas_por_run: 1
+  ativo: true
+
+- id: londres-natal-2026-lgw
+  origem: GRU
+  destino: LGW
   ida_min: 2026-12-25
   ida_max: 2026-12-25
   volta_min: 2027-01-02

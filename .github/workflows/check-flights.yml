@@ -2,11 +2,9 @@ name: Check flights
 
 on:
   schedule:
-    # 3x/dia = ~90 calls/mês — dentro do free tier do SerpApi (100/mês)
+    # 1x/dia × 2 buscas = 60 calls/mês — dentro do free tier SerpApi (100/mês)
     # BR = UTC-3
     - cron: '0 3 * * *'   # 00:00 BRT (madrugada)
-    - cron: '0 12 * * *'  # 09:00 BRT (manhã)
-    - cron: '0 21 * * *'  # 18:00 BRT (fim do dia)
 
   workflow_dispatch: {}  # permite rodar manual via UI
 
