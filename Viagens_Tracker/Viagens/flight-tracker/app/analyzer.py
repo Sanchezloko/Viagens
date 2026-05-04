@@ -41,7 +41,22 @@ def evaluate(search_id, preco_atual, preco_alvo=None):
         stats["motivo"] = f"preço ≤ alvo (R$ {preco_alvo:.2f})"
         return _check_cooldown(search_id, stats)
 
-    # Sem histórico suficiente → cold start
+    # Regra 2: bootstrap — menos de 2 semanas de histórico, usa preço fixo
+    if n < config.BOOTSTRAP_SAMPLES:
+        if preco_atual <= config.BOOTSTRAP_TARGET:
+            stats["deve_alertar"] = True
+            stats["motivo"] = (
+                f"bootstrap: preço ≤ R$ {config.BOOTSTRAP_TARGET:.0f} "
+                f"({n}/{config.BOOTSTRAP_SAMPLES} amostras)"
+            )
+            return _check_cooldown(search_id, stats)
+        stats["motivo"] = (
+            f"bootstrap: acima de R$ {config.BOOTSTRAP_TARGET:.0f} "
+            f"({n}/{config.BOOTSTRAP_SAMPLES} amostras)"
+        )
+        return stats
+
+    # Sem histórico suficiente para estatística → cold start
     if n < config.MIN_SAMPLES_FOR_ALERT:
         stats["motivo"] = f"cold start ({n}/{config.MIN_SAMPLES_FOR_ALERT} amostras)"
         return stats
