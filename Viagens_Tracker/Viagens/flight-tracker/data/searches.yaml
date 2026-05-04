@@ -23,8 +23,7 @@
   volta_max: 2027-01-02
   pax: 1
   classe: ECONOMY
-  preco_alvo: 3500
-  step_dias: 1
+step_dias: 1
   max_consultas_por_run: 1
   ativo: true
 
