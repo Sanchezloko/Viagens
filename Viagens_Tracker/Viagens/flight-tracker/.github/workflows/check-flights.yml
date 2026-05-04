@@ -1,0 +1,57 @@
+name: Check flights
+
+on:
+  schedule:
+    # 10x/dia, otimizado pra usar ~90% da quota gratuita Amadeus (2k calls/mês)
+    # com 1 busca ativa e max_consultas_por_run=6.
+    # Concentração na madrugada BRT (00:00–06:00) — janela estatisticamente mais barata.
+    # BR = UTC-3.
+
+    # 🌙 Madrugada BRT (5 runs, intervalo de 1h30)
+    - cron: '0 3,6,9 * * *'    # 00:00, 03:00, 06:00 BRT
+    - cron: '30 4,7 * * *'     # 01:30, 04:30 BRT
+
+    # ☀️ Dia (3 runs)
+    - cron: '0 12,15,18 * * *' # 09:00, 12:00, 15:00 BRT
+
+    # 🌆 Noite (2 runs)
+    - cron: '0 21 * * *'       # 18:00 BRT
+    - cron: '0 0 * * *'        # 21:00 BRT (UTC = 00:00 do dia seguinte)
+
+  workflow_dispatch: {}  # permite rodar manual via UI
+
+concurrency:
+  group: check-flights
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install deps
+        working-directory: flight-tracker
+        run: pip install -r requirements.txt
+
+      - name: Run flight check
+        working-directory: flight-tracker
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python -m app.main
+
+      - name: Commit DB updates
+        run: |
+          git config user.name "flight-tracker-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add flight-tracker/data/flights.db
+          git diff --staged --quiet || git commit -m "chore: update price history"
+          git push
