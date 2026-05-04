@@ -64,7 +64,7 @@ def _search_one(search, ida, volta):
         print(f"  ! SerpApi error em {ida}->{volta}: {data['error']}")
         return None
 
-    flights = data.get("best_flights") or data.get("other_flights") or []
+    flights = (data.get("best_flights") or []) + (data.get("other_flights") or [])
     if not flights:
         return None
 
