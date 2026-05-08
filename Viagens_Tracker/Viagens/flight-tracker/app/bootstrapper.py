@@ -84,22 +84,19 @@ def _fetch_month(search, year, month):
     return results
 
 
-def bootstrap_if_needed(search):
-    """Seed price_history from Travelpayouts on the first run for a search.
+def fetch_market_context(search):
+    """Append Travelpayouts cross-sectional prices every run.
 
-    Queries prices across the target departure month ±1, giving ~30-90 data
-    points so the statistical analyzer works from day one instead of waiting
-    weeks for the SerpApi baseline to accumulate.
+    Queries prices across the target departure month ±1 on every execution,
+    building a longitudinal record of how market prices evolve over time.
+    Combined with real-time SerpApi data, this gives the analyzer a richer
+    baseline for anomaly detection.
     """
     if not config.TRAVELPAYOUTS_TOKEN:
         return
 
     sid = search["id"]
-    existing = db.recent_prices(sid, days=config.HISTORY_DAYS)
-    if len(existing) >= config.BOOTSTRAP_SAMPLES:
-        return
-
-    print(f"  ~ bootstrap {sid}: consultando Travelpayouts para baseline inicial...")
+    print(f"  ~ mercado {sid}: consultando Travelpayouts...")
 
     months = _target_months(search)
     if not months:

@@ -66,7 +66,7 @@ def main():
     print(f"Processando {len(searches)} busca(s)...")
     for s in searches:
         try:
-            bootstrapper.bootstrap_if_needed(s)
+            bootstrapper.fetch_market_context(s)
             process_search(s)
         except Exception as e:
             print(f"! erro em {s.get('id', '?')}: {e}")
