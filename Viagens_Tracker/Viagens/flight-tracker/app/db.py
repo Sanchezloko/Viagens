@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS price_history (
     moeda TEXT NOT NULL,
     cia TEXT,
     link TEXT,
+    fonte TEXT,
     coletado_em TEXT NOT NULL
 );
 
@@ -51,19 +52,35 @@ def conn():
 def init():
     with conn() as c:
         c.executescript(SCHEMA)
+        try:
+            c.execute("ALTER TABLE price_history ADD COLUMN fonte TEXT")
+        except Exception:
+            pass  # coluna já existe
 
 
 def insert_price(search_id, origem, destino, data_ida, data_volta,
-                 pax, classe, preco, moeda, cia, link):
+                 pax, classe, preco, moeda, cia, link, fonte=None):
     with conn() as c:
         c.execute(
             """INSERT INTO price_history
                (search_id, origem, destino, data_ida, data_volta, pax, classe,
-                preco, moeda, cia, link, coletado_em)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",
+                preco, moeda, cia, link, fonte, coletado_em)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (search_id, origem, destino, data_ida, data_volta, pax, classe,
-             preco, moeda, cia, link, datetime.now(timezone.utc).isoformat()),
+             preco, moeda, cia, link, fonte, datetime.now(timezone.utc).isoformat()),
         )
+
+
+def has_travelpayouts_today(search_id):
+    today = datetime.now(timezone.utc).date().isoformat()
+    with conn() as c:
+        row = c.execute(
+            """SELECT 1 FROM price_history
+               WHERE search_id = ? AND fonte = 'travelpayouts' AND coletado_em >= ?
+               LIMIT 1""",
+            (search_id, today),
+        ).fetchone()
+        return row is not None
 
 
 def recent_prices(search_id, days=None):

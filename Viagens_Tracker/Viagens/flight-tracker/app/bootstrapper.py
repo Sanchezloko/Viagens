@@ -96,6 +96,9 @@ def fetch_market_context(search):
         return
 
     sid = search["id"]
+    if db.has_travelpayouts_today(sid):
+        print(f"  ~ mercado {sid}: Travelpayouts já consultado hoje, pulando")
+        return
     print(f"  ~ mercado {sid}: consultando Travelpayouts...")
 
     months = _target_months(search)
@@ -126,5 +129,6 @@ def fetch_market_context(search):
             moeda=r["moeda"],
             cia=r.get("cia"),
             link=None,
+            fonte="travelpayouts",
         )
     print(f"  + {len(all_results)} preços de baseline inseridos")

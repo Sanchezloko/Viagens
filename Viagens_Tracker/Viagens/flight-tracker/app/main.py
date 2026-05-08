@@ -35,6 +35,7 @@ def process_search(search):
             moeda=r["moeda"],
             cia=r.get("cia"),
             link=None,
+            fonte="serpapi",
         )
     print(f"  + {len(todos)} preços coletados, melhor R$ {melhor['preco']:.2f}")
 
