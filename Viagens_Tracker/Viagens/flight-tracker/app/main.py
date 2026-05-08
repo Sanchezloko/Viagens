@@ -1,6 +1,6 @@
 import sys
 import yaml
-from . import config, db, collector, analyzer, notifier, bootstrapper
+from . import config, db, collector, analyzer, notifier
 
 
 def load_searches():
@@ -35,7 +35,6 @@ def process_search(search):
             moeda=r["moeda"],
             cia=r.get("cia"),
             link=None,
-            fonte="serpapi",
         )
     print(f"  + {len(todos)} preços coletados, melhor R$ {melhor['preco']:.2f}")
 
@@ -67,7 +66,6 @@ def main():
     print(f"Processando {len(searches)} busca(s)...")
     for s in searches:
         try:
-            bootstrapper.fetch_market_context(s)
             process_search(s)
         except Exception as e:
             print(f"! erro em {s.get('id', '?')}: {e}")

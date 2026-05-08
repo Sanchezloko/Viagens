@@ -10,7 +10,6 @@ DB_PATH = DATA_DIR / "flights.db"
 SEARCHES_PATH = DATA_DIR / "searches.yaml"
 
 SERPAPI_KEY = os.getenv("SERPAPI_KEY", "")
-TRAVELPAYOUTS_TOKEN = os.getenv("TRAVELPAYOUTS_TOKEN", "")
 
 NTFY_TOPIC = os.getenv("NTFY_TOPIC", "")
 
