@@ -1,6 +1,6 @@
 import sys
 import yaml
-from . import config, db, collector, analyzer, notifier
+from . import config, db, collector, analyzer, notifier, bootstrapper
 
 
 def load_searches():
@@ -66,6 +66,7 @@ def main():
     print(f"Processando {len(searches)} busca(s)...")
     for s in searches:
         try:
+            bootstrapper.bootstrap_if_needed(s)
             process_search(s)
         except Exception as e:
             print(f"! erro em {s.get('id', '?')}: {e}")
