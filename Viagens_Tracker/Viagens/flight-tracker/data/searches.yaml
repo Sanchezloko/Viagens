@@ -25,6 +25,7 @@
   classe: ECONOMY
   step_dias: 1
   max_consultas_por_run: 1
+  nao_paradas: true
   ativo: true
 
 - id: londres-natal-2026-lgw
@@ -38,6 +39,7 @@
   classe: ECONOMY
   step_dias: 1
   max_consultas_por_run: 1
+  nao_paradas: true
   ativo: true
 
 # Exemplo desativado pra referência:
