@@ -21,4 +21,4 @@ HISTORY_DAYS = int(os.getenv("HISTORY_DAYS", "90"))
 
 # Bootstrap: enquanto não há histórico suficiente (< 2 semanas), usa preço fixo
 BOOTSTRAP_SAMPLES = int(os.getenv("BOOTSTRAP_SAMPLES", "30"))  # 3 runs/dia × 10 dias
-BOOTSTRAP_TARGET = float(os.getenv("BOOTSTRAP_TARGET", "6500.0"))
+BOOTSTRAP_TARGET = float(os.getenv("BOOTSTRAP_TARGET", "5000.0"))
