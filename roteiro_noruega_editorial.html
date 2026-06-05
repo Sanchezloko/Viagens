@@ -568,6 +568,47 @@ h2.section-title em{
   50%{opacity:.5;transform:scale(.85)}
 }
 
+/* Botão tela cheia */
+.map-fs-btn{
+  position:absolute;
+  top:1.2rem;right:1.2rem;
+  z-index:11;
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  font-family:var(--mono);
+  font-size:0.6rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--paper-200);
+  background:rgba(14,26,28,.78);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  padding:0.5rem 0.8rem;
+  border:1px solid rgba(232,224,210,.28);
+  cursor:pointer;
+  transition:background 0.2s,color 0.2s;
+}
+.map-fs-btn:hover{background:var(--accent);color:var(--ink-900)}
+.map-fs-btn .fs-ico{font-size:0.95rem;line-height:1}
+@media (max-width:768px){
+  .map-fs-btn{top:auto;bottom:1rem;right:1rem;padding:0.6rem 0.9rem;font-size:0.62rem}
+  .map-fs-btn .fs-txt{display:none}
+  .map-fs-btn .fs-ico{font-size:1.2rem}
+}
+/* Estado tela cheia (CSS — funciona em iPhone também) */
+.map-frame.fs-active{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  margin:0;
+  border:none;
+  background:#0E1A1C;
+}
+.map-frame.fs-active #map{height:100vh;height:100dvh}
+body.fs-lock{overflow:hidden}
+
 #map{height:560px;filter:contrast(1.05) brightness(0.92)}
 
 .map-toolbar{
@@ -1649,6 +1690,9 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
   <div class="map-frame">
     <div class="map-corners"><span class="map-corner bl"></span><span class="map-corner br"></span></div>
     <div class="map-label">Carta · Noruega Ocidental</div>
+    <button class="map-fs-btn" id="mapFsBtn" type="button" aria-label="Abrir mapa em tela cheia">
+      <span class="fs-ico">⛶</span><span class="fs-txt">Tela cheia</span>
+    </button>
     <div id="map"></div>
   </div>
 
@@ -1723,17 +1767,16 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
 
   <div class="timeline">
     <div class="tl-item"><div class="t-time">10:00</div><div class="t-title">Saída de Oslo pela E6</div><div class="t-desc">Abasteça em Oslo. Estrada boa, ~2h30.</div></div>
-    <div class="tl-item hi"><div class="t-time">12:30</div><div class="t-title">Chegada em Lillehammer</div><div class="t-desc">Margem do Lago Mjøsa. Comece pelo centro histórico — Storgata é a rua principal.</div></div>
-    <div class="tl-item"><div class="t-time">13:00<br>16:30</div><div class="t-title">Museu ao Ar Livre Maihaugen</div><div class="t-desc">200+ casas históricas (séc. XIII–XXI), Igreja Stave de Garmo, Museu Olímpico. Atores em trajes de época no verão.</div><div class="price-row"><span class="price-chip">🎟️ ~210 NOK adulto</span><span class="price-chip">👨‍👩‍👧‍👦 Crianças extras grátis</span></div><span class="booking-tag ok">Sem reserva</span></div>
-    <div class="tl-item"><div class="t-time">17:00<br>19:00</div><div class="t-title">🥾 Trilha à sua escolha</div><div class="t-desc">Três opções de trilha saindo de Lillehammer — escolha conforme disposição. Ver seção de trilhas abaixo.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
-    <div class="tl-item"><div class="t-time">20:00</div><div class="t-title">Jantar em Lillehammer</div><div class="t-desc">Nikkers Sportsbar para hambúrguer de alce, ou Hvelvet (cofre histórico do Norges Bank) para jantar especial.</div></div>
+    <div class="tl-item hi"><div class="t-time">12:30</div><div class="t-title">Chegada em Lillehammer</div><div class="t-desc">Margem do Lago Mjøsa. Centro histórico na Storgata.</div></div>
+    <div class="tl-item hi"><div class="t-time">13:00<br>16:30</div><div class="t-title">Museu ao Ar Livre Maihaugen</div><div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Maihaugen+Lillehammer" target="_blank" style="color:var(--accent);">📍 Maihaugen, Lillehammer</a>. 200+ casas históricas (séc. XIII–XXI), Igreja Stave de Garmo, Museu Olímpico.</div><div class="price-row"><span class="price-chip">🎟️ ~210 NOK adulto</span></div><span class="booking-tag ok">Sem reserva</span></div>
+    <div class="tl-item"><div class="t-time">17:00<br>19:00</div><div class="t-title">🥾 Trilha à sua escolha</div><div class="t-desc">Três opções abaixo — escolha conforme disposição.</div></div>
   </div>
 
   <div class="sec-label alt-label">🥾 Trilhas em Lillehammer <span class="count">três opções</span></div>
   <div class="card-grid c3">
-    <div class="card"><div class="card-label out">🥾 Fácil · Lago</div><h4>Fåberg Cultural Trail</h4><div class="card-meta">📍 Margem do Mjøsa · ⏱️ ~2h · 5 km · Fácil</div><p>Trilha histórica pela beira do maior lago da Noruega. Petróglifos antigos esculpidos nas rochas, mirantes sobre o Mjøsa e florestas de bétula. Golden hour espetacular ao entardecer. Saída do centro de Lillehammer.</p><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
-    <div class="card"><div class="card-label out">🥾 Fácil · Rio</div><h4>Mesnaelva — trilha do rio</h4><div class="card-meta">📍 Saída do centro · ⏱️ ~1h30 · 4 km · Fácil</div><p>Caminhada tranquila às margens do rio Mesna, com corredeiras, pequenas cachoeiras e floresta boreal fechada. O rio corta a cidade e a trilha é acessível diretamente do centro histórico. Ótima para quem quer algo próximo e rápido.</p><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
-    <div class="card"><div class="card-label out">🥾 Moderada · Vista</div><h4>Balberg — mirante panorâmico</h4><div class="card-meta">📍 ~10 km do centro · ⏱️ ~3h · Moderada</div><p>Subida até o planalto de Balberg com vista 360° sobre Lillehammer, o Mjøsa e os vales ao redor. Trilha por floresta de pinheiros até campo aberto no topo. Esforço recompensador — melhor mirante da região para quem quer ir além do lago.</p><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
+    <div class="card"><div class="card-label out">🥾 Fácil · Lago</div><h4>Fåberg Cultural Trail</h4><div class="card-meta"><a href="https://www.google.com/maps/search/?api=1&query=F%C3%A5berg+kirke+Lillehammer" target="_blank" style="color:var(--accent);">📍 Início: Fåberg kirke</a> · ⏱️ ~2h · 5 km · Fácil</div><p>Da igreja até os petróglifos em Drotten. Margem do Mjøsa, florestas de bétula. Estacionamento grátis junto à igreja.</p><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
+    <div class="card"><div class="card-label out">🥾 Fácil · Rio</div><h4>Mesnaelva — trilha do rio</h4><div class="card-meta"><a href="https://www.google.com/maps/search/?api=1&query=Strandtorget+Lillehammer" target="_blank" style="color:var(--accent);">📍 Início: Strandtorget</a> · ⏱️ ~1h30 · 4 km · Fácil</div><p>Do shopping Strandtorget rio acima até Svarga. Corredeiras, cachoeiras e floresta boreal. Estacionamento no Strandtorget.</p><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
+    <div class="card"><div class="card-label out">🥾 Moderada · Vista</div><h4>Balberg — mirante panorâmico</h4><div class="card-meta"><a href="https://www.google.com/maps/search/?api=1&query=Balbergskaret+Lillehammer" target="_blank" style="color:var(--accent);">📍 Início: Balbergskaret</a> · ⏱️ ~3h · Moderada</div><p>Estacionamento no fim da Kringsjåvegen (poucas vagas, Vipps). Subida íngreme ~1 km até o topo (671m) com vista 360° e balanço.</p><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
   </div>
 
   <div class="sec-label alt-label">Alternativas de passeio <span class="count">cinco opções</span></div>
@@ -1745,12 +1788,6 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="card"><div class="card-label out">🎿 Adrenalina</div><h4>Wheelbob — pista de bobsled</h4><div class="card-meta">📍 Hunderfossen, 15 km · ⏰ 10:00–17:00</div><p>A única pista de bobsled da Escandinávia. Desça sobre rodas na pista olímpica de 1994.</p><div class="price-row"><span class="price-chip">~250 NOK/descida</span></div><span class="booking-tag ok">Sem reserva</span></div>
   </div>
 
-  <div class="sec-label food">À mesa <span class="count">três escolhas</span></div>
-  <div class="card-grid c3">
-    <div class="card"><div class="card-label food-m">$$ Jantar</div><h4>Nikkers Sportsbar</h4><div class="card-meta">📍 Storgata · ⏰ 11:00–01:00</div><p>Hambúrguer de alce (moído no local) e filé de rena. Chocolate fondant de sobremesa.</p><div class="price-row"><span class="price-chip">~250–400 NOK</span></div></div>
-    <div class="card"><div class="card-label food-b">$ Almoço</div><h4>Café Maihaugen</h4><div class="card-meta">📍 No museu · ⏰ 10:00–16:00</div><p>Sopas tradicionais e bolos caseiros noruegueses.</p><div class="price-row"><span class="price-chip">~150–220 NOK</span></div></div>
-    <div class="card"><div class="card-label food-p">$$$ Especial</div><h4>Hvelvet Restaurant</h4><div class="card-meta">📍 Antigo cofre do Norges Bank · ⏰ 17:00–22:00</div><p>Culinária moderna no histórico cofre que guardou o ouro da Noruega na WWII. Halibut, rena.</p><div class="price-row"><span class="price-chip">~700–1000 NOK</span></div><span class="booking-tag must">Reserva obrigatória</span></div>
-  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
@@ -1771,14 +1808,12 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
   </div>
 
   <div class="timeline">
-    <div class="tl-item"><div class="t-time">09:00</div><div class="t-title">Saída de Lillehammer pela E6/E15</div><div class="t-desc">Siga pela E6 norte até Otta (~1h45), depois E15 oeste até Lom (~50 min). Paisagem do Gudbrandsdalen abrindo para os Alpes Jotunheimen.</div></div>
-    <div class="tl-item hi"><div class="t-time">11:30</div><div class="t-title">Chegada em Lom — almoço</div><div class="t-desc">Aldeia charming no coração de Gudbrandsdalen. Café ou almoço rápido antes da visita à stavkirke — há padarias e cafés a poucos passos da igreja.</div></div>
-    <div class="tl-item hi"><div class="t-time">12:00<br>12:45</div><div class="t-title">⛪ Lom Stavkirke — Igreja de Lom</div><div class="t-desc">Igreja de madeira do séc. XII com pinturas internas barrocas do séc. XVII e torre impressionante. Uma das stavkirkes mais belas da Noruega — e uma das mais visitadas.</div><div class="price-row"><span class="price-chip">🎟️ ~100 NOK</span><span class="price-chip">⏰ 09:00–17:00 (jun–ago)</span></div><span class="booking-tag ok">Sem reserva</span></div>
-    <div class="tl-item out"><div class="t-time">13:30<br>14:15</div><div class="t-title">🛣️ Gamle Strynefjellsvegen — Rota Histórica Nacional</div><div class="t-desc">Estrada histórica de 27 km construída em 1881–1894, começa em Grotli e termina em Videsæter — exatamente no trecho Lom→Geiranger da Rv15. Lagos alpinos, passes de montanha e construções históricas de pedra. Uma das 18 Rotas Turísticas Nacionais da Noruega, quase sem turistas. Siga as placas "Strynefjellsvegen" saindo de Grotli — adiciona apenas 30–45 min ao trecho já percorrido.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⏱️ +30–45 min na rota</span><span class="price-chip">⏰ Aberta em julho</span></div></div>
-    <div class="tl-item hi"><div class="t-time">16:15</div><div class="t-title">📸 Mirante Flydalsjuvet</div><div class="t-desc">4 km antes de Geiranger. A vista icônica do fiorde de cima. "Cadeira" na borda para fotos. Estacionamento e banheiros gratuitos.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
-    <div class="tl-item hi"><div class="t-time">16:30</div><div class="t-title">Chegada em Geiranger</div><div class="t-desc">Centro histórico do fiorde. Caiaques e pedalinhos para alugar no porto.</div></div>
-    <div class="tl-item out"><div class="t-time">19:00<br>20:00</div><div class="t-title">🥾 Fossevandring — trilha da cachoeira</div><div class="t-desc">327 degraus, cachoeira Storfossen de perto, ~30 min subida. Saída do centro. Gratuito.</div></div>
-    <div class="tl-item"><div class="t-time">21:00</div><div class="t-title">Jantar</div><div class="t-desc">Brasserie Posten (sopa de peixe, cerveja local, ~350–600 NOK) com vista do fiorde dourado. Sol ainda alto — aproveitam cada minuto.</div></div>
+    <div class="tl-item"><div class="t-time">09:00</div><div class="t-title">Saída de Lillehammer pela E6/E15</div><div class="t-desc">E6 norte até Otta (~1h45), depois E15 oeste até Lom (~50 min).</div></div>
+    <div class="tl-item hi"><div class="t-time">~11:30<br>12:45</div><div class="t-title">⛪ Lom Stavkirke</div><div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Lom+Stavkyrkje" target="_blank" style="color:var(--accent);">📍 Lom Stavkyrkje</a>. Igreja de madeira do séc. XII com pinturas barrocas do séc. XVII. Uma das mais belas da Noruega.</div><div class="price-row"><span class="price-chip">🎟️ ~100 NOK</span></div><span class="booking-tag ok">Sem reserva</span></div>
+    <div class="tl-item out"><div class="t-time">13:30<br>14:15</div><div class="t-title">🛣️ Gamle Strynefjellsvegen</div><div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Gamle+Strynefjellsvegen+Grotli" target="_blank" style="color:var(--accent);">📍 Início em Grotli</a>. Rota Histórica Nacional de 27 km (1881–1894). Lagos alpinos, passes de montanha, quase sem turistas. +30–45 min na rota.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⏰ Aberta em julho</span></div></div>
+    <div class="tl-item hi"><div class="t-time">16:15</div><div class="t-title">📸 Mirante Flydalsjuvet</div><div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Flydalsjuvet+viewpoint+Geiranger" target="_blank" style="color:var(--accent);">📍 Flydalsjuvet</a>. 4 km antes de Geiranger. A vista icônica do fiorde. "Cadeira" na borda para fotos.</div></div>
+    <div class="tl-item"><div class="t-time">16:30</div><div class="t-title">Chegada em Geiranger</div><div class="t-desc">Centro do fiorde.</div></div>
+    <div class="tl-item out"><div class="t-time">19:00<br>20:00</div><div class="t-title">🥾 Fossevandring — trilha da cachoeira</div><div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Fossevandring+Geiranger+Storfossen" target="_blank" style="color:var(--accent);">📍 Storfossen, Geiranger</a>. 327 degraus, cachoeira de perto, ~30 min subida. Saída do centro.</div></div>
   </div>
 
   <div class="sec-label alt-label">🦬 Opcional — detour selvagem <span class="count">adiciona ~4h e saída às 06:00</span></div>
@@ -1788,7 +1823,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     DIA 16 — Conquistando o fiorde
+     DIA 16 — Skageflå
      ═══════════════════════════════════════════════════════════════ -->
 <section class="day-section" id="d16">
   <div class="day-bignum">16</div>
@@ -1798,73 +1833,107 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
       <div class="n">16</div>
     </div>
     <div class="day-info">
-      <div class="route-tag">Dia inteiro em Geiranger</div>
-      <h2>Conquistando o <em>fiorde UNESCO</em></h2>
-      <p class="day-summary">Ferry pelas Sete Irmãs até Hellesylt, barco para a fazenda mais icônica da Noruega e trilha de volta ao fiorde. Dia físico — e inesquecível.</p>
+      <div class="route-tag">Dia inteiro em Geiranger · 6 adultos + 1 criança</div>
+      <h2>Skageflå — <em>a fazenda no alto do fiorde</em></h2>
+      <p class="day-summary">Barco pelas Sete Irmãs, drop-off em Skagehøla, subida à fazenda mais icônica da Noruega. A tarde fica em aberto — decidimos no dia se há pique e tempo para Hellesylt.</p>
+    </div>
+  </div>
+
+  <!-- TICKET CONFIRMADO -->
+  <div class="sec-label alt-label">Reserva confirmada <span class="count">nº 636901</span></div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label out">⛵ M/S Geirangerfjord</div>
+      <h4>Cruzeiro + Drop-off Skagehøla</h4>
+      <div class="card-meta">📍 Geiranger HurtigBoatkai — atrás do Tourist Info · ⏰ 16/07 · Saída 09:00 · Chegar 08:45</div>
+      <p>Drop-off em Skagehøla às ~09:45. Pick-up de barco <strong>incluso no bilhete</strong>. Apresentar impresso ou no celular.</p>
+      <span class="booking-tag ok">Reservado ✓</span>
+      <div style="margin-top:1rem;border-top:1px solid var(--ink-200);padding-top:1rem;">
+        <object data="ticket-skagefla-636901.pdf" type="application/pdf" width="100%" height="520" style="border:1px solid var(--ink-200);">
+          <p style="font-family:var(--mono);font-size:0.7rem;color:var(--ink-500);padding:1rem;text-align:center;">
+            Não foi possível exibir o PDF. <a href="ticket-skagefla-636901.pdf" target="_blank" style="color:var(--accent);text-decoration:underline;">Abrir ticket →</a>
+          </p>
+        </object>
+      </div>
     </div>
   </div>
 
   <div class="pro-tip">
-    <div class="pro-tip-l">🎟️ Dois tickets — o que comprar exatamente</div>
-    <p>
-      <strong>Ticket 1 — Ferry Geiranger → Hellesylt (IDA SIMPLES)</strong><br>
-      Operadora: <strong>Fjord1</strong> · Comprar: <a href="https://www.fjord1.no" target="_blank">fjord1.no</a> ou na bilheteria do cais em Geiranger · ~200 NOK/passageiro · ~290 NOK carro+motorista · Ferry convencional de carro e passageiros (~65 min). Não compre a volta — a saída de Hellesylt será em outro barco.<br><br>
-      <strong>Ticket 2 — "Hiking Tour Fjord Farm Skageflå"</strong><br>
-      Operadora: <strong>Geiranger Fjordservice</strong> · Comprar: <a href="https://www.geirangerfjord.no/hiking-tour-fjord-farm-skagefla" target="_blank">geirangerfjord.no</a> ou na bilheteria atrás do Turismo no porto · ~610 NOK/pessoa · Barco: MS Geirangerfjord (barco tradicional de madeira). O ticket inclui cruzeiro pelo fiorde + drop-off em Skagehøla + pick-up (se quiser voltar de barco em vez de a pé).<br><br>
-      <strong>⚠️ Confirmação obrigatória antes de comprar:</strong> o MS Geirangerfjord parte oficialmente de Geiranger. Mande um e-mail para <strong>booking@geirangerfjord.no</strong> perguntando: <em>"Is it possible to board the Hiking Tour Fjord Farm Skageflå in Hellesylt instead of Geiranger, and at what time does the boat arrive there?"</em> A resposta define qual plano seguir abaixo.
-    </p>
+    <div class="pro-tip-l">📱 Antes de viajar</div>
+    <p>Baixar o app gratuito <strong>"GUIDE TO GO - OFFICIAL"</strong> no celular de cada pessoa. Escanear o QR do ticket para o áudio-guia. Levar <strong>fones de ouvido</strong>.</p>
   </div>
 
-  <div class="pro-tip" style="border-left-color:#22553a;">
-    <div class="pro-tip-l">✅ Plano A — se o embarque em Hellesylt for confirmado</div>
-    <p>
-      O roteiro abaixo funciona na íntegra: ferry Fjord1 para Hellesylt → embarca o MS Geirangerfjord em Hellesylt → drop-off em Skagehøla → trilha de volta a Geiranger. Um eixo contínuo sem retroceder. <strong>Custo total: ~810 NOK/pessoa.</strong>
-    </p>
-  </div>
-
-  <div class="pro-tip" style="border-left-color:#a06300;">
-    <div class="pro-tip-l">🔄 Plano B — se o MS Geirangerfjord só embarcar em Geiranger</div>
-    <p>
-      Inverta a ordem do dia — os dois passeios existem, mas separados:<br><br>
-      <strong>Manhã · Skageflå primeiro:</strong><br>
-      Saia de Geiranger às <strong>~07:30</strong> no MS Geirangerfjord Hiking Tour. Drop-off em Skagehøla ~08:30. Suba para Skageflå (~45 min), explore a fazenda, e desça a trilha de volta a Geiranger via Homlong — chegada ~16:00–16:30.<br><br>
-      <strong>Tarde · Hellesylt em seguida:</strong><br>
-      Descanse 30 min e embarque no ferry Fjord1 às <strong>~17:00</strong> Geiranger → Hellesylt (~65 min). Visite a aldeia e a cachoeira por ~30 min. Ferry de volta às ~19:00, chegada em Geiranger ~20:05.<br><br>
-      <strong>Custo total: ~800 NOK/pessoa</strong> (Skageflå 610 + Hellesylt roundtrip ~200).<br>
-      ⚠️ Neste plano, a <strong>Storseterfossen e o Dalsnibba ficam para outro momento</strong> — o dia já é muito pesado.
-    </p>
-  </div>
-
+  <!-- CRONOGRAMA DA MANHÃ -->
   <div class="timeline">
-    <div class="tl-item out"><div class="t-time">08:00<br>09:05</div><div class="t-title">🚢 Ferry Geiranger → Hellesylt (ida simples)</div><div class="t-desc">~65 min pelo fiorde — Sete Irmãs, O Pretendente e Véu da Noiva a poucos metros da proa. Compre só o ticket de <strong>ida simples</strong> na Fjord1 (fjord1.no ou bilheteria do cais). A volta não será por este ferry.</div><div class="price-row"><span class="price-chip">👤 ~200 NOK passageiro</span><span class="price-chip">🚗 ~290 NOK carro+motorista</span></div><span class="booking-tag must">Ticket 1 — fjord1.no</span></div>
-    <div class="tl-item hi"><div class="t-time">09:05<br>09:30</div><div class="t-title">Hellesylt — aldeia e cachoeira</div><div class="t-desc">Caminhe 5 min até a <strong>Cachoeira de Hellesylt</strong> — ela cai direto no centro da aldeia, debaixo da ponte. Café rápido e aguarde o MS Geirangerfjord.</div></div>
-    <div class="tl-item hi"><div class="t-time">~09:30</div><div class="t-title">⛵ Embarca em Hellesylt — MS Geirangerfjord</div><div class="t-desc">Embarque no barco <strong>MS Geirangerfjord</strong> (Geiranger Fjordservice) com o ticket <em>"Hiking Tour Fjord Farm Skageflå"</em> (~610 NOK). Avise a tripulação que deseja desembarcar em <strong>Skagehøla</strong> — move-se para a proa alguns minutos antes. O barco faz o drop-off na enseada a caminho de Geiranger. <em>⚠️ Confirmar horário e possibilidade de embarque em Hellesylt com booking@geirangerfjord.no antes de viajar.</em></div><div class="price-row"><span class="price-chip">~610 NOK/pessoa</span><span class="price-chip">MS Geirangerfjord</span></div><span class="booking-tag must">Ticket 2 — geirangerfjord.no</span></div>
-    <div class="tl-item hi"><div class="t-time">10:15<br>12:30</div><div class="t-title">🥾 Skageflå — a fazenda mais bonita da Noruega</div><div class="t-desc">Desembarque em Skagehøla e suba 250m em ~45 min por trilha íngreme com corrimãos nas seções mais expostas. No topo: <strong>fazenda viking abandonada em 1916</strong>, pendurada sobre o fiorde de frente para as Sete Irmãs. Favorita da Família Real norueguesa. Vista considerada por muitos a mais bonita de toda a Noruega. Explore a fazenda, o pomar antigo e sente para absorver a vista.</div><div class="price-row"><span class="price-chip">🥾 Trilha gratuita</span><span class="price-chip">⏱️ 45 min subida · Difícil</span></div></div>
-    <div class="tl-item out"><div class="t-time">12:30<br>17:00</div><div class="t-title">🥾 Trilha Skageflå → Geiranger</div><div class="t-desc">Da fazenda, desça pela montanha via <strong>Homlongsætra → Homlong</strong> até o centro de Geiranger. ~4–4.5h com vistas constantes sobre o fiorde. A segunda metade é mais suave — floresta e campos abertos. Chegada direto no porto.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⏱️ 4–4.5h · ~12 km</span></div></div>
-    <div class="tl-item out"><div class="t-time">17:30<br>19:30</div><div class="t-title">🥾 Storseterfossen — caminhe por trás da cachoeira</div><div class="t-desc">Saindo da <strong>Westerås Farm</strong> (~10 min de carro do centro), suba pela montanha e caminhe <strong>por trás da cachoeira</strong> Storseterfossen. Trilha moderada de 2–3h ida/volta — menos intensa que Skageflå, boa para recuperar o ritmo. Combine com a trilha Løsta (+1h) para mirante secreto do fiorde se tiver energia. A fazenda Westerås serve waffles com creme azedo — vale o café antes ou depois.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⏱️ 2–3h · Moderada</span><span class="price-chip">☕ Café: ~100–150 NOK</span></div></div>
-    <div class="tl-item hi"><div class="t-time">20:05<br>21:00</div><div class="t-title">📸 Dalsnibba Skywalk — 1.500m</div><div class="t-desc">21 km de subida pela Nibbevegen — é de carro, sem esforço após o dia de trilha. Plataforma de vidro com vista panorâmica do fiorde inteiro 1.500m abaixo. Em julho o sol ainda está alto às 21h — luz dourada épica.</div><div class="price-row"><span class="price-chip">💰 ~150 NOK pedágio</span></div></div>
-    <div class="tl-item"><div class="t-time">22:00</div><div class="t-title">Jantar tardio</div><div class="t-desc">Brasserie Posten (sopa de peixe, ~350–600 NOK) ou algo simples — depois de um dia assim, qualquer coisa sabe bem.</div></div>
+    <div class="tl-item hi">
+      <div class="t-time">08:45</div>
+      <div class="t-title">Chegar ao píer — Geiranger HurtigBoatkai</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=62.102203%2C7.205040" target="_blank" style="color:var(--accent);">📍 Geiranger HurtigBoatkai</a> — atrás do Tourist Information. Procurar o <strong>M/S Geirangerfjord</strong>. Ticket em mãos (reserva nº 636901).</div>
+    </div>
+    <div class="tl-item hi">
+      <div class="t-time">09:00<br>09:45</div>
+      <div class="t-title">⛵ Cruzeiro pelo Geirangerfjord UNESCO</div>
+      <div class="t-desc">Saída do cais. ~45 min navegando pelo fiorde — Sete Irmãs, O Pretendente e Véu da Noiva a poucos metros da proa. Drop-off em <strong>Skagehøla</strong> às ~09:45. Avisar a tripulação no embarque que farão a trilha e querem o drop-off.</div>
+      <div class="price-row"><span class="price-chip">✅ Reservado</span><span class="price-chip">nº 636901</span></div>
+    </div>
+    <div class="tl-item hi">
+      <div class="t-time">09:45<br>~10:30</div>
+      <div class="t-title">🥾 Subida a Skageflå (250 m · ~45 min · difícil)</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Skagefla+farm+Geiranger" target="_blank" style="color:var(--accent);">📍 Fazenda Skageflå</a>. Trilha íngreme com corrimãos. No topo: <strong>fazenda viking abandonada em 1916</strong>, de frente para as Sete Irmãs. Favorita da Família Real norueguesa.</div>
+      <div class="price-row"><span class="price-chip">💰 Trilha gratuita</span><span class="price-chip">⏱️ ~45 min subida</span></div>
+    </div>
   </div>
 
-  <div class="sec-label alt-label">Opcional <span class="count">se quiser acrescentar</span></div>
-  <div class="card-grid">
-    <div class="card"><div class="card-label out">🛶 No fiorde</div><h4>Kayak no Geirangerfjord</h4><div class="card-meta">⏱️ ~2.5h guiado · Equipamento fornecido</div><p>Tour guiado remando até as Sete Irmãs e fazendas abandonadas. Perspectiva única ao nível da água. Se fizer, encaixa no lugar da Storseterfossen à tarde.</p><div class="price-row"><span class="price-chip">~800–1000 NOK/pessoa</span></div><span class="booking-tag must">uteguiden.com</span></div>
-  </div>
-
-  <div class="sec-label alt-label">🟠 Detour grande — vale se tiver tempo extra <span class="count">duas opções</span></div>
+  <!-- VOLTA: DUAS OPÇÕES -->
+  <div class="sec-label alt-label">Volta de Skageflå — decidir no dia <span class="count">duas opções</span></div>
   <div class="card-grid c2">
-    <div class="card"><div class="card-label out">🏙️ Cidade Art Nouveau</div><h4>Ålesund — a única cidade Art Nouveau do mundo</h4><div class="card-meta">📍 1h30 de Geiranger · ⏱️ Meio dia mínimo · Se fizer Trollstigen via Åndalsnes, passa por aqui</div><p>Reconstruída inteiramente após incêndio de 1904 com fachadas de turquesa e azul-petróleo sobre ilhas entre braços de mar. <strong>Aksla:</strong> 418 degraus até o mirante mais famoso da cidade (vista 360° sobre as ilhas e o oceano). <strong>Canal Brosundet:</strong> kayak pelo canal central. <strong>Ilha Runde:</strong> colônia de papagaios-do-mar (puffins) — barco de Ålesund. Restaurante <em>Bro</em> para frutos do mar de elite. Combina perfeitamente com o detour do Trollstigen — Åndalsnes fica a caminho.</p><div class="price-row"><span class="price-chip">💰 Mirante Aksla: gratuito</span><span class="price-chip">⏱️ 4–6h na cidade</span><span class="price-chip">⏱️ 3h round-trip de carro</span></div></div>
-    <div class="card"><div class="card-label out">🌊 Fjord Secreto dos Reis</div><h4>Hjørundfjord — o fjord sem turistas</h4><div class="card-meta">📍 1h30 de Geiranger via Ørsta · ⏱️ Dia inteiro · Desvio significativo</div><p>O "fjord real" — famílias reais europeias o escolheram como destino de verão no séc. XIX–XX. Completamente diferente do Geirangerfjord: selvagem, sem cruise ships, com paredes verticais de 1.500m. O <strong>Slogen (1.564m)</strong> é chamado "A Rainha dos Alpes Sunnmøre" — trilha de 4–5h com scramble no trecho final e uma das vistas mais famosas da Noruega. Viajantes experientes descrevem como <em>"o fjord mais impressionante que vi — e quase ninguém sabe que existe"</em>.</p><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⏱️ Dia inteiro</span><span class="price-chip">⏱️ +3h round-trip de carro</span></div></div>
+    <div class="card">
+      <div class="card-label out">🥾 Opção A — Trilha completa</div>
+      <h4>Skageflå → Homlongsætra → Homlong → Geiranger</h4>
+      <div class="card-meta">⏱️ ~4h · ~12 km · Exigente · De volta ~14:30–16:00</div>
+      <p>Descida pela montanha com vistas constantes sobre o fiorde. A segunda metade é mais suave — floresta e campos abertos. Chegada direta no centro de Geiranger. <strong>Recomendada se o grupo (incluindo a criança) estiver disposto.</strong></p>
+      <div class="price-row"><span class="price-chip">💰 Gratuito</span></div>
+    </div>
+    <div class="card">
+      <div class="card-label out">⛵ Opção B — Pick-up de barco</div>
+      <h4>Descer a Skagehøla e pegar o barco de volta</h4>
+      <div class="card-meta">⏱️ ~1h30–2h total · De volta antes do meio-dia</div>
+      <p>Subir só até a fazenda (~45 min), curtir a vista, descer a Skagehøla (~30 min) e pegar o barco de volta. <strong>Já incluído no bilhete — sem custo extra.</strong> No embarque, perguntar à tripulação o horário do próximo barco de pick-up. Boa opção se a criança ou alguém do grupo estiver cansado.</p>
+      <div class="price-row"><span class="price-chip">✅ Incluso no ticket</span><span class="price-chip">Sem custo extra</span></div>
+    </div>
   </div>
 
+  <!-- TARDE EM ABERTO -->
+  <div class="sec-label alt-label">Tarde — em aberto · decidimos lá <span class="count">depende do horário e cansaço</span></div>
+  <div class="card-grid c2">
+    <div class="card">
+      <div class="card-label out">⛴️ Se voltarmos cedo (~15:30)</div>
+      <h4>Hellesylt — aldeia e cachoeira</h4>
+      <div class="card-meta">⏱️ ~3h ida/volta · Ferry Fjord1 · Comprar no cais na hora</div>
+      <p>Aldeia histórica a 65 min de barco. A cachoeira cai direto no centro da vila, debaixo da ponte. Ir <strong>como passageiros a pé</strong> (sem carro — sem risco de lotação). Ida + ~30 min na vila + volta no ferry seguinte. Conferir horários da Fjord1 de manhã.</p>
+      <div class="price-row"><span class="price-chip">~200 NOK/pessoa a pé</span><span class="price-chip">⏱️ ~65 min travessia</span></div>
+      <span class="booking-tag ok">Sem reserva — comprar na hora</span>
+    </div>
+    <div class="card">
+      <div class="card-label out">🥾 Se ficarmos em Geiranger</div>
+      <h4>Alternativas locais</h4>
+      <div class="card-meta">Nada pré-pago — escolher no dia conforme energia</div>
+      <p><a href="https://www.google.com/maps/search/?api=1&query=Storseterfossen+Geiranger" target="_blank" style="color:var(--accent);"><strong>Storseterfossen</strong></a> — caminhar por trás da cachoeira. Saída da Westerås Farm (~10 min de carro). Trilha moderada, 2–3h.<br><a href="https://www.google.com/maps/search/?api=1&query=Dalsnibba+Skywalk+Geiranger" target="_blank" style="color:var(--accent);"><strong>Dalsnibba Skywalk</strong></a> — 21 km de carro, plataforma de vidro a 1.500m sobre o fiorde.<br><strong>Kayak no fiorde</strong> — tour guiado ~2.5h até as Sete Irmãs.<br>Ou simplesmente relaxar — nada pré-pago.</p>
+      <div class="price-row"><span class="price-chip">Storseterfossen: gratuito</span><span class="price-chip">Dalsnibba: ~150 NOK pedágio</span><span class="price-chip">Kayak: ~800–1000 NOK</span></div>
+    </div>
+  </div>
+
+  <!-- O QUE LEVAR -->
   <div class="pro-tip">
-    <div class="pro-tip-l">Nota do editor</div>
-    <p>Reserve o kayak <strong>com semanas de antecedência no verão</strong>. Operadores como uteguiden.com e geirangerfjord-kayak.com esgotam rapidamente entre junho e agosto. Para Skageflå, reserve o barco em geirangerfjord.no — só 8 vagas por travessia.</p>
+    <div class="pro-tip-l">🎒 Levar no dia</div>
+    <p>
+      Bota ou calçado firme · roupa quente e impermeável · água e lanche para a parada em Homlongsætra (se fizer a trilha completa) · óculos de sol · fones de ouvido para o app de áudio-guia · dinheiro em espécie para o ferry da tarde (se for o caso).
+    </p>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     DIA 17 — Glaciar Nigardsbreen
+     DIA 17 — Glaciar + Urnes
      ═══════════════════════════════════════════════════════════════ -->
 <section class="day-section" id="d17">
   <div class="day-bignum">17</div>
@@ -1874,33 +1943,75 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
       <div class="n">17</div>
     </div>
     <div class="day-info">
-      <div class="route-tag">Geiranger → Sogndal · 230 km · ~5h</div>
-      <h2>Glaciares azuis &amp; <em>Sognefjord</em></h2>
-      <p class="day-summary">A travessia pela Trollstigen ou Eagle Road. Glaciar Nigardsbreen com tour de gelo, barco no lago glacial e o maior fiorde do mundo.</p>
+      <div class="route-tag">Geiranger → Sogndal via Sognefjellet · ~5h de estrada · 6 adultos + Henrique (12) · <strong>17/07</strong></div>
+      <h2>Glaciar de barco &amp; <em>Urnes UNESCO</em></h2>
+      <p class="day-summary">Dia sem reservas e sem horário fixo — com calma depois do Skageflå. Ver o glaciar pelo lago, almoço em Solvorn, e a stavkirke mais antiga da Noruega.</p>
     </div>
   </div>
 
+  <div class="pro-tip">
+    <div class="pro-tip-l">🛣️ Rota do dia</div>
+    <p>Geiranger → Rv63 (Eagle Road) → Grotli → Rv15 <strong>Lom</strong> (parada opcional: padaria, stavkirke, combustível) → Rv55 <strong>Sognefjellet</strong> → Skjolden → Gaupne → Rv604 <strong>Jostedalen</strong> → Breheimsenteret / Nigardsbreen. Volta: Gaupne → <strong>Solvorn</strong> → balsa → Urnes → <strong>Sogndal</strong>.<br><em>Abastecer em Lom e/ou Gaupne — o passo de montanha é isolado.</em></p>
+  </div>
+
   <div class="timeline">
-    <div class="tl-item hi"><div class="t-time">08:00</div><div class="t-title">🛣️ Eagle Road (Ørnesvingen)</div><div class="t-desc">11 curvas em zigue-zague subindo do fiorde. Mirante a 620m com vista das Sete Irmãs. 5 km saindo de Geiranger.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
-    <div class="tl-item out"><div class="t-time">12:00<br>15:00</div><div class="t-title">🧊 Tour no Glaciar Nigardsbreen</div><div class="t-desc">Caminhe sobre gelo azul de 5.000 anos. Tour família (3h, 5+ anos) ou Blue Ice (~5h, 12+). Barco até a base do glaciar incluso. Crampons e capacetes fornecidos.</div><div class="price-row"><span class="price-chip">Família: ~689 NOK</span><span class="price-chip">Blue Ice: ~1500 NOK</span></div><span class="booking-tag must">Reserva obrigatória — icetroll.com</span></div>
-    <div class="tl-item out"><div class="t-time">15:30<br>16:30</div><div class="t-title">🚣 Barco no Lago Nigardsbrevatnet</div><div class="t-desc">Travessia rápida (10 min) até a língua do glaciar. Trilha curta (~20 min) para chegar mais perto. Águas leitosas turquesa de derretimento glacial.</div><div class="price-row"><span class="price-chip">~50 NOK</span></div></div>
-    <div class="tl-item"><div class="t-time">18:00</div><div class="t-title">Chegada em Sogndal</div><div class="t-desc">Beira do Sognefjord — o maior fiorde do mundo. Jantar local e descanso para o dia mais denso da viagem.</div></div>
+    <div class="tl-item">
+      <div class="t-time">07:30</div>
+      <div class="t-title">Saída de Geiranger</div>
+      <div class="t-desc">Café e tanque cheio antes de sair.</div>
+    </div>
+    <div class="tl-item hi">
+      <div class="t-time">07:45</div>
+      <div class="t-title">📸 Eagle Road (Ørnesvingen)</div>
+      <div class="t-desc">11 curvas em zigue-zague subindo do fiorde. Mirante a 620m com vista das Sete Irmãs. 5 km de Geiranger.</div>
+    </div>
+    <div class="tl-item hi">
+      <div class="t-time">~11:15<br>12:45</div>
+      <div class="t-title">🧊 Nigardsbreen — glaciar de barco</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Breheimsenteret%2C+6871+Jostedal" target="_blank" style="color:var(--accent);">📍 Breheimsenteret, 6871 Jostedal</a> → pedágio → estacionamento. Barco no lago Nigardsbrevatnet (~10 min, águas turquesa) + caminhada curta até a frente do gelo. ~1h30 total.</div>
+      <div class="price-row"><span class="price-chip">Pedágio: ~90 NOK</span><span class="price-chip">Barco: ~50 NOK/pessoa</span></div>
+      <span class="booking-tag ok">Sem reserva</span>
+    </div>
+    <div class="tl-item hi">
+      <div class="t-time">~15:00<br>16:30</div>
+      <div class="t-title">⛪ Urnes Stave Church — UNESCO (1130)</div>
+      <div class="t-desc">Balsa de <a href="https://www.google.com/maps/search/?api=1&query=Solvorn+ferjekai" target="_blank" style="color:var(--accent);">📍 Solvorn ferjekai</a> → Ornes (~15 min). A mais antiga das 28 stavkirkes — Patrimônio Mundial desde 1979. Entalhes vikings do séc. XI. Subida ~10 min + tour guiado ~20 min. Igreja aberta até <strong>17:45</strong>.</div>
+      <div class="price-row"><span class="price-chip">Balsa: ~75 NOK/trecho</span><span class="price-chip">Entrada: ~120–160 NOK</span></div>
+      <span class="booking-tag ok">Sem reserva</span>
+    </div>
+    <div class="tl-item">
+      <div class="t-time">~17:00</div>
+      <div class="t-title">Chegada em Sogndal</div>
+      <div class="t-desc">Beira do Sognefjord.</div>
+    </div>
   </div>
 
-  <div class="sec-label alt-label">⚠️ Imperdíveis perto de Sogndal — requerem noite extra <span class="count">não encaixam no cronograma atual</span></div>
-  <div class="card-grid c2">
-    <div class="card"><div class="card-label out">★ UNESCO · #1 Arrependimento da Região</div><h4>Urnes Stave Church — a mais antiga da Noruega (1130)</h4><div class="card-meta">⛵ Balsa de Solvorn (~10 min) + 🥾 5 min a pé · ⏱️ 1h30 total · 45 min de Sogndal · ⏰ Abre 10:00</div><p>A mais antiga e mais ricamente decorada das 28 stavkirkes remanescentes. Patrimônio Mundial UNESCO desde 1979. Os entalhes vikings do séc. XI definiram o "Estilo Urnes" — reconhecido mundialmente em história da arte. A balsa pelo Lustrafjord já é uma experiência. Consistentemente o <strong>#1 arrependimento</strong> de viajantes na região. <strong>⚠️ Cronograma:</strong> o Dia 17 chega em Sogndal às 18h00 e a igreja fecha às 17h00. Para visitar: passar 2 noites em Sogndal e fazer Urnes na manhã do Dia 18, saindo para Borgund depois das 11h30 — o que torna o Dia 18 muito comprimido. Alternativa: substituir o Borgund por Urnes (ambas são stavkirkes excepcionais).</p><div class="price-row"><span class="price-chip">🎟️ ~120 NOK</span><span class="price-chip">⛵ Balsa ~50 NOK</span><span class="price-chip">⏰ 10:00–17:00 mai–set</span></div><span class="booking-tag rec">urnesstavechurch.com</span></div>
-    <div class="card"><div class="card-label out">🌊 Glaciar até o Vale</div><h4>Fjærland — Cidade do Livro + Glaciares ao Nível do Mar</h4><div class="card-meta">📍 ~1h de Sogndal · ⏱️ Meio dia (3–4h) · <strong>⚠️ Não encaixa no cronograma atual</strong></div><p>Vila com <strong>dois braços glaciais do Jostedalsbreen descendo até o nível do vale</strong> — fenômeno em desaparecimento. Museu Nacional do Glaciar premiado internacionalmente. Única <strong>Cidade do Livro da Escandinávia</strong>. <strong>⚠️ Cronograma:</strong> precisa de meio dia saindo de Sogndal. O Dia 17 chega tarde demais, e o Dia 18 já tem Borgund + Snow Road + Cruzeiro. Para incluir: passar 2 noites em Sogndal ou trocar o glaciar Nigardsbreen (Dia 17) por Fjærland, que também é braço do Jostedalsbreen.</p><div class="price-row"><span class="price-chip">🎟️ Museu ~160 NOK</span><span class="price-chip">💰 Glaciares: gratuito</span></div><span class="booking-tag rec">fjaerland.org</span></div>
+  <div class="pro-tip">
+    <div class="pro-tip-l">⛵ Balsa de Urnes — horários (sexta-feira)</div>
+    <p>Saídas de Solvorn às 10:00 e de hora em hora até a última às <strong>16:50</strong>. Cruzem por volta das 14:00–15:00 e voltem até ~16:30. Confirmar horários na manhã do dia.</p>
   </div>
 
-  <div class="sec-label alt-label">✅ Dá para incluir — estrada épica <span class="count">detour de +3h pela manhã</span></div>
+  <!-- ALTERNATIVA: CAMINHADA NO GELO -->
+  <div class="sec-label alt-label">Opção alternativa — pisar o gelo <span class="count">exige reserva antecipada</span></div>
   <div class="card-grid">
-    <div class="card"><div class="card-label out">★ Estrada lendária</div><h4>Trollstigen — 11 curvas em zigue-zague</h4><div class="card-meta">📍 Detour via Åndalsnes · +3h na rota · 2026: aberta a partir de 27 abr · SIM, dá para encaixar!</div><p>A estrada mais icônica da Noruega — 11 curvas em zigue-zague subindo a montanha, com plataformas de aço e vidro suspensas sobre o vazio (Reiulf Ramstad Architects). Premiada como Norway's Tourist Road Icon. <strong>Como encaixar:</strong> saindo de Geiranger cedo (06:30), pegue a rota norte via Åndalsnes, suba o Trollstigen (~1h parada), depois desça e siga para o glaciar Nigardsbreen. Adiciona ~3h à viagem — chegada em Sogndal no fim do dia. Verifique <strong>vegvesen.no</strong> antes — fechou todo o verão de 2024 por queda de pedras. 2026: prevista aberta desde 27 de abril.</p><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⚠️ Confirmar abertura em vegvesen.no</span><span class="price-chip">⏱️ +3h na rota</span></div></div>
+    <div class="card">
+      <div class="card-label out">🧊 Caminhada guiada no glaciar</div>
+      <h4>Short Blue Ice Hike — Jostedalen Breførarlag</h4>
+      <div class="card-meta">⏱️ ~4,5h (~1,5h sobre o gelo) · Idade 12+ (Henrique entra) · bfl.no</div>
+      <p>Andar sobre gelo azul de 5.000 anos com crampons e capacetes. Versão mais leve: X-tra Short (~3,5h, ~45 min de gelo, 8+, ~620–740 NOK). <strong>Impacto:</strong> exige sair de Geiranger às ~06:30 e o dia fica cheio — <strong>provavelmente sem tempo para Urnes</strong> (trilha termina ~16:15, última balsa 16:50). A escolha: <em>barco + Urnes</em> (leve, UNESCO, sem reserva) ou <em>caminhada no gelo</em> (experiência única, com reserva, sem Urnes).</p>
+      <div class="price-row"><span class="price-chip">~860 NOK/pessoa + 6%</span><span class="price-chip">X-tra Short: ~620–740 NOK</span></div>
+      <span class="booking-tag must">Reserva obrigatória — bfl.no</span>
+    </div>
+  </div>
+
+  <div class="pro-tip">
+    <div class="pro-tip-l">📝 Pendências</div>
+    <p><strong>Kaupanger Stave Church</strong> (~12 km de Sogndal) — encaixa melhor como parada rápida na manhã do Dia 18, a caminho de Borgund.<br><strong>Hospedagem em Sogndal (noite 17/07)</strong> — ainda não reservada.</p>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     DIA 18 — Stave church + Snow Road + Nærøyfjord
+     DIA 18 — Borgund + Snow Road + Nærøyfjord
      ═══════════════════════════════════════════════════════════════ -->
 <section class="day-section" id="d18">
   <div class="day-bignum">18</div>
@@ -1910,59 +2021,97 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
       <div class="n">18</div>
     </div>
     <div class="day-info">
-      <div class="route-tag">Sogndal → Flåm via Lærdal &amp; Borgund · 175 km · ~3h30</div>
-      <h2>Stave church milenar, <em>Snow Road &amp; Nærøyfjord UNESCO</em></h2>
-      <p class="day-summary">Igreja stave do séc. XII, túnel mais longo do mundo, estrada da neve, mirante Stegastein, Flåmsbana e o segundo fiorde UNESCO da viagem. O dia mais denso e cinematográfico do roteiro.</p>
+      <div class="route-tag">Sogndal → Flåm via Borgund &amp; Snow Road · 6 adultos + Henrique (12) · <strong>18/07</strong></div>
+      <h2>Borgund, Snow Road &amp; <em>Nærøyfjord UNESCO</em></h2>
+      <p class="day-summary">Igreja stave milenar, estrada da neve com mirante Stegastein, cruzeiro pelo segundo fiorde UNESCO e jantar viking no Ægir.</p>
+    </div>
+  </div>
+
+  <!-- RESERVAS CONFIRMADAS -->
+  <div class="sec-label alt-label">Reservas confirmadas <span class="count">duas</span></div>
+  <div class="card-grid c2">
+    <div class="card">
+      <div class="card-label out">⛴️ Cruzeiro Nærøyfjord — Lustrabaatane</div>
+      <h4>MS Lady Elisabeth · Flåm → Gudvangen</h4>
+      <div class="card-meta"><a href="https://www.google.com/maps/search/?api=1&query=Fl%C3%A5m+harbour+Norway" target="_blank" style="color:var(--accent);">📍 Porto de Flåm</a> · ⏰ 18/07 · Saída 16:00 · Chegada ~18:00 · Check-in 15:45–15:55</div>
+      <p>Só-ida pelo Nærøyfjord UNESCO. Mostrar QR no embarque. Reserva nº 33504558.</p>
+      <span class="booking-tag ok">Reservado ✓</span>
+      <div style="margin-top:1rem;border-top:1px solid var(--ink-200);padding-top:1rem;">
+        <object data="ticket-naeroyfjord-33504558.pdf" type="application/pdf" width="100%" height="520" style="border:1px solid var(--ink-200);">
+          <p style="font-family:var(--mono);font-size:0.7rem;color:var(--ink-500);padding:1rem;text-align:center;">
+            <a href="ticket-naeroyfjord-33504558.pdf" target="_blank" style="color:var(--accent);text-decoration:underline;">Abrir ticket cruzeiro →</a>
+          </p>
+        </object>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label out">🚌 Shuttle Gudvangen → Flåm — Norway's Best</div>
+      <h4>Booking SYQZ68</h4>
+      <div class="card-meta"><a href="https://www.google.com/maps/search/?api=1&query=Gudvangen+bus+stop" target="_blank" style="color:var(--accent);">📍 Gudvangen</a> · ⏰ 18/07 · Saída 19:30 · Chegada ~19:50</div>
+      <p>Volta de ônibus após o cruzeiro. Ticket vale só para esse horário.</p>
+      <span class="booking-tag ok">Reservado ✓</span>
+      <div style="margin-top:1rem;border-top:1px solid var(--ink-200);padding-top:1rem;">
+        <object data="ticket-shuttle-SYQZ68.pdf" type="application/pdf" width="100%" height="520" style="border:1px solid var(--ink-200);">
+          <p style="font-family:var(--mono);font-size:0.7rem;color:var(--ink-500);padding:1rem;text-align:center;">
+            <a href="ticket-shuttle-SYQZ68.pdf" target="_blank" style="color:var(--accent);text-decoration:underline;">Abrir ticket shuttle →</a>
+          </p>
+        </object>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="t-time">07:30</div>
+      <div class="t-title">Saída de Sogndal</div>
+      <div class="t-desc">Estrada pela margem do Sognefjord até Lærdal.</div>
+    </div>
+    <div class="tl-item hi">
+      <div class="t-time">~09:15<br>11:00</div>
+      <div class="t-title">⛪ Borgund Stave Church (1180)</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Borgund+Stave+Church" target="_blank" style="color:var(--accent);">📍 Borgund Stave Church</a>. A mais bem preservada da Noruega. Cabeças de dragão, sem um prego de metal. <strong>Abre 09:30</strong> — explorar o exterior e o cemitério medieval enquanto não abre. Vindhellavegen (King's Road, 1.7 km) sai do mesmo estacionamento.</div>
+      <div class="price-row"><span class="price-chip">~150 NOK adulto / ~100 criança</span></div>
+      <span class="booking-tag ok">Sem reserva</span>
+    </div>
+    <div class="tl-item hi">
+      <div class="t-time">~13:00<br>15:00</div>
+      <div class="t-title">📸 Aurlandsfjellet — Snow Road + Stegastein</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Stegastein+viewpoint+Aurland" target="_blank" style="color:var(--accent);">📍 Stegastein Viewpoint</a>. Estrada cênica de 47 km com paredes de neve em julho. Stegastein: plataforma de 30m sobre o vazio a 650m do Aurlandsfjord. Se fechada, alternativa pelo Lærdalstunnel (24,5 km — o mais longo do mundo).</div>
+    </div>
+    <div class="tl-item">
+      <div class="t-time">~15:30</div>
+      <div class="t-title">Chegada em Flåm</div>
+      <div class="t-desc">Check-in rápido e direto ao porto.</div>
+    </div>
+    <div class="tl-item hi">
+      <div class="t-time">15:45<br>18:00</div>
+      <div class="t-title">⛴️ Cruzeiro Nærøyfjord UNESCO</div>
+      <div class="t-desc">Check-in <strong>15:45–15:55</strong>. MS Lady Elisabeth, saída 16:00. O fiorde mais estreito da Europa — 250m entre paredes de 1.700m. National Geographic: "Best Unspoilt Destination". Chegada em Gudvangen ~18:00.</div>
+      <div class="price-row"><span class="price-chip">✅ Reservado</span><span class="price-chip">nº 33504558</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="t-time">18:00<br>19:30</div>
+      <div class="t-title">Gudvangen — tempo livre</div>
+      <div class="t-desc">~1h30 em Gudvangen aguardando o shuttle. Vila Viking Njardarheimr fecha às 18:00, então não dá para visitar neste plano.</div>
+    </div>
+    <div class="tl-item hi">
+      <div class="t-time">19:30<br>19:50</div>
+      <div class="t-title">🚌 Shuttle Gudvangen → Flåm</div>
+      <div class="t-desc">Saída 19:30, chegada ~19:50. Bilhete vale <strong>só para esse horário</strong>.</div>
+      <div class="price-row"><span class="price-chip">✅ Reservado</span><span class="price-chip">Booking SYQZ68</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="t-time">~20:30</div>
+      <div class="t-title">🍺 Ægir BrewPub</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=%C3%86gir+BrewPub+Fl%C3%A5m" target="_blank" style="color:var(--accent);">📍 Ægir BrewPub, Flåm</a>. "Salão viking" com lareira de 9m. Viking Plank: 5 pratos + 5 cervejas. A poucos passos do porto.</div>
+      <span class="booking-tag must">A reservar — aegirbrewpub.no</span>
     </div>
   </div>
 
   <div class="pro-tip">
-    <div class="pro-tip-l">🎟️ O que reservar antes de viajar — Dia 18</div>
-    <p>
-      <strong style="color:#b8632e;">⚠️ RESERVA OBRIGATÓRIA — Cruzeiro Nærøyfjord</strong><br>
-      Esgota rapidamente no verão. Reserve com semanas de antecedência.<br>
-      Operadora principal: <a href="https://www.norwaysbest.com/en/flam/things-to-do/fjord-cruise-naeroyfjord" target="_blank">norwaysbest.com</a> (barco elétrico silencioso) · Alternativa clássica: <a href="https://en.lustrabaatane.no/flam-gudvangen" target="_blank">lustrabaatane.no</a> · ~520–650 NOK ida · ~830 NOK roundtrip<br><br>
-
-      <strong style="color:#b8632e;">⚠️ RESERVA OBRIGATÓRIA — Flåmsbana (manhã do Dia 19)</strong><br>
-      Reserve junto com o cruzeiro — os dois esgotam em paralelo no verão.<br>
-      <a href="https://www.flamsbana.no" target="_blank">flamsbana.no</a> · ~660 NOK ida/volta · ~430 NOK só ida<br><br>
-
-      <strong style="color:#b8632e;">⚠️ RESERVA RECOMENDADA — Ægir BrewPub (jantar)</strong><br>
-      O restaurante mais concorrido de Flåm. Reserve com antecedência para o jantar do mesmo dia.<br>
-      <a href="https://www.aegirbrewpub.no" target="_blank">aegirbrewpub.no</a> · ~300–950 NOK<br><br>
-
-      <strong style="color:#22553a;">✅ SEM RESERVA — Njardarheimr Vila Viking</strong><br>
-      Paga na entrada em Gudvangen. <a href="https://www.vikingvalley.no" target="_blank">vikingvalley.no</a> · ~250 NOK<br><br>
-
-      <strong style="color:#22553a;">✅ SEM RESERVA — Shuttle Gudvangen → Flåm</strong><br>
-      Compra no próprio ônibus ou no Visitor Center de Flåm. ~60–120 NOK · ~20 min.
-    </p>
-  </div>
-
-  <div class="timeline">
-    <div class="tl-item"><div class="t-time">07:30</div><div class="t-title">Saída de Sogndal pela E5/E16</div><div class="t-desc">Compre café e pão na padaria do centro. Estrada bonita pela margem do Sognefjord até Lærdal.</div></div>
-    <div class="tl-item hi"><div class="t-time">09:00<br>11:00</div><div class="t-title">★ Borgund Stave Church (1180)</div><div class="t-desc">Igreja stave mais bem preservada da Noruega. Cabeças de dragão, sem um único prego de metal. Inspiração para Frozen. <strong>Chegam às 09:00 — a igreja abre às 10:00.</strong> O exterior é igualmente impressionante: caminhe ao redor da estrutura toda, veja as cabeças de dragão de perto e explore o cemitério medieval. Entry às 10:00, visitor center e café inclusos.</div><div class="price-row"><span class="price-chip">🎟️ ~120 NOK</span><span class="price-chip">⏰ Abre 10:00 (mai–set)</span></div></div>
-    <div class="tl-item out"><div class="t-time">11:00<br>11:30</div><div class="t-title">🥾 Vindhellavegen — King's Road</div><div class="t-desc">Caminhada curta pelo trecho restaurado da estrada do Rei (séc. XVIII), com curvas dramáticas em pedra. Premiada pela Norwegian Public Roads. Sai do mesmo estacionamento da Borgund.</div><div class="price-row"><span class="price-chip">💰 Gratuito · 1.7 km</span></div></div>
-    <div class="tl-item"><div class="t-time">12:00<br>13:00</div><div class="t-title">🍽️ Almoço em Gamle Lærdalsøyri</div><div class="t-desc">Centro histórico de Lærdal com 161 casas de madeira preservadas. Lindstrøm Hotel ou padarias locais. Cherries e produtos do vale (Lærdal tem microclima ideal pra frutas).</div><div class="price-row"><span class="price-chip">~250–600 NOK</span></div></div>
-    <div class="tl-item hi"><div class="t-time">13:30<br>15:00</div><div class="t-title">★ Aurlandsfjellet — Snow Road (verão)</div><div class="t-desc">Estrada nacional cênica de 47 km com paredes de neve mesmo em julho. <strong>Stegastein é o ponto alto</strong>: plataforma de 30m sobre o vazio a 650m do Aurlandsfjord. Se a Snow Road estiver fechada, vá pelo Lærdalstunnel (24,5 km, túnel mais longo do mundo, com câmaras de luz azul/amarela imitando o nascer do sol).</div><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⏰ Snow Road: jun–out</span></div></div>
-    <div class="tl-item"><div class="t-time">15:30</div><div class="t-title">Chegada em Flåm</div><div class="t-desc">Centro pequeno mas vibrante. Estação da Flåmsbana, porto e brewpub a poucos passos. Check-in rápido e siga direto para o porto.</div></div>
-    <div class="tl-item hi"><div class="t-time">16:30<br>18:30</div><div class="t-title">⛴️ Cruzeiro Nærøyfjord — UNESCO #2</div><div class="t-desc">O <strong>segundo fiorde UNESCO da viagem</strong>. Eleito pela National Geographic "Best Unspoilt Destination". Fiorde mais estreito da Europa: 250m de largura entre paredes de 1.700m. Barco 100% elétrico e silencioso — só se ouve a água e as cachoeiras. Desembarque em Gudvangen (~2h).</div><div class="price-row"><span class="price-chip">~520–650 NOK ida</span><span class="price-chip">~830 NOK round-trip</span></div><span class="booking-tag must">Reserva obrigatória — norwaysbest.com</span></div>
-    <div class="tl-item hi"><div class="t-time">18:30<br>19:30</div><div class="t-title">🪓 Njardarheimr — Vila Viking de Gudvangen</div><div class="t-desc">Vila viking reconstruída autêntica a walking distance do pier em Gudvangen. <strong>Vikings de verdade</strong> contam histórias, lançamento de machado, arco e flecha, forja e artesanato tradicional. Café estilo viking. Combine a visita com o cruzeiro — shuttle de ônibus de volta a Flåm (~45 min, saídas regulares).</div><div class="price-row"><span class="price-chip">~250 NOK</span><span class="price-chip">vikingvalley.no</span></div><span class="booking-tag ok">Sem reserva</span></div>
-    <div class="tl-item"><div class="t-time">20:15</div><div class="t-title">🚌 Shuttle Gudvangen → Flåm</div><div class="t-desc">~4–5 saídas por dia, último ônibus às ~19:30. Viagem de ~20 min. <strong>Compra na hora</strong> — no próprio ônibus ou no Visitor Center de Flåm. Não precisa reservar.</div><div class="price-row"><span class="price-chip">~60–120 NOK</span><span class="price-chip">⏱️ ~20 min</span></div></div>
-    <div class="tl-item out"><div class="t-time">Dia 19<br>cedo</div><div class="t-title">🚂 Flåmsbana — fazer antes de Bergen</div><div class="t-desc">Com o cruzeiro no Dia 18 à tarde, faça a Flåmsbana na manhã do Dia 19 antes de seguir para Bergen. 20 km, 20 túneis escavados à mão, cascata Kjosfossen (93m). Lado DIREITO subindo, ESQUERDO descendo.</div><div class="price-row"><span class="price-chip">~660 NOK ida/volta</span><span class="price-chip">~430 NOK só ida</span></div><span class="booking-tag must">Reserva obrigatória — flamsbana.no</span></div>
-    <div class="tl-item"><div class="t-time">21:00</div><div class="t-title">🍺 Jantar viking — Ægir BrewPub</div><div class="t-desc">"Salão viking" com lareira de 9m. Viking Plank: 5 pratos + 5 cervejas artesanais (~950 NOK). <strong>Reserve com antecedência</strong> — o BrewPub é o restaurante mais concorrido de Flåm no verão.</div><div class="price-row"><span class="price-chip">~300–950 NOK</span></div><span class="booking-tag must">Reserva obrigatória — aegirbrewpub.no</span></div>
-  </div>
-
-  <div class="sec-label alt-label">⚠️ Vale a pena — mas exige sair de Sogndal mais tarde <span class="count">comprime o dia</span></div>
-  <div class="card-grid">
-    <div class="card"><div class="card-label out">⛪ Stavkirke no Caminho</div><h4>Kaupanger Stave Church — a maior de Vestland (~1140)</h4><div class="card-meta">📍 12 km de Sogndal · ⏰ Abre 10:00 · ⏱️ 20–30 min de visita</div><p>Considerada pelos especialistas "a catedral entre as igrejas de madeira" — dimensões imponentes e ausência total de ornamentos criam espaço sagrado único. Fica literalmente no caminho Sogndal → Borgund. <strong>⚠️ Cronograma:</strong> abre às 10h00. Para visitar, sair de Sogndal às 09h45 (em vez de 07h30) — Borgund fica para as 12h00 em vez das 09h30, e toda a cadeia do Dia 18 atrasa ~2h30. O cruzeiro às 16h30 em Flåm fica inviável. Recomendação: substitua Borgund por Kaupanger (poupam tempo equivalente e Kaupanger é menos visitada), ou visite Kaupanger numa próxima vez — Borgund é a mais famosa por boas razões.</p><div class="price-row"><span class="price-chip">🎟️ ~80 NOK</span><span class="price-chip">⏰ 10:00–17:00 jun–ago</span></div></div>
-  </div>
-
-  <div class="sec-label alt-label">Alternativas de aventura em Flåm</div>
-  <div class="card-grid c3">
-    <div class="card"><div class="card-label out">⚡ Adrenalina</div><h4>FjordSafari — RIB Boat</h4><div class="card-meta">⏱️ ~1.5h · Saídas diárias</div><p>Lancha rápida pelo Aurlandsfjord e Nærøyfjord UNESCO a 60 km/h. Roupas de proteção fornecidas.</p><div class="price-row"><span class="price-chip">~750–950 NOK</span></div><span class="booking-tag rec">Reserva recomendada</span></div>
-    <div class="card"><div class="card-label out">🚴 Bike</div><h4>Rallarvegen (descida)</h4><div class="card-meta">📍 Myrdal → Flåm · 80 km · ⏱️ 4–5h</div><p>Antiga estrada de construção da ferrovia. Desça de bike de Myrdal (maioria descida). Cenários de tundra a floresta.</p><div class="price-row"><span class="price-chip">~450 NOK bike</span></div><span class="booking-tag rec">Reserva recomendada</span></div>
-    <div class="card"><div class="card-label out">🥾 Trilha</div><h4>Brekkefossen / Trilha do Vale</h4><div class="card-meta">📍 Perto do centro · ⏱️ 2h ida/volta</div><p>Cachoeira escondida perto do centro de Flåm. Trilha fácil pelo vale verde.</p><div class="price-row"><span class="price-chip">💰 Gratuito</span></div></div>
+    <div class="pro-tip-l">📝 Pendências</div>
+    <p><strong>Jantar Ægir BrewPub</strong> — reservar para ~20:30 em aegirbrewpub.no.<br><strong>Flåmsbana</strong> — fica para a manhã do Dia 19. Reserva obrigatória (norwaysbest.com).<br><strong>Hospedagem em Flåm (noite 18/07)</strong> — ainda não reservada.</p>
   </div>
 </section>
 
@@ -2426,6 +2575,50 @@ document.addEventListener('DOMContentLoaded', function(){
           applyFilters();
           map.flyTo([61.2,8.5],6,{duration:1.2});
         });
+      }
+
+      /* ── Botão tela cheia (CSS universal + API nativa no Android) ── */
+      var fsBtn=document.getElementById('mapFsBtn');
+      var mapFrame=document.querySelector('.map-frame');
+      if(fsBtn&&mapFrame){
+        function setFsUI(on){
+          var txt=fsBtn.querySelector('.fs-txt');
+          var ico=fsBtn.querySelector('.fs-ico');
+          if(txt)txt.textContent=on?'Sair':'Tela cheia';
+          if(ico)ico.textContent=on?'✕':'⛶';
+          setTimeout(function(){if(map)map.invalidateSize()},150);
+        }
+        function enterFs(){
+          mapFrame.classList.add('fs-active');
+          document.body.classList.add('fs-lock');
+          if(mapFrame.requestFullscreen){try{mapFrame.requestFullscreen()}catch(e){}}
+          else if(mapFrame.webkitRequestFullscreen){try{mapFrame.webkitRequestFullscreen()}catch(e){}}
+          setFsUI(true);
+        }
+        function exitFs(){
+          mapFrame.classList.remove('fs-active');
+          document.body.classList.remove('fs-lock');
+          if(document.fullscreenElement&&document.exitFullscreen){try{document.exitFullscreen()}catch(e){}}
+          else if(document.webkitFullscreenElement&&document.webkitExitFullscreen){try{document.webkitExitFullscreen()}catch(e){}}
+          setFsUI(false);
+        }
+        fsBtn.addEventListener('click',function(){
+          if(mapFrame.classList.contains('fs-active'))exitFs();else enterFs();
+        });
+        /* tecla ESC e saída da API nativa sincronizam o estado CSS */
+        document.addEventListener('keydown',function(e){
+          if(e.key==='Escape'&&mapFrame.classList.contains('fs-active'))exitFs();
+        });
+        function onNativeFsChange(){
+          var nativeOn=document.fullscreenElement||document.webkitFullscreenElement;
+          if(!nativeOn&&mapFrame.classList.contains('fs-active')){
+            mapFrame.classList.remove('fs-active');
+            document.body.classList.remove('fs-lock');
+            setFsUI(false);
+          }
+        }
+        document.addEventListener('fullscreenchange',onNativeFsChange);
+        document.addEventListener('webkitfullscreenchange',onNativeFsChange);
       }
 
       window.flyTo = function(lat,lng,z){
