@@ -670,6 +670,21 @@ body.fs-lock{overflow:hidden}
 }
 .ticket-overlay-close:hover{background:var(--accent);color:var(--ink-900);border-color:var(--accent)}
 
+/* City mini-maps */
+.city-map{height:420px;border:1px solid var(--ink-900);margin-top:var(--space-md)}
+@media(max-width:768px){.city-map{height:320px}}
+.city-map-legend{
+  display:flex;flex-wrap:wrap;gap:0.8rem;
+  margin-top:0.6rem;
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;
+  color:var(--ink-500);
+}
+.city-map-legend span{display:inline-flex;align-items:center;gap:0.35rem}
+.city-map-legend .dot-r{width:10px;height:10px;border-radius:50%;background:#c0392b}
+.city-map-legend .dot-y{width:10px;height:10px;border-radius:50%;background:#d4a017}
+.city-map-legend .dot-g{width:10px;height:10px;border-radius:50%;background:#27ae60}
+.city-map-legend .dot-h{width:10px;height:10px;border-radius:50%;background:#2980b9}
+
 #map{height:560px;filter:contrast(1.05) brightness(0.92)}
 
 .map-toolbar{
@@ -1951,6 +1966,15 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="pro-tip-l">🎟️ Oslo Pass — vale a pena?</div>
     <p><strong>Oslo Pass (~580 NOK/24h adulto)</strong> — inclui 30+ museus + transporte + ferry Bygdøyfergene. Para este dia (Fram + MUNCH + ferry + bondes) <strong>provavelmente compensa</strong> para os 6 adultos. Henrique: passe infantil mais barato. <strong>Sem Oslo Pass:</strong> precisa de passe Ruter (bondes) + bilhete Bygdøyfergene à parte (~115 NOK/dia) + ingressos.</p>
   </div>
+
+  <div class="sec-label alt-label">Mapa de Oslo <span class="count">pontos por prioridade</span></div>
+  <div id="mapOslo" class="city-map"></div>
+  <div class="city-map-legend">
+    <span><span class="dot-r"></span>Imperdível</span>
+    <span><span class="dot-y"></span>Importante</span>
+    <span><span class="dot-g"></span>Bônus</span>
+    <span><span class="dot-h"></span>Hotel</span>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
@@ -2642,6 +2666,15 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
       <div class="price-row"><span class="price-chip">~245 SEK adulto</span></div>
     </div>
   </div>
+
+  <div class="sec-label alt-label">Mapa de Estocolmo <span class="count">pontos por prioridade</span></div>
+  <div id="mapStockholm" class="city-map"></div>
+  <div class="city-map-legend">
+    <span><span class="dot-r"></span>Imperdível</span>
+    <span><span class="dot-y"></span>Importante</span>
+    <span><span class="dot-g"></span>Bônus</span>
+    <span><span class="dot-h"></span>Hotel</span>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
@@ -2697,6 +2730,15 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
   <div class="pro-tip">
     <div class="pro-tip-l">⚠️ Voo de volta</div>
     <p><strong>25/07 às 09:00</strong> — sem manhã em Copenhagen no dia 25 (aeroporto ~06:30). Toda a Copenhagen restante está nesta tarde/noite + na manhã de bike do Dia 12.</p>
+  </div>
+
+  <div class="sec-label alt-label">Mapa de Copenhagen <span class="count">pontos por prioridade</span></div>
+  <div id="mapCopenhagen" class="city-map"></div>
+  <div class="city-map-legend">
+    <span><span class="dot-r"></span>Imperdível</span>
+    <span><span class="dot-y"></span>Importante</span>
+    <span><span class="dot-g"></span>Bônus</span>
+    <span><span class="dot-h"></span>Hotel</span>
   </div>
 </section>
 
@@ -3222,6 +3264,98 @@ document.addEventListener('DOMContentLoaded', function(){
       openTicket(btn.dataset.pdf);
     });
   });
+})();
+
+/* ═══════════════════════════════════════════════════════════════════
+   CITY MINI-MAPS — Oslo, Stockholm, Copenhagen
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+  if(typeof L==='undefined')return;
+
+  var COLORS={red:'#c0392b',yellow:'#d4a017',green:'#27ae60',blue:'#2980b9'};
+
+  function dot(color,size){
+    return L.divIcon({className:'',iconSize:[size,size],iconAnchor:[size/2,size/2],
+      html:'<div style="background:'+color+';width:'+size+'px;height:'+size+'px;border-radius:50%;border:2px solid #FAF7F2;box-shadow:0 2px 6px rgba(0,0,0,.4)"></div>'});
+  }
+
+  function addPts(map,pts){
+    pts.forEach(function(p){
+      var c=p.lvl==='hotel'?COLORS.blue:p.lvl==='red'?COLORS.red:p.lvl==='yellow'?COLORS.yellow:COLORS.green;
+      var sz=p.lvl==='hotel'?24:p.lvl==='red'?20:16;
+      var m=L.marker([p.lat,p.lng],{icon:dot(c,sz)}).addTo(map);
+      var tag=p.lvl==='hotel'?'🏨 Hotel':p.lvl==='red'?'🔴 Imperdível':p.lvl==='yellow'?'🟡 Importante':'🟢 Bônus';
+      m.bindPopup('<div style="font-family:var(--sans);min-width:180px"><strong style="font-size:1rem">'+p.name+'</strong><br><span style="font-size:.75rem;color:#888">'+tag+'</span><br><span style="font-size:.85rem">'+p.desc+'</span></div>');
+    });
+  }
+
+  function initCity(id,center,zoom,pts){
+    var el=document.getElementById(id);
+    if(!el)return;
+    try{
+      var m=L.map(id,{scrollWheelZoom:false,zoomControl:true}).setView(center,zoom);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'©OSM ©CARTO',maxZoom:18,subdomains:'abcd'}).addTo(m);
+      addPts(m,pts);
+      new IntersectionObserver(function(e){if(e[0].isIntersecting)setTimeout(function(){m.invalidateSize()},200)},{threshold:.1}).observe(el);
+    }catch(err){console.warn('City map '+id+' failed:',err)}
+  }
+
+  /* OSLO */
+  initCity('mapOslo',[59.913,10.735],13,[
+    {lat:59.9106,lng:10.7506,name:'Comfort Hotel Grand Central',desc:'Jernbanetorget 1 · Conf. 6629.789.748',lvl:'hotel'},
+    {lat:59.9269,lng:10.7005,name:'Parque Vigeland',desc:'Maior parque de esculturas do mundo',lvl:'red'},
+    {lat:59.9062,lng:10.7558,name:'MUNCH',desc:'"O Grito" · seg 10–18',lvl:'red'},
+    {lat:59.9075,lng:10.7522,name:'Ópera de Oslo',desc:'Subir a rampa de mármore',lvl:'red'},
+    {lat:59.9035,lng:10.6998,name:'Museu Fram',desc:'Navio polar · Bygdøy',lvl:'red'},
+    {lat:59.9080,lng:10.7360,name:'Fortaleza de Akershus',desc:'Castelo medieval sobre o porto',lvl:'yellow'},
+    {lat:59.9090,lng:10.7290,name:'Aker Brygge',desc:'Calçadão à beira-mar',lvl:'yellow'},
+    {lat:59.9150,lng:10.7340,name:'Karl Johan + Palácio Real',desc:'Avenida principal + parque',lvl:'yellow'},
+    {lat:59.9637,lng:10.6680,name:'Holmenkollen',desc:'Trampolim de esqui · vista',lvl:'yellow'},
+    {lat:59.8970,lng:10.7660,name:'Ekebergparken',desc:'Vista + esculturas',lvl:'yellow'},
+    {lat:59.9040,lng:10.6975,name:'Museu Kon-Tiki',desc:'Bygdøy',lvl:'green'},
+    {lat:59.9075,lng:10.6845,name:'Norsk Folkemuseum',desc:'Bygdøy · museu ao ar livre',lvl:'green'},
+    {lat:59.9110,lng:10.7330,name:'Museu Nacional',desc:'Fecha às segundas',lvl:'green'},
+    {lat:59.9230,lng:10.7510,name:'Grünerløkka + Mathallen',desc:'Bairro hipster + mercado',lvl:'green'},
+    {lat:59.8930,lng:10.7300,name:'Ilhas do Oslofjord',desc:'Balsa do porto',lvl:'green'}
+  ]);
+
+  /* ESTOCOLMO */
+  initCity('mapStockholm',[59.325,18.07],13,[
+    {lat:59.3212,lng:18.0248,name:'Långholmen Hotell',desc:'Långholmsmuren 20 · estacionamento grátis',lvl:'hotel'},
+    {lat:59.3280,lng:18.0915,name:'Museu Vasa',desc:'Navio de 1628 · Djurgården',lvl:'red'},
+    {lat:59.3251,lng:18.0710,name:'Gamla Stan + Palácio',desc:'Centro medieval',lvl:'red'},
+    {lat:59.3255,lng:18.1030,name:'Skansen',desc:'Museu ao ar livre + zoo',lvl:'red'},
+    {lat:59.3190,lng:18.0610,name:'Monteliusvägen',desc:'Mirante panorâmico · Södermalm',lvl:'yellow'},
+    {lat:59.3275,lng:18.0540,name:'Prefeitura (City Hall)',desc:'Torre com vista',lvl:'yellow'},
+    {lat:59.3178,lng:18.0850,name:'Fotografiska',desc:'Museu de fotografia',lvl:'yellow'},
+    {lat:59.3310,lng:18.0590,name:'Arte do metrô',desc:'Tour pelas estações',lvl:'yellow'},
+    {lat:59.3250,lng:18.0960,name:'ABBA Museum',desc:'Djurgården',lvl:'green'},
+    {lat:59.3268,lng:18.0720,name:'Câmara Real de Armas',desc:'Grátis',lvl:'green'},
+    {lat:59.3250,lng:18.0850,name:'Moderna Museet',desc:'Skeppsholmen',lvl:'green'},
+    {lat:59.3215,lng:17.8860,name:'Drottningholm',desc:'UNESCO · de barco',lvl:'green'},
+    {lat:59.3235,lng:18.0955,name:'Gröna Lund',desc:'Parque de diversões · Djurgården',lvl:'green'},
+    {lat:59.3175,lng:18.0490,name:'Skinnarviksberget',desc:'Vista · Södermalm',lvl:'green'},
+    {lat:59.3360,lng:18.0740,name:'Östermalms Saluhall',desc:'Mercado gastronômico',lvl:'green'}
+  ]);
+
+  /* COPENHAGEN */
+  initCity('mapCopenhagen',[55.678,12.58],13,[
+    {lat:55.6355,lng:12.6515,name:'Scandic CPH Strandpark',desc:'Amager · perto do aeroporto',lvl:'hotel'},
+    {lat:55.6798,lng:12.5910,name:'Nyhavn',desc:'Porto colorido + canal',lvl:'red'},
+    {lat:55.6737,lng:12.5681,name:'Tivoli',desc:'Parque histórico (1843)',lvl:'red'},
+    {lat:55.6929,lng:12.5993,name:'Pequena Sereia',desc:'Langelinie',lvl:'yellow'},
+    {lat:55.6843,lng:12.5934,name:'Amalienborg',desc:'Palácio real + Igreja de Mármore',lvl:'yellow'},
+    {lat:55.6907,lng:12.5945,name:'Kastellet',desc:'Fortaleza em estrela',lvl:'yellow'},
+    {lat:55.6813,lng:12.5780,name:'Strøget + Torre Redonda',desc:'Rua de pedestres',lvl:'yellow'},
+    {lat:55.6857,lng:12.5772,name:'Rosenborg + Jardim do Rei',desc:'Castelo renascentista',lvl:'yellow'},
+    {lat:55.6915,lng:12.6360,name:'CopenHill',desc:'Vista da cidade',lvl:'yellow'},
+    {lat:55.6725,lng:12.5935,name:'Igreja do Nosso Salvador',desc:'Torre espiral',lvl:'green'},
+    {lat:55.6745,lng:12.5755,name:'Museu Nacional',desc:'Nationalmuseet',lvl:'green'},
+    {lat:55.6726,lng:12.5710,name:'Ny Carlsberg Glyptotek',desc:'Arte + escultura',lvl:'green'},
+    {lat:55.6720,lng:12.5920,name:'Christianshavn',desc:'Canais',lvl:'green'},
+    {lat:55.6905,lng:12.6080,name:'Reffen',desc:'Street food',lvl:'green'},
+    {lat:55.6835,lng:12.5710,name:'Torvehallerne',desc:'Mercado coberto',lvl:'green'}
+  ]);
 })();
 </script>
 </body>
