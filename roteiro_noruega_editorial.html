@@ -1743,19 +1743,19 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
   <div class="map-header">
     <div>
       <div class="eyebrow">Capítulo zero · O traçado</div>
-      <h2 class="section-title">A rota, <em>de costa a costa.</em></h2>
-      <p class="section-deck">De Oslo a Bergen, atravessando o planalto e descendo pelos fiordes — clique nos marcadores para inspecionar cada parada.</p>
+      <h2 class="section-title">A rota, <em>pela Escandinávia.</em></h2>
+      <p class="section-deck">De Copenhagen a Estocolmo, passando por Oslo, fiordes e Bergen — clique nos marcadores para inspecionar cada parada.</p>
     </div>
     <div class="map-header-meta">
-      <strong>58 pontos · 5 paradas</strong><br>
-      Lillehammer → Bergen<br>
+      <strong>10 paradas · 3 países</strong><br>
+      Copenhagen → Oslo → Bergen → Estocolmo<br>
       Carta interativa
     </div>
   </div>
 
   <div class="map-frame">
     <div class="map-corners"><span class="map-corner bl"></span><span class="map-corner br"></span></div>
-    <div class="map-label">Carta · Noruega Ocidental</div>
+    <div class="map-label">Carta · Escandinávia</div>
     <button class="map-fs-btn" id="mapFsBtn" type="button" aria-label="Abrir mapa em tela cheia">
       <span class="fs-ico">⛶</span><span class="fs-txt">Tela cheia</span>
     </button>
@@ -1773,41 +1773,66 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     </div>
   </div>
 
-  <div class="route-overview">
-    <a class="route-stop" href="#d14" onclick="flyTo(61.12,10.47,12);return true">
+  <div class="route-overview" style="grid-template-columns:repeat(5,1fr)">
+    <a class="route-stop" href="#d12" onclick="flyTo(55.68,12.57,11);return true">
       <span class="route-stop-num">§ 01</span>
+      <span class="route-stop-emoji">🇩🇰</span>
+      <span class="route-stop-name">Copenhagen</span>
+      <span class="route-stop-day">Dia 12</span>
+    </a>
+    <a class="route-stop" href="#d13" onclick="flyTo(59.91,10.75,11);return true">
+      <span class="route-stop-num">§ 02</span>
+      <span class="route-stop-emoji">🇳🇴</span>
+      <span class="route-stop-name">Oslo</span>
+      <span class="route-stop-day">Dia 13</span>
+    </a>
+    <a class="route-stop" href="#d14" onclick="flyTo(61.12,10.47,12);return true">
+      <span class="route-stop-num">§ 03</span>
       <span class="route-stop-emoji">🏔️</span>
       <span class="route-stop-name">Lillehammer</span>
       <span class="route-stop-day">Dia 14</span>
-      <span class="route-stop-km">180 km</span>
     </a>
     <a class="route-stop" href="#d15" onclick="flyTo(62.10,7.21,12);return true">
-      <span class="route-stop-num">§ 02</span>
+      <span class="route-stop-num">§ 04</span>
       <span class="route-stop-emoji">🌊</span>
       <span class="route-stop-name">Geiranger</span>
       <span class="route-stop-day">Dia 15–16</span>
-      <span class="route-stop-km">+340 km</span>
     </a>
     <a class="route-stop" href="#d17" onclick="flyTo(61.23,7.10,11);return true">
-      <span class="route-stop-num">§ 03</span>
+      <span class="route-stop-num">§ 05</span>
       <span class="route-stop-emoji">🧊</span>
       <span class="route-stop-name">Sogndal</span>
       <span class="route-stop-day">Dia 17</span>
-      <span class="route-stop-km">+230 km</span>
     </a>
     <a class="route-stop" href="#d18" onclick="flyTo(60.86,7.11,12);return true">
-      <span class="route-stop-num">§ 04</span>
+      <span class="route-stop-num">§ 06</span>
       <span class="route-stop-emoji">🚂</span>
       <span class="route-stop-name">Flåm</span>
       <span class="route-stop-day">Dia 18</span>
-      <span class="route-stop-km">+120 km</span>
     </a>
     <a class="route-stop" href="#d19" onclick="flyTo(60.39,5.32,12);return true">
-      <span class="route-stop-num">§ 05</span>
+      <span class="route-stop-num">§ 07</span>
       <span class="route-stop-emoji">🏘️</span>
       <span class="route-stop-name">Bergen</span>
       <span class="route-stop-day">Dia 19–20</span>
-      <span class="route-stop-km">+165 km</span>
+    </a>
+    <a class="route-stop" href="#d22" onclick="flyTo(59.27,15.22,11);return true">
+      <span class="route-stop-num">§ 08</span>
+      <span class="route-stop-emoji">🏰</span>
+      <span class="route-stop-name">Örebro</span>
+      <span class="route-stop-day">Dia 22</span>
+    </a>
+    <a class="route-stop" href="#d23" onclick="flyTo(59.33,18.07,11);return true">
+      <span class="route-stop-num">§ 09</span>
+      <span class="route-stop-emoji">🇸🇪</span>
+      <span class="route-stop-name">Estocolmo</span>
+      <span class="route-stop-day">Dia 23</span>
+    </a>
+    <a class="route-stop" href="#d24" onclick="flyTo(55.68,12.57,11);return true">
+      <span class="route-stop-num">§ 10</span>
+      <span class="route-stop-emoji">🇩🇰</span>
+      <span class="route-stop-name">Copenhagen</span>
+      <span class="route-stop-day">Dia 24</span>
     </a>
   </div>
 </section>
@@ -2728,12 +2753,17 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   var points=[
-    /* PARADAS */
-    {cat:'stop', lat:61.1153, lng:10.4662, name:'Lillehammer', day:'Dia 14', desc:'Capital olímpica · Lago Mjøsa', emoji:'🏔️'},
-    {cat:'stop', lat:62.1024, lng:7.2056,  name:'Geiranger',   day:'Dia 15–16', desc:'Fiorde UNESCO · Sete Irmãs', emoji:'🌊'},
-    {cat:'stop', lat:61.2297, lng:7.1037,  name:'Sogndal',     day:'Dia 17', desc:'Sognefjord · Maior fiorde do mundo', emoji:'⛺'},
-    {cat:'stop', lat:60.8631, lng:7.1138,  name:'Flåm',        day:'Dia 18', desc:'Aurlandsfjord · Flåmsbana', emoji:'🚂'},
-    {cat:'stop', lat:60.3913, lng:5.3221,  name:'Bergen',      day:'Dia 19–20', desc:'Bryggen UNESCO · Porta dos fiordes', emoji:'🏘️'},
+    /* PARADAS — VIAGEM COMPLETA */
+    {cat:'stop', lat:55.6761, lng:12.5683, name:'Copenhagen',   day:'Dia 12 / 24', desc:'Nyhavn · Tivoli · Ponte de Øresund', emoji:'🇩🇰'},
+    {cat:'stop', lat:57.7089, lng:11.9746, name:'Gotemburgo',   day:'Dia 12', desc:'Bairro Haga · Feskekôrka', emoji:'🇸🇪'},
+    {cat:'stop', lat:59.9139, lng:10.7522, name:'Oslo',         day:'Dia 13 / 21–22', desc:'Vigeland · MUNCH · Ópera · Fram', emoji:'🇳🇴'},
+    {cat:'stop', lat:61.1153, lng:10.4662, name:'Lillehammer',  day:'Dia 14', desc:'Capital olímpica · Lago Mjøsa', emoji:'🏔️'},
+    {cat:'stop', lat:62.1024, lng:7.2056,  name:'Geiranger',    day:'Dia 15–16', desc:'Fiorde UNESCO · Sete Irmãs', emoji:'🌊'},
+    {cat:'stop', lat:61.2297, lng:7.1037,  name:'Sogndal',      day:'Dia 17', desc:'Sognefjord · Maior fiorde do mundo', emoji:'⛺'},
+    {cat:'stop', lat:60.8631, lng:7.1138,  name:'Flåm',         day:'Dia 18', desc:'Aurlandsfjord · Nærøyfjord UNESCO', emoji:'🚂'},
+    {cat:'stop', lat:60.3913, lng:5.3221,  name:'Bergen',       day:'Dia 19–20', desc:'Bryggen UNESCO · Porta dos fiordes', emoji:'🏘️'},
+    {cat:'stop', lat:59.2746, lng:15.2151, name:'Örebro',       day:'Dia 22', desc:'Castelo medieval com fosso', emoji:'🏰'},
+    {cat:'stop', lat:59.3293, lng:18.0686, name:'Estocolmo',    day:'Dia 23', desc:'Gamla Stan · Vasa · Skansen', emoji:'🇸🇪'},
 
     /* MIRANTES */
     {cat:'view', lat:61.1370, lng:10.4475, name:'Lysgårdsbakken Trampolim Olímpico', day:'Dia 14', desc:'Vista 360° de Lillehammer e do Mjøsa, do alto do trampolim olímpico de 1994.', meta:'~90 NOK teleférico · 10:00–17:00'},
@@ -2878,7 +2908,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var map;
     try{
-      map = L.map('map',{scrollWheelZoom:false,zoomControl:true}).setView([61.2,8.5],6);
+      map = L.map('map',{scrollWheelZoom:false,zoomControl:true}).setView([59.5,12.0],5);
 
       var primaryTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
         attribution:'©OpenStreetMap ©CARTO',
@@ -2942,7 +2972,7 @@ document.addEventListener('DOMContentLoaded', function(){
       });
 
       var stopsOnly=points.filter(function(p){return p.cat==='stop'});
-      var routeOrder=['Lillehammer','Geiranger','Sogndal','Flåm','Bergen'];
+      var routeOrder=['Copenhagen','Gotemburgo','Oslo','Lillehammer','Geiranger','Sogndal','Flåm','Bergen','Oslo','Örebro','Estocolmo','Copenhagen'];
       var routeCoords=routeOrder
         .map(function(n){return stopsOnly.find(function(p){return p.name===n})})
         .filter(Boolean)
@@ -2975,7 +3005,7 @@ document.addEventListener('DOMContentLoaded', function(){
           Object.keys(CAT).forEach(function(c){activeFilters[c]=true});
           document.querySelectorAll('.map-filter[data-cat]').forEach(function(b){b.classList.remove('off')});
           applyFilters();
-          map.flyTo([61.2,8.5],6,{duration:1.2});
+          map.flyTo([59.5,12.0],5,{duration:1.2});
         });
       }
 
