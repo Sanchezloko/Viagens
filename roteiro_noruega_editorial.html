@@ -609,6 +609,67 @@ h2.section-title em{
 .map-frame.fs-active #map{height:100vh;height:100dvh}
 body.fs-lock{overflow:hidden}
 
+/* Ticket viewer fullscreen */
+.ticket-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  font-family:var(--mono);
+  font-size:0.66rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:0.65rem 1rem;
+  background:var(--ink-900);
+  color:var(--paper-100);
+  border:none;
+  cursor:pointer;
+  transition:background 0.2s;
+  margin-top:1rem;
+  width:100%;
+  justify-content:center;
+}
+.ticket-btn:hover{background:var(--accent);color:var(--ink-900)}
+.ticket-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  background:rgba(22,21,19,.92);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:1rem;
+}
+.ticket-overlay.open{display:flex}
+.ticket-overlay iframe{
+  width:100%;
+  max-width:640px;
+  height:85vh;
+  height:85dvh;
+  border:1px solid var(--ink-200);
+  background:#fff;
+}
+.ticket-overlay-close{
+  position:absolute;
+  top:1rem;right:1.2rem;
+  font-family:var(--mono);
+  font-size:0.7rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--paper-100);
+  background:transparent;
+  border:1px solid rgba(232,224,210,.3);
+  padding:0.6rem 1rem;
+  cursor:pointer;
+  transition:background 0.2s;
+  z-index:10001;
+}
+.ticket-overlay-close:hover{background:var(--accent);color:var(--ink-900);border-color:var(--accent)}
+
 #map{height:560px;filter:contrast(1.05) brightness(0.92)}
 
 .map-toolbar{
@@ -1847,13 +1908,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
       <div class="card-meta">📍 Geiranger HurtigBoatkai — atrás do Tourist Info · ⏰ 16/07 · Saída 09:00 · Chegar 08:45</div>
       <p>Drop-off em Skagehøla às ~09:45. Pick-up de barco <strong>incluso no bilhete</strong>. Apresentar impresso ou no celular.</p>
       <span class="booking-tag ok">Reservado ✓</span>
-      <div style="margin-top:1rem;border-top:1px solid var(--ink-200);padding-top:1rem;">
-        <object data="ticket-skagefla-636901.pdf" type="application/pdf" width="100%" height="520" style="border:1px solid var(--ink-200);">
-          <p style="font-family:var(--mono);font-size:0.7rem;color:var(--ink-500);padding:1rem;text-align:center;">
-            Não foi possível exibir o PDF. <a href="ticket-skagefla-636901.pdf" target="_blank" style="color:var(--accent);text-decoration:underline;">Abrir ticket →</a>
-          </p>
-        </object>
-      </div>
+      <button class="ticket-btn" data-pdf="ticket-skagefla-636901.pdf">🎟️ Abrir ticket — escanear QR</button>
     </div>
   </div>
 
@@ -2035,13 +2090,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
       <div class="card-meta"><a href="https://www.google.com/maps/search/?api=1&query=Fl%C3%A5m+harbour+Norway" target="_blank" style="color:var(--accent);">📍 Porto de Flåm</a> · ⏰ 18/07 · Saída 16:00 · Chegada ~18:00 · Check-in 15:45–15:55</div>
       <p>Só-ida pelo Nærøyfjord UNESCO. Mostrar QR no embarque. Reserva nº 33504558.</p>
       <span class="booking-tag ok">Reservado ✓</span>
-      <div style="margin-top:1rem;border-top:1px solid var(--ink-200);padding-top:1rem;">
-        <object data="ticket-naeroyfjord-33504558.pdf" type="application/pdf" width="100%" height="520" style="border:1px solid var(--ink-200);">
-          <p style="font-family:var(--mono);font-size:0.7rem;color:var(--ink-500);padding:1rem;text-align:center;">
-            <a href="ticket-naeroyfjord-33504558.pdf" target="_blank" style="color:var(--accent);text-decoration:underline;">Abrir ticket cruzeiro →</a>
-          </p>
-        </object>
-      </div>
+      <button class="ticket-btn" data-pdf="ticket-naeroyfjord-33504558.pdf">🎟️ Abrir ticket — escanear QR</button>
     </div>
     <div class="card">
       <div class="card-label out">🚌 Shuttle Gudvangen → Flåm — Norway's Best</div>
@@ -2049,13 +2098,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
       <div class="card-meta"><a href="https://www.google.com/maps/search/?api=1&query=Gudvangen+bus+stop" target="_blank" style="color:var(--accent);">📍 Gudvangen</a> · ⏰ 18/07 · Saída 19:30 · Chegada ~19:50</div>
       <p>Volta de ônibus após o cruzeiro. Ticket vale só para esse horário.</p>
       <span class="booking-tag ok">Reservado ✓</span>
-      <div style="margin-top:1rem;border-top:1px solid var(--ink-200);padding-top:1rem;">
-        <object data="ticket-shuttle-SYQZ68.pdf" type="application/pdf" width="100%" height="520" style="border:1px solid var(--ink-200);">
-          <p style="font-family:var(--mono);font-size:0.7rem;color:var(--ink-500);padding:1rem;text-align:center;">
-            <a href="ticket-shuttle-SYQZ68.pdf" target="_blank" style="color:var(--accent);text-decoration:underline;">Abrir ticket shuttle →</a>
-          </p>
-        </object>
-      </div>
+      <button class="ticket-btn" data-pdf="ticket-shuttle-SYQZ68.pdf">🎟️ Abrir ticket — escanear QR</button>
     </div>
   </div>
 
@@ -2844,6 +2887,45 @@ document.addEventListener('DOMContentLoaded', function(){
     chip.className = 'type-tag tag-visit';
     chip.textContent = '📍 Visita';
     titleEl.insertAdjacentElement('beforebegin', chip);
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════════════════
+   TICKET FULLSCREEN VIEWER
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+  /* Create overlay once */
+  var overlay=document.createElement('div');
+  overlay.className='ticket-overlay';
+  overlay.innerHTML='<button class="ticket-overlay-close" id="ticketClose">✕ Fechar</button><iframe id="ticketFrame" src="about:blank"></iframe>';
+  document.body.appendChild(overlay);
+
+  var frame=document.getElementById('ticketFrame');
+  var closeBtn=document.getElementById('ticketClose');
+
+  function openTicket(src){
+    frame.src=src;
+    overlay.classList.add('open');
+    document.body.classList.add('fs-lock');
+  }
+  function closeTicket(){
+    overlay.classList.remove('open');
+    document.body.classList.remove('fs-lock');
+    frame.src='about:blank';
+  }
+
+  closeBtn.addEventListener('click',closeTicket);
+  overlay.addEventListener('click',function(e){
+    if(e.target===overlay)closeTicket();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&overlay.classList.contains('open'))closeTicket();
+  });
+
+  document.querySelectorAll('.ticket-btn[data-pdf]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      openTicket(btn.dataset.pdf);
+    });
   });
 })();
 </script>
