@@ -3270,7 +3270,12 @@ document.addEventListener('DOMContentLoaded', function(){
    CITY MINI-MAPS — Oslo, Stockholm, Copenhagen
    ═══════════════════════════════════════════════════════════════════ */
 (function(){
-  if(typeof L==='undefined')return;
+  function waitForLeaflet(cb){
+    if(typeof L!=='undefined')return cb();
+    var t=0,iv=setInterval(function(){t++;if(typeof L!=='undefined'){clearInterval(iv);cb()}else if(t>50)clearInterval(iv)},100);
+  }
+
+  waitForLeaflet(function(){
 
   var COLORS={red:'#c0392b',yellow:'#d4a017',green:'#27ae60',blue:'#2980b9'};
 
@@ -3296,7 +3301,13 @@ document.addEventListener('DOMContentLoaded', function(){
       var m=L.map(id,{scrollWheelZoom:false,zoomControl:true}).setView(center,zoom);
       L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'©OSM ©CARTO',maxZoom:18,subdomains:'abcd'}).addTo(m);
       addPts(m,pts);
-      new IntersectionObserver(function(e){if(e[0].isIntersecting)setTimeout(function(){m.invalidateSize()},200)},{threshold:.1}).observe(el);
+      /* Fix size when map scrolls into view */
+      var fixed=false;
+      new IntersectionObserver(function(entries){
+        if(entries[0].isIntersecting&&!fixed){fixed=true;setTimeout(function(){m.invalidateSize()},300)}
+      },{threshold:.05}).observe(el);
+      /* Also fix on any scroll (belt and suspenders) */
+      window.addEventListener('scroll',function(){setTimeout(function(){m.invalidateSize()},100)},{passive:true,once:true});
     }catch(err){console.warn('City map '+id+' failed:',err)}
   }
 
@@ -3356,6 +3367,8 @@ document.addEventListener('DOMContentLoaded', function(){
     {lat:55.6905,lng:12.6080,name:'Reffen',desc:'Street food',lvl:'green'},
     {lat:55.6835,lng:12.5710,name:'Torvehallerne',desc:'Mercado coberto',lvl:'green'}
   ]);
+
+  });/* end waitForLeaflet */
 })();
 </script>
 </body>
