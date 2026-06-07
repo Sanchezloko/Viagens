@@ -670,6 +670,22 @@ body.fs-lock{overflow:hidden}
 }
 .ticket-overlay-close:hover{background:var(--accent);color:var(--ink-900);border-color:var(--accent)}
 
+/* Expandable context (+ button) */
+details.ctx{margin-top:0.5rem}
+details.ctx summary{
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;
+  color:var(--accent);cursor:pointer;font-weight:600;
+  list-style:none;display:inline-flex;align-items:center;gap:0.3rem;
+}
+details.ctx summary::-webkit-details-marker{display:none}
+details.ctx summary::before{content:'+';font-size:0.85rem;font-weight:700;width:1em;text-align:center}
+details.ctx[open] summary::before{content:'−'}
+details.ctx .ctx-body{
+  margin-top:0.4rem;padding:0.7rem 0.9rem;
+  background:var(--paper-200);border-left:2px solid var(--accent);
+  font-size:0.85rem;color:var(--ink-700);line-height:1.6;
+}
+
 /* City mini-maps */
 .city-map{height:420px;border:1px solid var(--ink-900);margin-top:var(--space-md)}
 @media(max-width:768px){.city-map{height:320px}}
@@ -1881,7 +1897,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">07:10</div>
       <div class="t-title">🚲 Nyhavn</div>
-      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Nyhavn+Copenhagen" target="_blank" style="color:var(--accent);">📍 Nyhavn</a>. Porto colorido icônico — vazio às 7h, ideal para fotos sem multidão.</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Nyhavn+Copenhagen" target="_blank" style="color:var(--accent);">📍 Nyhavn</a>. Porto colorido icônico — vazio às 7h, ideal para fotos sem multidão.<details class="ctx"><summary>Sobre Nyhavn</summary><div class="ctx-body">Construído em 1671 como porto comercial. Hans Christian Andersen morou nos nºs 18, 20 e 67 — escreveu aqui alguns dos seus contos mais famosos. As fachadas coloridas são do séc. XVIII, pintadas por marinheiros para identificar suas casas do mar.</div></details></div>
     </div>
     <div class="tl-item hi">
       <div class="t-time">07:25</div>
@@ -1900,7 +1916,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">~10:15</div>
       <div class="t-title">🌉 Ponte de Øresund</div>
-      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=%C3%98resund+Bridge" target="_blank" style="color:var(--accent);">📍 Ponte de Øresund</a>. 8 km de ponte que viram túnel — famosa de <em>The Bridge</em>. Pedágio ~€68.<br><strong>Alternativa:</strong> balsa <a href="https://www.google.com/maps/search/?api=1&query=%C3%98resundslinjen+Helsing%C3%B8r" target="_blank" style="color:var(--accent);">Helsingør ↔ Helsingborg</a> (Øresundslinjen) — mais barata se pré-reservada. <a href="https://oresundslinjen.com/booking" target="_blank" style="color:var(--accent);">Reservar em oresundslinjen.com →</a></div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=%C3%98resund+Bridge" target="_blank" style="color:var(--accent);">📍 Ponte de Øresund</a>. 8 km de ponte que viram túnel — famosa da série <em>The Bridge</em>. Pedágio ~€68.<details class="ctx"><summary>Sobre a ponte</summary><div class="ctx-body">Inaugurada em 2000, liga Dinamarca à Suécia. São 7,8 km de ponte pênsil que mergulham numa ilha artificial (Peberholm) e viram um túnel de 4 km sob o mar até Copenhagen. Custou €2,7 bilhões e pagou-se em 2036 com os pedágios. A ilha artificial criou um ecossistema novo — hoje tem espécies raras de plantas e animais.</div></details><br><strong>Alternativa:</strong> balsa <a href="https://www.google.com/maps/search/?api=1&query=%C3%98resundslinjen+Helsing%C3%B8r" target="_blank" style="color:var(--accent);">Helsingør ↔ Helsingborg</a> (Øresundslinjen) — mais barata se pré-reservada. <a href="https://oresundslinjen.com/booking" target="_blank" style="color:var(--accent);">Reservar em oresundslinjen.com →</a></div>
     </div>
     <div class="tl-item hi">
       <div class="t-time">~13:15</div>
@@ -1981,7 +1997,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">08:00<br>09:15</div>
       <div class="t-title">🗿 Parque Vigeland</div>
-      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Vigeland+Park+Oslo" target="_blank" style="color:var(--accent);">📍 Vigelandsparken</a>. Maior parque de esculturas do mundo por um só artista. Monólito + "menininho bravo" (Sinnataggen). Ao ar livre, grátis, sempre aberto — vazio às 8h.</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Vigeland+Park+Oslo" target="_blank" style="color:var(--accent);">📍 Vigelandsparken</a>. Maior parque de esculturas do mundo por um só artista. Monólito + "menininho bravo" (Sinnataggen). Ao ar livre, grátis, sempre aberto — vazio às 8h.<details class="ctx"><summary>Sobre Vigeland</summary><div class="ctx-body">Gustav Vigeland (1869–1943) dedicou 20 anos a este parque — 212 esculturas em bronze, granito e ferro forjado representando o ciclo da vida humana. O Monólito central tem 14m e foi esculpido em um único bloco de granito por 3 artesãos durante 14 anos. O "menininho bravo" (Sinnataggen) é o símbolo não-oficial de Oslo.</div></details></div>
     </div>
     <div class="tl-item hi">
       <div class="t-time">~09:45</div>
@@ -1991,7 +2007,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">10:00<br>11:30</div>
       <div class="t-title">🚢 Museu Fram</div>
-      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Fram+Museum+Oslo" target="_blank" style="color:var(--accent);">📍 Museu Fram, Bygdøynes</a>. O navio polar de Nansen e Amundsen — entra-se no navio de verdade. Muito interativo.</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Fram+Museum+Oslo" target="_blank" style="color:var(--accent);">📍 Museu Fram, Bygdøynes</a>. O navio polar de Nansen e Amundsen — entra-se no navio de verdade. Muito interativo.<details class="ctx"><summary>Sobre o Fram</summary><div class="ctx-body">O Fram ("Avante") é o navio de madeira que foi mais ao norte e mais ao sul do planeta. Fridtjof Nansen o projetou em 1892 com um casco arredondado que subia sobre o gelo em vez de ser esmagado. Roald Amundsen usou o mesmo navio para chegar ao Polo Sul em 1911 — derrotando o britânico Scott por 5 semanas. Dentro do museu você anda pelo convés, vê os camarotes e sente o frio do simulador polar.</div></details></div>
       <div class="price-row"><span class="price-chip">~160 NOK adulto</span><span class="price-chip">Criança grátis/reduzida</span></div>
     </div>
     <div class="tl-item hi">
@@ -2007,7 +2023,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">14:00<br>16:00</div>
       <div class="t-title">🎨 MUNCH</div>
-      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=MUNCH+Museum+Oslo" target="_blank" style="color:var(--accent);">📍 MUNCH, Bjørvika</a>. "O Grito" no 4º andar + vista panorâmica do topo. <strong>Seg 10–18</strong> — entrar antes das 16h.</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=MUNCH+Museum+Oslo" target="_blank" style="color:var(--accent);">📍 MUNCH, Bjørvika</a>. "O Grito" no 4º andar + vista panorâmica do topo. <strong>Seg 10–18</strong> — entrar antes das 16h.<details class="ctx"><summary>Sobre MUNCH</summary><div class="ctx-body">Edvard Munch (1863–1944) doou toda a sua obra a Oslo: 28.000 peças. "O Grito" (1893) é uma das imagens mais reconhecíveis do mundo — existem 4 versões, e o museu tem 2. O edifício de 13 andares (2021) é inclinado como uma torre de Pisa proposital, e o último andar tem vidros que se inclinam sobre o fiorde.</div></details></div>
       <div class="price-row"><span class="price-chip">~160–220 NOK adulto</span><span class="price-chip">Menor de 18 grátis</span></div>
     </div>
     <div class="tl-item hi">
@@ -2098,7 +2114,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
 
   <div class="timeline">
     <div class="tl-item"><div class="t-time">07:30</div><div class="t-title">Saída de Lillehammer pela E6/E15</div><div class="t-desc">Saída cedo para chegar em Geiranger antes das 15h (campings são drop-in). E6 norte até Otta (~1h45), depois E15 oeste até Lom (~50 min).</div></div>
-    <div class="tl-item hi"><div class="t-time">~10:00<br>11:00</div><div class="t-title">⛪ Lom Stavkirke</div><div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Lom+Stavkyrkje" target="_blank" style="color:var(--accent);">📍 Lom Stavkyrkje</a>. Igreja de madeira do séc. XII com pinturas barrocas do séc. XVII. Uma das mais belas da Noruega.</div><div class="price-row"><span class="price-chip">🎟️ ~100 NOK</span></div><span class="booking-tag ok">Sem reserva</span></div>
+    <div class="tl-item hi"><div class="t-time">~10:00<br>11:00</div><div class="t-title">⛪ Lom Stavkirke</div><div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Lom+Stavkyrkje" target="_blank" style="color:var(--accent);">📍 Lom Stavkyrkje</a>. Igreja de madeira do séc. XII com pinturas barrocas do séc. XVII. Uma das mais belas da Noruega.<details class="ctx"><summary>Sobre as stavkirkes</summary><div class="ctx-body">Das ~1.000 igrejas de madeira ("stave churches") construídas na Noruega medieval, restam apenas 28. Usam a técnica de "staves" (postes verticais de madeira) sem um único prego de metal — tudo encaixado. Lom (c. 1158) é excepcional por combinar a estrutura viking com pinturas barrocas do séc. XVII no interior.</div></details></div><div class="price-row"><span class="price-chip">🎟️ ~100 NOK</span></div><span class="booking-tag ok">Sem reserva</span></div>
     <div class="tl-item out"><div class="t-time">11:30<br>12:15</div><div class="t-title">🛣️ Gamle Strynefjellsvegen</div><div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Gamle+Strynefjellsvegen+Grotli" target="_blank" style="color:var(--accent);">📍 Início em Grotli</a>. Rota Histórica Nacional de 27 km (1881–1894). Lagos alpinos, passes de montanha, quase sem turistas. +30–45 min na rota.</div><div class="price-row"><span class="price-chip">💰 Gratuito</span><span class="price-chip">⏰ Aberta em julho</span></div></div>
     <div class="tl-item hi"><div class="t-time">~14:00</div><div class="t-title">📸 Mirante Flydalsjuvet</div><div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Flydalsjuvet+viewpoint+Geiranger" target="_blank" style="color:var(--accent);">📍 Flydalsjuvet</a>. 4 km antes de Geiranger. A vista icônica do fiorde. "Cadeira" na borda para fotos.</div></div>
     <div class="tl-item"><div class="t-time">~14:30</div><div class="t-title">Chegada em Geiranger — direto ao camping</div><div class="t-desc">⚠️ Campings em Geiranger são <strong>drop-in</strong> (sem reserva de pitch). Chegar antes das 15h para garantir vaga.</div></div>
@@ -2162,7 +2178,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">09:45<br>~10:30</div>
       <div class="t-title">🥾 Subida a Skageflå (250 m · ~45 min · difícil)</div>
-      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Skagefla+farm+Geiranger" target="_blank" style="color:var(--accent);">📍 Fazenda Skageflå</a>. Trilha íngreme com corrimãos. No topo: <strong>fazenda viking abandonada em 1916</strong>, de frente para as Sete Irmãs. Favorita da Família Real norueguesa.</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Skagefla+farm+Geiranger" target="_blank" style="color:var(--accent);">📍 Fazenda Skageflå</a>. Trilha íngreme com corrimãos. No topo: <strong>fazenda viking abandonada em 1916</strong>, de frente para as Sete Irmãs. Favorita da Família Real norueguesa.<details class="ctx"><summary>Sobre Skageflå</summary><div class="ctx-body">Fazenda de cabras suspensa a 250m sobre o Geirangerfjord, habitada desde a era viking até 1916. As crianças eram amarradas com cordas para não caírem no fiorde. A Rainha Sonja a elegeu como seu lugar favorito na Noruega. As Sete Irmãs (sete cachoeiras paralelas) caem do penhasco oposto — visíveis de frente da fazenda.</div></details></div>
       <div class="price-row"><span class="price-chip">💰 Trilha gratuita</span><span class="price-chip">⏱️ ~45 min subida</span></div>
     </div>
   </div>
@@ -2258,7 +2274,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">~15:00<br>16:30</div>
       <div class="t-title">⛪ Urnes Stave Church — UNESCO (1130)</div>
-      <div class="t-desc">Balsa de <a href="https://www.google.com/maps/search/?api=1&query=Solvorn+ferjekai" target="_blank" style="color:var(--accent);">📍 Solvorn ferjekai</a> → Ornes (~15 min). A mais antiga das 28 stavkirkes — Patrimônio Mundial desde 1979. Entalhes vikings do séc. XI. Subida ~10 min + tour guiado ~20 min. Igreja aberta até <strong>17:45</strong>.</div>
+      <div class="t-desc">Balsa de <a href="https://www.google.com/maps/search/?api=1&query=Solvorn+ferjekai" target="_blank" style="color:var(--accent);">📍 Solvorn ferjekai</a> → Ornes (~15 min). A mais antiga das 28 stavkirkes — Patrimônio Mundial desde 1979. Entalhes vikings do séc. XI. Subida ~10 min + tour guiado ~20 min. Igreja aberta até <strong>17:45</strong>.<details class="ctx"><summary>Sobre Urnes</summary><div class="ctx-body">Construída c. 1130, é a mais antiga e ricamente decorada stavkirke. Os entalhes de animais entrelaçados no portal norte (séc. XI, reaproveitados de uma igreja anterior) definiram o "Estilo Urnes" — reconhecido mundialmente em história da arte como o último estilo decorativo viking. UNESCO desde 1979.</div></details></div>
       <div class="price-row"><span class="price-chip">Balsa: ~75 NOK/trecho</span><span class="price-chip">Entrada: ~120–160 NOK</span></div>
       <span class="booking-tag ok">Sem reserva</span>
     </div>
@@ -2341,7 +2357,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">~09:15<br>11:00</div>
       <div class="t-title">⛪ Borgund Stave Church (1180)</div>
-      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Borgund+Stave+Church" target="_blank" style="color:var(--accent);">📍 Borgund Stave Church</a>. A mais bem preservada da Noruega. Cabeças de dragão, sem um prego de metal. <strong>Abre 09:30</strong> — explorar o exterior e o cemitério medieval enquanto não abre. Vindhellavegen (King's Road, 1.7 km) sai do mesmo estacionamento.</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Borgund+Stave+Church" target="_blank" style="color:var(--accent);">📍 Borgund Stave Church</a>. A mais bem preservada da Noruega. Cabeças de dragão, sem um prego de metal.<details class="ctx"><summary>Sobre Borgund</summary><div class="ctx-body">Construída c. 1180, com 6 níveis de telhado e cabeças de dragão nos vértices — proteção contra espíritos malignos, herança da tradição viking de decoração naval. Toda a estrutura é encaixada sem pregos. Serviu de modelo para a restauração de outras stavkirkes e inspirou o castelo de Frozen (Disney). O visitor center explica a técnica construtiva.</div></details> <strong>Abre 09:30</strong> — explorar o exterior e o cemitério medieval enquanto não abre. Vindhellavegen (King's Road, 1.7 km) sai do mesmo estacionamento.</div>
       <div class="price-row"><span class="price-chip">~150 NOK adulto / ~100 criança</span></div>
       <span class="booking-tag ok">Sem reserva</span>
     </div>
@@ -2358,7 +2374,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">15:45<br>18:00</div>
       <div class="t-title">⛴️ Cruzeiro Nærøyfjord UNESCO</div>
-      <div class="t-desc">Check-in <strong>15:45–15:55</strong>. MS Lady Elisabeth, saída 16:00. O fiorde mais estreito da Europa — 250m entre paredes de 1.700m. National Geographic: "Best Unspoilt Destination". Chegada em Gudvangen ~18:00.</div>
+      <div class="t-desc">Check-in <strong>15:45–15:55</strong>. MS Lady Elisabeth, saída 16:00. O fiorde mais estreito da Europa — 250m entre paredes de 1.700m. National Geographic: "Best Unspoilt Destination". Chegada em Gudvangen ~18:00.<details class="ctx"><summary>Sobre o Nærøyfjord</summary><div class="ctx-body">UNESCO desde 2005 (junto com o Geirangerfjord). Com apenas 250m de largura em alguns pontos e paredes de 1.700m, é o fiorde mais estreito da Europa. O nome vem do deus nórdico Njord (deus do mar). As fazendas abandonadas nas encostas mostram como os noruegueses viviam isolados até o séc. XX.</div></details></div>
       <div class="price-row"><span class="price-chip">✅ Reservado</span><span class="price-chip">nº 33504558</span></div>
     </div>
     <div class="tl-item">
@@ -2494,7 +2510,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">Manhã<br>cedo</div>
       <div class="t-title">🏘️ Bryggen UNESCO</div>
-      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Bryggen+Bergen" target="_blank" style="color:var(--accent);">📍 Bryggen, Bergen</a>. Cais hanseático: casas de madeira tortas e coloridas, becos estreitos. Ir <strong>cedo</strong>, antes dos cruzeiros despejarem multidão. Gratuito.</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Bryggen+Bergen" target="_blank" style="color:var(--accent);">📍 Bryggen, Bergen</a>. Cais hanseático: casas de madeira tortas e coloridas, becos estreitos. Ir <strong>cedo</strong>, antes dos cruzeiros despejarem multidão. Gratuito.<details class="ctx"><summary>Sobre Bryggen</summary><div class="ctx-body">UNESCO desde 1979. Estes armazéns de madeira são o que resta do escritório hanseático de Bergen (séc. XIV–XVI), quando mercadores alemães controlavam o comércio de bacalhau seco com a Europa. Incendiada e reconstruída várias vezes, a última grande reconstrução foi após o incêndio de 1702 — mantendo a técnica medieval. Os becos estreitos entre os prédios serviam de corta-fogo.</div></details></div>
     </div>
     <div class="tl-item hi">
       <div class="t-time">~11:00</div>
@@ -2613,7 +2629,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">~13:30<br>15:00</div>
       <div class="t-title">🏔️ Travessia do Hardangervidda</div>
-      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Hardangervidda+plateau+Norway" target="_blank" style="color:var(--accent);">📍 Hardangervidda</a>. O maior planalto da Europa — 8.000 km² de tundra ártica, lagos gelados e neve em julho. Renas selvagens à beira da estrada. Sem sinal de celular por trechos longos.</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Hardangervidda+plateau+Norway" target="_blank" style="color:var(--accent);">📍 Hardangervidda</a>. O maior planalto da Europa — 8.000 km² de tundra ártica, lagos gelados e neve em julho. Renas selvagens à beira da estrada. Sem sinal de celular por trechos longos.<details class="ctx"><summary>Sobre o Hardangervidda</summary><div class="ctx-body">Com 8.000 km² a 1.200m de altitude, é o maior planalto montanhoso da Europa e lar da maior manada de renas selvagens do continente (~7.000 animais). A paisagem é idêntica à tundra ártica — mas a apenas 4h de Oslo. Os vikings cruzavam o planalto a pé entre os fiordes ocidentais e a Noruega oriental. No inverno chega a −30°C; em julho ainda há neve nos lagos.</div></details></div>
     </div>
     <div class="tl-item">
       <div class="t-time">~18:00</div>
@@ -2716,7 +2732,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">14:20<br>16:00</div>
       <div class="t-title">🚢 Museu Vasa</div>
-      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Vasa+Museum+Stockholm" target="_blank" style="color:var(--accent);">📍 Museu Vasa, Djurgården</a>. Navio de guerra de 1628 quase intacto — entra-se no navio. Muito interativo.</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Vasa+Museum+Stockholm" target="_blank" style="color:var(--accent);">📍 Museu Vasa, Djurgården</a>. Navio de guerra de 1628 quase intacto — entra-se no navio. Muito interativo.<details class="ctx"><summary>Sobre o Vasa</summary><div class="ctx-body">O Vasa afundou em 1628 na viagem inaugural — após navegar apenas 1.300m. Uma rajada de vento bastou: era alto demais e pesado demais no topo (64 canhões). Resgatado em 1961 após 333 anos no fundo do mar, com 98% da estrutura original intacta. Os entalhes, as cores e até esqueletos dos marinheiros foram preservados. O museu mais visitado da Escandinávia.</div></details></div>
       <div class="price-row"><span class="price-chip">~190 SEK adulto</span><span class="price-chip">Menor de 18 grátis</span></div>
     </div>
     <div class="tl-item hi">
@@ -2783,7 +2799,7 @@ footer.colophon .fine strong{color:var(--accent);font-weight:500}
     <div class="tl-item hi">
       <div class="t-time">19:00+</div>
       <div class="t-title">🎡 Tivoli + jantar</div>
-      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Tivoli+Gardens+Copenhagen" target="_blank" style="color:var(--accent);">📍 Tivoli Gardens</a>. Parque histórico (1843), mágico à noite no verão. Ponto alto para o Henrique.</div>
+      <div class="t-desc"><a href="https://www.google.com/maps/search/?api=1&query=Tivoli+Gardens+Copenhagen" target="_blank" style="color:var(--accent);">📍 Tivoli Gardens</a>. Parque histórico (1843), mágico à noite no verão. Ponto alto para o Henrique.<details class="ctx"><summary>Sobre o Tivoli</summary><div class="ctx-body">Fundado em 1843, é o 2º parque de diversões mais antigo do mundo (e o que inspirou Walt Disney a criar a Disneyland). Os jardins iluminados à noite, os concertos ao ar livre e a montanha-russa de madeira de 1914 criam uma atmosfera única. Hans Christian Andersen era frequentador assíduo.</div></details></div>
     </div>
   </div>
 
