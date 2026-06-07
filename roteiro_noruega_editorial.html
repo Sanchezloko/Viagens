@@ -671,19 +671,26 @@ body.fs-lock{overflow:hidden}
 .ticket-overlay-close:hover{background:var(--accent);color:var(--ink-900);border-color:var(--accent)}
 
 /* Expandable context (+ button) */
-details.ctx{margin-top:0.5rem}
+details.ctx{margin-top:0.6rem;display:block}
 details.ctx summary{
-  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;
-  color:var(--accent);cursor:pointer;font-weight:600;
-  list-style:none;display:inline-flex;align-items:center;gap:0.3rem;
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--paper-100);cursor:pointer;font-weight:600;
+  list-style:none;display:inline-flex;align-items:center;gap:0.4rem;
+  background:var(--accent);
+  padding:0.35rem 0.7rem;
+  border:none;
+  transition:background 0.2s;
 }
+details.ctx summary:hover{background:var(--accent-dark)}
 details.ctx summary::-webkit-details-marker{display:none}
-details.ctx summary::before{content:'+';font-size:0.85rem;font-weight:700;width:1em;text-align:center}
+details.ctx summary::before{content:'+';font-size:0.9rem;font-weight:700}
 details.ctx[open] summary::before{content:'−'}
+details.ctx[open] summary{background:var(--ink-900)}
 details.ctx .ctx-body{
-  margin-top:0.4rem;padding:0.7rem 0.9rem;
-  background:var(--paper-200);border-left:2px solid var(--accent);
-  font-size:0.85rem;color:var(--ink-700);line-height:1.6;
+  margin-top:0;padding:0.8rem 1rem;
+  background:var(--paper-200);border-left:3px solid var(--accent);
+  font-size:0.85rem;color:var(--ink-700);line-height:1.65;
 }
 
 /* City mini-maps */
