@@ -1,10 +1,21 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "assessedAt": null,
   "updatedAt": null,
   "levels": {},
+  "target": {
+    "exam": "Goethe-Zertifikat B1",
+    "examDate": null,
+    "wortschatzZiel": 2400
+  },
   "errorPatterns": [],
   "priorityContexts": [],
+  "humanTutor": {
+    "cadence": "weekly",
+    "lastSyncAt": null,
+    "coveredByTutor": [],
+    "delegatedToTutor": []
+  },
   "correctionStyle": {
     "directive": "Corrija diretamente. Diga o que está errado e mostre a forma correta. Sem elogio decorativo, sem emoji, sem suavizar.",
     "explanationLanguage": "pt-BR",
