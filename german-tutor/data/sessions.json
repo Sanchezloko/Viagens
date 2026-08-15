@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "count": 0,
+  "lastSession": null,
+  "streak": {
+    "current": 0,
+    "longest": 0,
+    "lastActiveDate": null
+  },
+  "skillLastPractised": {
+    "lesen": null,
+    "hoeren": null,
+    "schreiben": null,
+    "sprechen": null,
+    "wortschatz": null,
+    "grammatik": null
+  },
+  "history": []
+}

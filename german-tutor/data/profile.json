@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "assessedAt": null,
+  "updatedAt": null,
+  "levels": {},
+  "errorPatterns": [],
+  "priorityContexts": [],
+  "correctionStyle": {
+    "directive": "Corrija diretamente. Diga o que está errado e mostre a forma correta. Sem elogio decorativo, sem emoji, sem suavizar.",
+    "explanationLanguage": "pt-BR",
+    "maxExplanationLines": 4,
+    "requireRepair": true,
+    "repairCount": 2,
+    "praise": "only when something previously wrong is now right"
+  }
+}
