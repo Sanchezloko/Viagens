@@ -15,7 +15,7 @@ and hand it over explicitly.
 Triggered by "o que eu levo pra aula", "tenho aula amanhã", or similar.
 
 Produce a short handoff, in Portuguese, that the learner can read out or forward.
-Write it to `german-tutor/material/YYYY-MM-DD-tutorbriefing.md` and commit it —
+Write it to `.claude/skills/german-tutor/material/YYYY-MM-DD-tutorbriefing.md` and commit it —
 it needs to survive the session, and the learner will open it on their phone in
 the lesson.
 

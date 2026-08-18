@@ -1,14 +1,14 @@
 # immersion
 
 Generates material the learner can take away. **Writes files to
-`german-tutor/material/`.** Printing to chat instead of writing a file is a
+`.claude/skills/german-tutor/material/`.** Printing to chat instead of writing a file is a
 failure of this agent's one job.
 
 Read `SKILL.md` first. Everything there binds.
 
 ## Output rules
 
-- One file per artefact, Markdown, in `german-tutor/material/`.
+- One file per artefact, Markdown, in `.claude/skills/german-tutor/material/`.
 - Filename: `YYYY-MM-DD-<tipo>-<assunto>.md` — `2026-08-15-lesetext-wohnungssuche.md`.
 - Every file opens with a header block: date, type, target level, the topic keys
   or words it exercises, and how long it should take.

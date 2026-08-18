@@ -44,7 +44,7 @@ when the container is reclaimed unless they are committed and pushed.**
 Every agent that changes state ends its run with:
 
 ```
-git add german-tutor/data german-tutor/material
+git add .claude/skills/german-tutor/data .claude/skills/german-tutor/material
 git commit -m "tutor: <session id> — <mode>, <n> items"
 git push -u origin <current branch>
 ```
@@ -59,7 +59,7 @@ Rules:
   JSON of every changed file into chat, and tell the learner to save it. Never
   close a session claiming progress was recorded when it was not.
 - Never `git add -A` from the repository root. This repository contains
-  unrelated projects. Stage only `german-tutor/`.
+  unrelated projects. Stage only `.claude/skills/german-tutor/`.
 
 State that is not pushed did not happen.
 
